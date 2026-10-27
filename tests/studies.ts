@@ -23,6 +23,13 @@ const sweep = (
   }));
 
 export const STUDY_SWEEPS: Readonly<Record<string, readonly StudyConfig[]>> = {
+  '3': [
+    // Each method alone (no reference drawn), at subject and background focus; and the reference
+    // alone, whose cost is the rays a frame.
+    ...sweep('dof-lab', 'method', ['sharp', 'hexagon'], { view: 'method' }),
+    ...sweep('dof-lab', 'method', ['sharp', 'hexagon'], { view: 'method', focus: 40 }),
+    ...sweep('dof-lab', 'samples', [8, 32], { view: 'reference', rays: 1e9 }),
+  ],
   '4': [
     // 4.1: the orbs' cost should follow their total area, count × blur².
     ...sweep('bokeh-drift', 'count', [50, 220, 440]),

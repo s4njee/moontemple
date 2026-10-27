@@ -58,20 +58,24 @@ Findings that shape this plan rather than being rediscovered.
 - **Generated discs beat per-pixel orbs.** `bokeh-drift` draws its orbs as one instanced quad each and costs about what the HDR tail does (0.4 to 0.6 ms at 1080p on Dawn, M1 Max), from 50 to 440 orbs. `hello`, which finds its orbs per pixel in a hashed grid (27 lookups a pixel), costs 1.44 ms. Fire Temple found the same of procedural noise per pixel.
 - **Conservation needs the exact small case.** Above about three pixels a one-pixel edge divided by the shape's area plus Steiner's π/12 keeps a point's light within 2%; below it only the exact area of the pixel inside the disc does. Combining two clips by multiplying their edges squares the ramp and loses 0.33/r of the light; take the minimum.
 - **Big bokeh needs close focus.** A 50 mm f/1.8 focused at 6 m blurs infinity to about 3 px at 700 px tall. The reference look is a lens focused within a metre or so, with the lights far behind it, which is also why its discs are all about the same size.
+- **A sharp image cannot give the foreground back.** In `dof-lab`, the separable hexagon gets within 10.7 levels RMS of the ray-traced reference with the subject in focus but 15.3 with the background in focus, because a blurred foreground should spread over and show what is behind it, and a post-process given one sharp image has neither.
 - **Real airlight is wide.** The glow of a light in fog falls off about as 1 / angle, so it lifts the whole frame long before it looks like a halo; the stand-in it replaced was too tight.
 
 ## Overlaps and who owns what
 
-| Nearby work                                            | Where                      | Moon Temple's part                                                                       |
-| ------------------------------------------------------ | -------------------------- | ---------------------------------------------------------------------------------------- |
-| `particle-drift`: quiet bokeh dust                     | hologpu                    | 4.1 is the measured, aperture-shaped, energy-conserving version; compare the two.        |
-| `lens`: vignette, chromatic edges, grain               | hologpu                    | 2.4 covers aberration as optics; the film finish stays hologpu's.                        |
-| `rain-glass`: drops as lenses over a blurred street    | Water Temple               | Its blurred street could take 4.2's bokeh as a backdrop; not rebuilt.                    |
-| `sun-glint`, `hdr-bloom`                               | Water Temple               | 5.4 takes the glitter path to moonlight and defocus.                                     |
-| Tilt-shift depth of field, bokeh highlights (5.1, 5.2) | Eightfold Path (unbuilt)   | Epic 3 builds the methods; Eightfold Path consumes them once they are in the core (7.6). |
-| Fireflies as lights (E7-S2)                            | Light Temple (unbuilt)     | 4.4 does the optics of a firefly; lighting the scene from it stays Light Temple's.       |
-| `text-outline-glow`; CRT glow and halation (4.7)       | hologpu; Void              | 6.6 is film halation, a different mechanism with a red fringe.                           |
-| Moon phases, starfields                                | research.md Space; hologpu | Not built here.                                                                          |
+| Nearby work                                            | Where                       | Moon Temple's part                                                                       |
+| ------------------------------------------------------ | --------------------------- | ---------------------------------------------------------------------------------------- |
+| `particle-drift`: quiet bokeh dust                     | hologpu                     | 4.1 is the measured, aperture-shaped, energy-conserving version; compare the two.        |
+| `lens`: vignette, chromatic edges, grain               | hologpu                     | 2.4 covers aberration as optics; the film finish stays hologpu's.                        |
+| `rain-glass`: drops as lenses over a blurred street    | Water Temple                | Its blurred street could take 4.2's bokeh as a backdrop; not rebuilt.                    |
+| `sun-glint`, `hdr-bloom`                               | Water Temple                | 5.4 takes the glitter path to moonlight and defocus.                                     |
+| Tilt-shift depth of field, bokeh highlights (5.1, 5.2) | Eightfold Path (unbuilt)    | Epic 3 builds the methods; Eightfold Path consumes them once they are in the core (7.6). |
+| Fireflies as lights (E7-S2)                            | Light Temple (unbuilt)      | 4.4 does the optics of a firefly; lighting the scene from it stays Light Temple's.       |
+| `text-outline-glow`; CRT glow and halation (4.7)       | hologpu; Void               | 6.6 is film halation, a different mechanism with a red fringe.                           |
+| Moon phases, starfields                                | research.md Space; hologpu  | Not built here.                                                                          |
+| `holo-card`: thin film, diffraction, `spectral_rgb`    | Light Temple                | 9.1 and 9.6 reuse its spectral chunk; Epic 9 adds refraction through a solid.            |
+| `liquid-glass`, `liquid-blob`: refracting lenses       | Water Temple                | Screen-space refraction of a backdrop; 9.4 traces a real solid with dispersion.          |
+| Shared stroke renderer                                 | Storm Temple (`strokes.ts`) | 10.1 draws the wireframe with it; already in this repo.                                  |
 
 ## Practicality tiers
 
@@ -152,6 +156,9 @@ The full types live in `src/effects/types.ts`. `tests/flash.test.ts` and `tests/
 | **M3** Lens on the page | Rest of Epic 6, stories 7.1–7.5, 8.2     | Web-native usefulness, on more than one device           |
 | **M4** Night sky        | Epic 5, rest of Epic 4                   | The moon as a light seen through air, glass and water    |
 | **M5** Findings         | Rest of Epics 7 and 8                    | Published conclusions, optics moved into the temple core |
+| **M6** Glass and wire   | Epics 9 and 10                           | Spectral light through glass, under a wire in focus      |
+
+M6 depends on Epic 2 and on 3.9's choice of depth-of-field method, not on M3 to M5; it can run alongside them, and M5's findings come last.
 
 Story format: `ID Title [tier] (size)`. Sizes: S ≈ a day or less, M ≈ a few days, L ≈ a week or more.
 
@@ -169,7 +176,7 @@ Mostly done by copying Storm Temple's shell. What is left is the parts every tem
 - [ ] **1.6 Support matrix delta** (S) — re-check what this family leans on beyond Fire Temple's [support matrix](../firetemple/docs/support-matrix.md): `float32-filterable` and `rgba16float` blending for scatter accumulation, storage atomics and indirect draws for sprite bokeh, `shader-f16`, `subgroups` (optional, for tile reductions), and the largest workgroup storage an FFT can count on.
 - [x] **1.7 Cost study harness** (M) — port Fire Temple's `npm run study` (per-frame cost on Dawn, a floor row and a tail-only row, `docs/studies/epic-<n>.{json,md}`, `measured.json` for the Scorecard tab). Storm Temple read its costs from the HUD instead; this family compares methods, so it needs the harness. _Ported from Fire Temple as `tests/bench.ts`, `tests/study.test.ts`, `tests/studies.ts` (sweeps) and `scripts/study.mjs`, with `scripts/check-bundle.mjs`, which `npm run build` now runs. Its first run caught the Slow spectrum page importing `bokeh-drift` (and its shaders) up front for one colour function, now in `bokeh-drift/hue.ts`. Studies for Epics 1, 2 and 4 are in `docs/studies/`; the Chrome readings come from the HUD until the browser check (1.8) is ported._
 - [ ] **1.8 Browser check** (M) — port Fire Temple's `npm run browser-check`: every effect in every mock layout, both page tones and a phone viewport in headless Chrome, failing on an effect that does not start, logs an error or draws nothing.
-- [ ] **1.9 Image comparison helpers** (S) — RMSE and a perceptual difference (FLIP or a simple SSIM) between two rendered frames, for Epic 3's method comparison and for visual regression.
+- [x] **1.9 Image comparison helpers** (S) — RMSE and a perceptual difference (FLIP or a simple SSIM) between two rendered frames, for Epic 3's method comparison and for visual regression. _`src/gpu/dof/compare.ts`: images compared as displayed (Reinhard and a 2.2 gamma per channel), RMSE in 8-bit levels and SSIM on luminance over 8 × 8 windows. FLIP is not done._
 
 ## Epic 2 — Optics building blocks
 
@@ -189,9 +196,9 @@ Shared WGSL and TypeScript that every later effect uses, each proven in a small 
 
 The core research. One test scene with depth (points at many depths, an in-focus foreground edge, bright highlights behind it), every method on it, and each scored against the reference for error and cost. The scene is the `dof-lab` effect: a split view, the reference beside a method, and the difference.
 
-- [ ] **3.1 Reference scatter** [C] (M) — every pixel spreads its colour over its own circle of confusion with its aperture kernel, accumulated in compute, at low resolution, with near and far layers composited correctly. Slow on purpose; the ground truth every other method is scored against.
+- [x] **3.1 Reference scatter** [C] (M) — every pixel spreads its colour over its own circle of confusion with its aperture kernel, accumulated in compute, at low resolution, with near and far layers composited correctly. Slow on purpose; the ground truth every other method is scored against. _Built as a ray tracer instead: the shot is analytic shapes (`src/gpu/dof/scene.wgsl`), traced through the whole aperture with rays from an R2 sequence and averaged over frames: Cook et al.'s distributed ray tracing. That is the truth, where a scatter of the sharp image could not see round a blurred foreground either. Its lens radius matches the thin-lens model; one point traced through round and hexagonal lenses, in front of and behind focus, spreads to the predicted radius within 1% (`tests/dof.test.ts`). About 3.5 ms a frame at 8 rays at 1080p on the M1 Max._
 - [ ] **3.2 Gather, the Call of Duty way** [B] (L) — half resolution, tiles of max and min CoC with neighbourhood dilation, presorted near and far fields, a ring kernel of about 49 taps, near-field bleed over the in-focus edge (Jimenez 2014).
-- [ ] **3.3 Separable hexagon** [B] (M) — three skewed one-dimensional blurs in two passes give a hexagonal kernel at the cost of a separable one (White and Barré-Brisebois).
+- [x] **3.3 Separable hexagon** [B] (M) — three skewed one-dimensional blurs in two passes give a hexagonal kernel at the cost of a separable one (White and Barré-Brisebois). _`src/gpu/dof/hexagon.ts`: two passes of 16-tap one-sided line blurs at full resolution, each tap counted only where its own circle of confusion reaches back. Against a 1 024-ray reference at 640 × 400: RMSE 10.7 and SSIM 0.915 with the subject in focus (the sharp image: 39.9, 0.647), 15.3 and 0.866 with the background in focus (32.5, 0.670). The difference is the foreground: blurred inside its own outline with a hard, opaque edge, where the reference spreads it over the background and makes it see-through. About 1.2 ms at 1080p on the M1 Max. In `dof-lab`, with the method interface in `src/gpu/dof/types.ts` for the rest of the epic._
 - [ ] **3.4 Circular separable convolution** [B] (M) — a disc kernel from a sum of complex Gaussian components, two passes per component (Garcia 2017); one, two and three components compared on ringing and cost.
 - [ ] **3.5 Sprite bokeh** [B] (M) — bright pixels above a threshold appended in compute and drawn as aperture sprites with indirect draws; everything else from a cheap gather. The aperture's shape only shows on highlights, which is where the eye looks for it.
 - [ ] **3.6 Layer blur with no depth** [A] (M) — for flat layers, images and anything DOM-shaped: a blur per layer from its assigned depth, and the tilt-shift band (blur growing from a focus line). Compared with CSS `filter: blur()` on the same layers, timed on both sides. The method Eightfold Path's 5.1 needs.
@@ -262,6 +269,31 @@ Turn the demos into conclusions.
 - [ ] **8.5 Decision guide** (S) — "which effect for which job" and "which depth-of-field method at which tier", with budgets and caveats.
 - [ ] **8.6 Visual regression** (M) — screenshot tests with a fixed time seed, using 1.9's comparison.
 
+## Epic 9 — Spectral light and glass
+
+Light through a refracting solid, colour by colour. The reference for Epics 9 and 10 is a rotating wireframe icosahedron: sharp white edges over a glass body that glows cyan and blue inside, with hot spots of light near its corners, a horizon bent straight across its middle, and a soft halo that turns yellow, orange and finally red towards its rim. Read as optics that is four things: the backdrop refracted and dispersed through the glass (9.2 to 9.4), light gathered by internal reflection into caustics at the corners (9.5), the body out of focus behind a wire in focus (10.4), and a halo whose red spreads widest, as a lens's chromatic aberration and film's halation both make it (9.7, 10.2).
+
+- [ ] **9.1 Spectral sampling** [—] (S) — light as wavelengths rather than three channels: wavelength to linear sRGB through Light Temple's `spectral_rgb` (or a CIE fit), and hero-wavelength sampling (Wilkie et al.), four wavelengths a sample spread over the visible range. Test: a flat spectrum integrates to white, and the colour of any single wavelength stays inside sRGB after the tonemap's clip.
+- [ ] **9.2 Dispersive refraction** [—] (M) — index of refraction by wavelength (Cauchy for crown and flint glass, Sellmeier where Cauchy drifts; diamond for a stronger split), Snell's law, Fresnel reflectance and total internal reflection, and a ray tracer for convex polytopes as sets of planes (tetrahedron to icosahedron, prisms), several bounces inside. Test: a BK7 prism's minimum deviation at 589 nm and its spread from 486 to 656 nm against the textbook figures.
+- [ ] **9.3 `prism`** [B] (M) — the classic: a beam of white light through a triangular prism opening into a spectrum on a wall behind it. The validation scene for 9.2, and a hero in its own right.
+- [ ] **9.4 `glass-solid`** [B] (L) — a rotating glass Platonic solid (icosahedron by default) traced per pixel against a backdrop of sky, horizon and lights: refraction with dispersion, internal reflections to a set depth, Fresnel at every face, so edges split into spectra and the horizon bends through the body. Compare a fixed spectral sampling with three channels at three indices, the cheap version.
+- [ ] **9.5 Caustics at the corners** [B] (M) — the bright spots where light inside the solid is reflected together near its vertices: traced from the light into a small caustic texture on the solid's faces, against a screen-space stand-in (a glow at each vertex weighted by how the faces around it face the light). Decide which the showpiece uses.
+- [ ] **9.6 Thin-film colour** [A] (S) — soap-film iridescence on the faces, from Light Temple's thin-film chunk, as an option for a lighter, bubble-like solid.
+- [ ] **9.7 Spectral depth of field** [B] (M) — longitudinal chromatic aberration: each wavelength focuses at a slightly different distance, so out of focus a bright object fringes one colour outside and its complement inside. The point layer and 3.9's chosen method with a circle of confusion per channel (three) against per wavelength (eight), checked against the 3.1 reference traced spectrally. This is the reference's red rim.
+
+## Epic 10 — Glowing wireframes and halos
+
+The other half of the reference: a sharp, bright line drawing of the solid, and the halo of light the whole thing throws.
+
+- [ ] **10.1 HDR wireframe** [A] (S) — a solid's edges drawn with Storm Temple's stroke renderer (`src/gpu/strokes.ts`): constant width in pixels, energy per length so a long edge is not brighter than a short one, joints that do not double, hidden edges faded rather than removed, and a perspective that makes the solid read as turning.
+- [ ] **10.2 Spectral bloom and halation** [B] (M) — bloom whose spread grows with wavelength, so a bright shape's halo goes white, yellow, orange and red outwards, as a real lens's scatter and film's halation both make it. Compared with three-channel bloom with a radius per channel, and with 2.5's halation; the colour must stay energy-conserving (white in, white integrated out).
+- [ ] **10.3 Vertex flares** [A] (S) — a small starburst (2.6) where edges meet, brightest at the corners that face the light, capped by 2.9 so a turning solid never strobes.
+- [ ] **10.4 Sharp wire over a soft body** [B] (M) — the reference's composition: the wire in focus in front, the glowing glass body behind or through it out of focus with its spectral fringes. Two layers, each with its own depth: the body through 9.7's spectral depth of field, the wire sharp over it. Decide whether the body is blurred as an image (3.9's method) or generated already soft.
+- [ ] **10.5 `prism-icosahedron`** [C] (L) — the showpiece: a slowly rotating icosahedron, white wire edges and corner flares, a glass body that refracts and disperses the horizon behind it with caustic spots at its corners, all wrapped in a chromatic halo. The pointer turns it; reduced motion holds a still at a flattering angle. Built from 9.2, 9.4, 9.5, 9.7, 10.1 to 10.4, and judged against the reference picture side by side.
+- [ ] **10.6 `wire-loader`** [A] (S) — the web-sized version: a small turning wireframe solid with its halo, as a loader or an icon, with no glass body (wire, flares and spectral bloom only) so it stays Tier A.
+- [ ] **10.7 `glass-badge`** [B] (M) — the glass solid as a page element: a logo mark or a call-to-action extruded into a convex solid (the convex hull of its outline), refracting the page's own background image behind it. Uploads that image the stable way (6.1).
+- [ ] **10.8 Study** [—] (M) — the cost of each piece at 1080p and phone size (traced glass, caustics, spectral bloom), which ones a Tier B version can keep, and flash: a bright solid turning in front of a light is a large area changing brightness, and the analyser decides how fast it may turn.
+
 ---
 
 ## Risks and open questions
@@ -275,6 +307,7 @@ Turn the demos into conclusions.
 - **Scatter cost.** Sprite bokeh and the reference scatter grow with the number of bright pixels and the disc area; the worst case (a night street fully defocused) may be over Tier B on an integrated GPU.
 - **Overlap.** Several neighbours already exist or are planned (table above). The value here is the optics and the comparisons, not more orb backgrounds.
 - **Measurement.** The same as every temple: one machine, a 1 ms browser floor, and effects under about 2 ms that cannot be ranked. The tiers stay provisional until 8.2.
+- **Spectral cost.** Tracing a glass solid per pixel with several wavelengths and bounces is a Tier C budget at full resolution; the web-sized versions (10.6, 10.7) have to drop the glass or trace it at reduced resolution.
 - **Open questions.** Is a generated orb field ever beaten by blurring a sharp render? Does a baked aperture kernel beat the analytic shape on a phone? Does depth of field belong before or after bloom (3.9)? How many glints a second can a field hold before the analyser objects?
 
 ## Starting references
@@ -299,5 +332,8 @@ These come from memory, not from a literature search in this session, as researc
 - Philip Laven, _MiePlot_ and his pages on coronae and glories — droplet diffraction.
 - Les Cowley, _Atmospheric Optics_ (atoptics.co.uk) — halos, coronae, moonbows.
 - Martijn Steinrucken (BigWings), _The Drive Home_ and _Heartfelt_ (Shadertoy) — procedural night-street bokeh.
+- Wilkie, Nawaz, Droske, Weidlich and Hanika, _Hero Wavelength Spectral Sampling_ (Eurographics Symposium on Rendering, 2014).
+- Guy and Soler, _Graphics Gems Revisited: Fast and Physically-Based Rendering of Gemstones_ (SIGGRAPH 2004) — refraction, dispersion and internal reflection in convex polyhedra.
+- Sellmeier and Cauchy dispersion formulas, and the Schott glass catalogue's BK7 and SF11 coefficients.
 - WCAG 2.2, Success Criteria 2.3.1 _Three Flashes or Below Threshold_ and 2.3.3 _Animation from Interactions_.
 - The other temples: [Fire Temple plan](../firetemple/plan.md), [Storm Temple plan](../stormtemple/plan.md), [Eightfold Path plan](../eightfoldpath/plan.md), [research.md](../research.md) §6 shared pieces.

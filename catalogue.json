@@ -56,6 +56,34 @@
       }
     },
     {
+      "id": "dof-lab",
+      "title": "Depth-of-field lab",
+      "summary": "One night shot, the depth-of-field methods a real-time renderer uses, and the truth they are scored against: the same shot traced through the whole lens, ray by ray, sharpening over a few seconds. Split, difference and sharp views; drag the split with the pointer.",
+      "epic": "3",
+      "tier": "C",
+      "tags": [
+        "building block",
+        "depth of field",
+        "comparison",
+        "reference"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "no",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "Stills of each method beside the reference.",
+        "useCases": [
+          "Choosing a depth-of-field method; a research tool, not an effect to ship"
+        ]
+      }
+    },
+    {
       "id": "bokeh-drift",
       "title": "Bokeh drift",
       "summary": "Points of light far behind a lens focused close: a field of soft violet discs at many depths, drifting upwards under one bright light in haze. Each disc is the aperture at its own circle of confusion and keeps the light of the point it came from, so overlaps add up as they do in a photograph. The pointer shifts them by depth.",

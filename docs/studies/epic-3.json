@@ -1,0 +1,414 @@
+{
+  "epic": "3",
+  "measuredAt": "2026-10-27T09:26:23.186Z",
+  "device": "Apple M1 Max",
+  "deviceClass": "apple-silicon",
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "device": "apple-m1-max",
+    "description": "Metal driver on macOS Version 26.6.2 (Build 25G83)"
+  },
+  "runtime": "Dawn (node webgpu bindings)",
+  "method": {
+    "metric": "GPU timestamps: frame span (first pass start to last pass end) and marginal cost per extra frame",
+    "warmupFrames": 12,
+    "rounds": 11,
+    "repeats": 4
+  },
+  "note": "Only this adapter was measured. spanMs includes the timing floor (see the \"(floor)\" rows); slopeMs is the cost of one more frame of the same work and is the number to compare by. A slope at or below zero means the work is below what this method can resolve.",
+  "rows": [
+    {
+      "effect": "(floor)",
+      "config": "one constant-colour pass",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.065536,
+      "slopeMs": 0.043690666666666676,
+      "slopeMinMs": -0.15291733333333332,
+      "slopeMaxMs": 0.3713706666666667,
+      "passes": 1,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(tail)",
+      "config": "constant scene + bloom + output",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.65536,
+      "slopeMs": 0.458752,
+      "slopeMinMs": 0.30583466666666664,
+      "slopeMaxMs": 0.7645866666666666,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "default",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 5.963776,
+      "slopeMs": 7.689557333333333,
+      "slopeMinMs": 5.920085333333333,
+      "slopeMaxMs": 8.192,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset subject in focus",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 6.422528,
+      "slopeMs": 6.597290666666666,
+      "slopeMinMs": 5.89824,
+      "slopeMaxMs": 7.733248000000001,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset background in focus",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 6.291456,
+      "slopeMs": 6.793898666666666,
+      "slopeMinMs": 6.335146666666667,
+      "slopeMaxMs": 7.798784,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset foreground in focus",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 5.373952,
+      "slopeMs": 6.509909333333333,
+      "slopeMinMs": 5.920085333333333,
+      "slopeMaxMs": 7.340032,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset difference",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 5.57056,
+      "slopeMs": 6.1603840000000005,
+      "slopeMinMs": 5.941930666666667,
+      "slopeMaxMs": 6.750208000000001,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset one point",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 3.080192,
+      "slopeMs": 2.5122133333333334,
+      "slopeMinMs": 2.031616,
+      "slopeMaxMs": 3.735552,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method method=sharp",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "view": "method",
+        "method": "sharp"
+      },
+      "spanMs": 2.031616,
+      "slopeMs": 2.9709653333333335,
+      "slopeMinMs": 2.6432853333333335,
+      "slopeMaxMs": 3.713706666666667,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method method=hexagon",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "view": "method",
+        "method": "hexagon"
+      },
+      "spanMs": 4.390912,
+      "slopeMs": 4.1724586666666665,
+      "slopeMinMs": 3.8229333333333333,
+      "slopeMaxMs": 4.5875200000000005,
+      "passes": 14,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method focus=40 method=sharp",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "view": "method",
+        "focus": 40,
+        "method": "sharp"
+      },
+      "spanMs": 2.29376,
+      "slopeMs": 2.927274666666667,
+      "slopeMinMs": 2.075306666666666,
+      "slopeMaxMs": 3.3204906666666667,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method focus=40 method=hexagon",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "view": "method",
+        "focus": 40,
+        "method": "hexagon"
+      },
+      "spanMs": 4.390912,
+      "slopeMs": 4.390912,
+      "slopeMinMs": 3.888469333333333,
+      "slopeMaxMs": 4.805973333333333,
+      "passes": 14,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=reference rays=1000000000 samples=8",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "view": "reference",
+        "rays": 1000000000,
+        "samples": 8
+      },
+      "spanMs": 5.505024,
+      "slopeMs": 6.444373333333334,
+      "slopeMinMs": 5.876394666666666,
+      "slopeMaxMs": 6.837589333333334,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=reference rays=1000000000 samples=32",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "view": "reference",
+        "rays": 1000000000,
+        "samples": 32
+      },
+      "spanMs": 12.517376,
+      "slopeMs": 12.47368533333333,
+      "slopeMinMs": 11.840170666666666,
+      "slopeMaxMs": 13.129045333333336,
+      "passes": 15,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(floor)",
+      "config": "one constant-colour pass",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0,
+      "slopeMs": 0.065536,
+      "slopeMinMs": -0.1747626666666667,
+      "slopeMaxMs": 0.196608,
+      "passes": 1,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(tail)",
+      "config": "constant scene + bloom + output",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.393216,
+      "slopeMs": 0.3495253333333334,
+      "slopeMinMs": 0.28398933333333337,
+      "slopeMaxMs": 0.5024426666666667,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "default",
+      "width": 960,
+      "height": 540,
+      "spanMs": 1.31072,
+      "slopeMs": 1.507328,
+      "slopeMinMs": 0.9175040000000001,
+      "slopeMaxMs": 2.0534613333333334,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset subject in focus",
+      "width": 960,
+      "height": 540,
+      "spanMs": 1.31072,
+      "slopeMs": 1.7694719999999997,
+      "slopeMinMs": 1.2670293333333333,
+      "slopeMaxMs": 2.118997333333333,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset background in focus",
+      "width": 960,
+      "height": 540,
+      "spanMs": 1.245184,
+      "slopeMs": 1.6383999999999999,
+      "slopeMinMs": 1.0704213333333332,
+      "slopeMaxMs": 2.031616,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset foreground in focus",
+      "width": 960,
+      "height": 540,
+      "spanMs": 1.507328,
+      "slopeMs": 1.5073280000000002,
+      "slopeMinMs": 1.3325653333333332,
+      "slopeMaxMs": 2.2500693333333333,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset difference",
+      "width": 960,
+      "height": 540,
+      "spanMs": 1.31072,
+      "slopeMs": 1.6820906666666666,
+      "slopeMinMs": 1.2233386666666668,
+      "slopeMaxMs": 2.118997333333333,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "preset one point",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.65536,
+      "slopeMs": 1.0048853333333334,
+      "slopeMinMs": 0.8082773333333333,
+      "slopeMaxMs": 1.0922666666666665,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method method=sharp",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "view": "method",
+        "method": "sharp"
+      },
+      "spanMs": 0.720896,
+      "slopeMs": 0.8738133333333334,
+      "slopeMinMs": 0.3495253333333334,
+      "slopeMaxMs": 1.0048853333333334,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method method=hexagon",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "view": "method",
+        "method": "hexagon"
+      },
+      "spanMs": 0.917504,
+      "slopeMs": 1.2888746666666666,
+      "slopeMinMs": 0.7427413333333334,
+      "slopeMaxMs": 1.507328,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method focus=40 method=sharp",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "view": "method",
+        "focus": 40,
+        "method": "sharp"
+      },
+      "spanMs": 0.65536,
+      "slopeMs": 0.7645866666666666,
+      "slopeMinMs": 0.28398933333333326,
+      "slopeMaxMs": 0.8956586666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=method focus=40 method=hexagon",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "view": "method",
+        "focus": 40,
+        "method": "hexagon"
+      },
+      "spanMs": 0.786432,
+      "slopeMs": 1.0048853333333334,
+      "slopeMinMs": 0.5024426666666667,
+      "slopeMaxMs": 1.2451839999999998,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=reference rays=1000000000 samples=8",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "view": "reference",
+        "rays": 1000000000,
+        "samples": 8
+      },
+      "spanMs": 1.441792,
+      "slopeMs": 1.6602453333333334,
+      "slopeMinMs": 0.8956586666666667,
+      "slopeMaxMs": 2.118997333333333,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "dof-lab",
+      "config": "view=reference rays=1000000000 samples=32",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "view": "reference",
+        "rays": 1000000000,
+        "samples": 32
+      },
+      "spanMs": 3.211264,
+      "slopeMs": 3.2986453333333334,
+      "slopeMinMs": 2.7088213333333333,
+      "slopeMaxMs": 3.5389439999999994,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    }
+  ]
+}

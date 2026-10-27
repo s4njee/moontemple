@@ -17,6 +17,17 @@
     ],
     "bundleKb": 22.1
   },
+  "dof-lab": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 7.69
+      }
+    ],
+    "bundleKb": 26.3
+  },
   "fairy-lights": {
     "gpuMs": [
       {
