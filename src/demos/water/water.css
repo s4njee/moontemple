@@ -1,0 +1,34 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Moonlit water" page: the shared backdrop page (../backdrop/page.css) in a night sea's
+ * colours, with moonlight's pale blue as the accent.
+ */
+
+:root {
+  --paper: #02040a;
+  --plate: #03050caa;
+  --text: #eef3f8;
+  --muted: #abb7c8;
+  --faint: #78849a;
+  --hue: #a8d8ff;
+}
+
+/* The rule of thirds: the effect draws its moon and path down the middle of its canvas, so the
+   canvas is a third wider than the window and pinned to its left edge. Its middle, and the moon
+   with it, then falls on the right-hand third line, two thirds of the way across; the third of the
+   canvas past the right edge is never seen. The height, and so the horizon and the pointer's focus,
+   are the window's. */
+#stage {
+  right: auto;
+  width: calc(100vw * 4 / 3);
+}
+
+/* Without WebGPU: a still of the moon and its path of discs on the right-hand third, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(circle at 66.7% 22%, #eef5ff 0 1vh, #a8d8ff30 2.4vh, transparent 12vh),
+    radial-gradient(ellipse 3% 16% at 66.7% 66%, #a8d8ff30, transparent),
+    linear-gradient(to bottom, #050a16 0 40%, #02040a 40%), var(--paper);
+  background-attachment: fixed;
+}

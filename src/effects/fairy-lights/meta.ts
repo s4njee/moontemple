@@ -12,7 +12,7 @@ export const meta: EffectMeta = {
     compute: false,
     mobile: 'untested',
     flash: 'low',
-    lightPage: 'no',
+    lightPage: 'underlay',
     features: { required: [] },
     fallback: 'A still of the strings; a CSS version of a few rows of soft dots is close.',
     useCases: ['A seasonal or festive hero', 'Event, wedding and hospitality sites'],

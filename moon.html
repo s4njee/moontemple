@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#03040a" />
+    <title>Moonlight · Moon Temple moon through cloud</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2303040a'/%3E%3Ccircle cx='9.5' cy='6.5' r='4.5' fill='%23b4c8ff' fill-opacity='.18'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.6' fill='%23e6edff'/%3E%3Cpath d='M1 11.5c3-1.4 6-1.4 9 0s4 1.2 5 .6v3.9H1z' fill='%23161b2c'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- moon-through-cloud fixed behind the whole page, as a site would use it: a full moon through a
+       long lens behind thin drifting cloud, tinted a little blue by a layer over it (moon.css). The
+       text sits on dark plates so it stays readable over the moon's glow. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=moon-through-cloud">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 06 / A MOON BEHIND CLOUD</p>
+          <h1 id="title"><span class="plate">Moonlight.</span></h1>
+          <p class="description plate">
+            The moon through a 400 mm lens, waxing and waning a month a minute, behind thin cloud
+            drifting slowly across it: a soft glow round the moon, silver edges where the cloud is
+            thin and lit, and the light falling away where it thickens, all of it tinged a little
+            blue, the way night is painted and filmed.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE NIGHT SKY BEHIND IT</span
+          ><span>06 — A 400 MM LENS, THIN CLOUD</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE GLOW COMES FROM</p>
+          <h2 id="explanation-title" class="plate">One moon,<br />a little cloud.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / AUREOLE</span>
+            <h3>A ring of glow.</h3>
+            <p>
+              The droplets in thin cloud scatter moonlight mostly forwards, a few degrees off its
+              path, so the moon sits in a soft glow that fades with angle. The thinner the cloud,
+              the tighter and brighter the glow.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / EDGES</span>
+            <h3>Silver linings.</h3>
+            <p>
+              Cloud nearest the moon is lit brightest from behind, and its thin edges let the most
+              light through, so they shine. Where the cloud thickens it swallows the light, and the
+              moon goes dim behind it.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / TINT</span>
+            <h3>Blue by night.</h3>
+            <p>
+              Moonlight is sunlight off grey rock, a shade warmer than daylight, but night eyes see
+              it blue: by moonlight the rods take over, and they favour blue. So night is painted
+              and filmed blue, and this page does the same. Switch the tint off for the moon as a
+              camera records it.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=moon-through-cloud"
+            >Open the effect with every control ↗</a
+          >
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Moon controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Waiting for moonrise…</span>
+          <span id="phase-name">Full moon</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="range-control"
+          >Phase
+          <input id="phase" type="range" min="0.03" max="0.97" step="0.001" value="0.5" />
+        </label>
+        <label class="check-control"><input id="sweep" type="checkbox" checked /> Sweep</label>
+        <label class="range-control"
+          >Cloud
+          <input id="cover" type="range" min="0" max="1" step="0.01" value="0.55" />
+        </label>
+        <label class="range-control"
+          >Wind
+          <input id="wind" type="range" min="0" max="0.4" step="0.005" value="0.04" />
+        </label>
+        <label class="check-control"
+          ><input id="tint-toggle" type="checkbox" checked /> Blue tint</label
+        >
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/moon/main.ts"></script>
+  </body>
+</html>

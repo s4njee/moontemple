@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05050a" />
+    <title>Focus pull · Moon Temple focus pull</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2307070f'/%3E%3Ccircle cx='8' cy='8' r='2' fill='%23dcd9ff'/%3E%3Ccircle cx='4' cy='4' r='2.6' fill='%239d94ff' opacity='.5'/%3E%3Ccircle cx='12' cy='12' r='3' fill='%23ffc27a' opacity='.45'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- focus-pull fixed behind a long page (story 6.2). Each section stands half again as far away
+       as the one before it; the scroll racks one lens through them. The section crossing the middle
+       of the screen is sharp, the others are blurred with CSS by as much as that lens would blur
+       them, and the lights behind the page are blurred by the same lens in the canvas. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+    <div class="band" aria-hidden="true"></div>
+
+    <header class="site-header plate">
+      <a class="wordmark" href="./">MOON TEMPLE <span>FOCUS PULL</span></a>
+      <a href="./?effect=focus-pull">Gallery ↗</a>
+    </header>
+
+    <main id="sections">
+      <section class="pull plate" aria-labelledby="s1">
+        <p class="eyebrow">01 / <span class="depth"></span></p>
+        <h1 id="s1">Scroll, and the lens follows.</h1>
+        <p>
+          This page is a row of sections standing one behind another, each half again as far away as
+          the last. Whatever crosses the middle of the screen is where the lens is focused.
+          Everything nearer or farther is as soft as that lens would make it.
+        </p>
+      </section>
+      <section class="pull plate" aria-labelledby="s2">
+        <p class="eyebrow">02 / <span class="depth"></span></p>
+        <h2 id="s2">One focus, two blurs.</h2>
+        <p>
+          The text is blurred by the browser, with CSS. The lights behind it are blurred by the
+          canvas, as discs the shape of the aperture. Both take their size from the same thin-lens
+          model and the same focus distance, so they never disagree.
+        </p>
+      </section>
+      <section class="pull plate" aria-labelledby="s3">
+        <p class="eyebrow">03 / <span class="depth"></span></p>
+        <h2 id="s3">Why not blur it all in the canvas?</h2>
+        <p>
+          A canvas cannot read the page's pixels. CSS can blur them, cheaply, and the text stays
+          text: selectable, findable, read aloud. A bright point it can only dim into a smudge. That
+          part is the canvas's: lights it draws itself.
+        </p>
+      </section>
+      <section class="pull plate" aria-labelledby="s4">
+        <p class="eyebrow">04 / <span class="depth"></span></p>
+        <h2 id="s4">Only what changes is written.</h2>
+        <p>
+          A fixed CSS blur costs nothing while the page scrolls; one that changes every frame costs
+          about a millisecond of the browser's time. So only the sections on screen are touched, and
+          only when their blur moves by a tenth of a pixel.
+        </p>
+      </section>
+      <section class="pull plate" aria-labelledby="s5">
+        <p class="eyebrow">05 / <span class="depth"></span></p>
+        <h2 id="s5">Depth by distance, not by order.</h2>
+        <p>
+          The blur of a section follows one over its distance, as a lens's does. The far sections
+          crowd together, so focusing from the fifth to the sixth barely changes the first; the near
+          ones are far apart.
+        </p>
+      </section>
+      <section class="pull plate" aria-labelledby="s6">
+        <p class="eyebrow">06 / <span class="depth"></span></p>
+        <h2 id="s6">Motion you can turn off.</h2>
+        <p>
+          With reduced motion asked for, nothing blurs and the lights hold still. The switch below
+          turns the page's blur off by itself, for anyone who would rather read.
+        </p>
+      </section>
+      <section class="pull plate" aria-labelledby="s7">
+        <p class="eyebrow">07 / <span class="depth"></span></p>
+        <h2 id="s7">The far end.</h2>
+        <p>
+          The last section, twenty metres off. Scroll back up and the lens racks home through every
+          section in turn.
+        </p>
+      </section>
+    </main>
+
+    <aside class="toolbar plate" aria-label="Focus controls">
+      <span id="status" role="status">Focusing…</span>
+      <label><input id="blur" type="checkbox" checked /> Blur the page</label>
+      <label
+        >Aperture
+        <select id="aperture">
+          <option value="1.4">f/1.4</option>
+          <option value="2.8" selected>f/2.8</option>
+          <option value="5.6">f/5.6</option>
+        </select>
+      </label>
+    </aside>
+
+    <script type="module" src="/src/demos/focus/main.ts"></script>
+  </body>
+</html>

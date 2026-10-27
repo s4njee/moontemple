@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#040406" />
+    <title>Fog · Moon Temple lamp in fog</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23040406'/%3E%3Cpath d='M10 4.2 6 13h8z' fill='%23ffa75c' fill-opacity='.28'/%3E%3Ccircle cx='10' cy='4' r='2.6' fill='%23ffa75c' fill-opacity='.3'/%3E%3Ccircle cx='10' cy='4' r='1' fill='%23fff1e0'/%3E%3Cpath d='M4 15V4.5h6' fill='none' stroke='%232a2a33' stroke-width='1'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- lamp-in-fog fixed behind the whole page, as a site would use it: a street lamp on a foggy
+       night, on the effect's "behind text" settings, dim and slow. The lamp stands on the right, so
+       the text on the left sits on the dark. The text sits on dark plates all the same. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=lamp-in-fog&amp;preset=behind+text">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 07 / A LAMP ON A FOGGY NIGHT</p>
+          <h1 id="title"><span class="plate">Into</span><span class="plate">the fog.</span></h1>
+          <p class="description plate">
+            A row of street lamps on a foggy night under the moon: the halo round each head, the
+            cone of light under each shade standing in the fog, and the pools where they meet the
+            wet road, with the fog drifting through the beams. Nothing is painted on: every pixel
+            works out how much of the lamp's light the fog in front of it scatters towards you.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE FOG BEHIND IT</span
+          ><span>07 — A ROW OF LAMPS, A LITTLE FOG</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE LIGHT COMES FROM</p>
+          <h2 id="explanation-title" class="plate">Light you can<br />see from the side.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / HALO</span>
+            <h3>The air lights up.</h3>
+            <p>
+              On a clear night you only see a lamp's light where it lands. In fog, droplets along
+              every line of sight scatter a little of it towards you, mostly forwards, so the air
+              round the lamp glows and the halo is brightest close to the head.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / CONE</span>
+            <h3>The beam stands up.</h3>
+            <p>
+              The shade lets light out only downwards, so only the fog inside its cone is lit. That
+              cone stands in the air as a solid shape. The glow along each line of sight through it
+              is worked out exactly, in closed form, not marched in steps.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / DRIFT</span>
+            <h3>The fog moves.</h3>
+            <p>
+              The fog is two layers of noise drifting at different speeds, so the patches change as
+              they travel through the beam. The lamp itself breathes very slowly, if at all: it
+              never flickers, so the page stays calm to read.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=lamp-in-fog&amp;preset=behind+text"
+            >Open the effect with every control ↗</a
+          >
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Fog controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Lighting the lamp…</span>
+          <span id="lamp-name">8 sodium lamps</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="select-control"
+          >Lamp
+          <select id="colour">
+            <option value="sodium" selected>Sodium</option>
+            <option value="warm led">Warm LED</option>
+            <option value="cool led">Cool LED</option>
+          </select>
+        </label>
+        <label class="range-control"
+          >Lamps
+          <input id="lamps" type="range" min="1" max="8" step="1" value="8" />
+          <output id="lamps-value" for="lamps">8</output>
+        </label>
+        <label class="range-control"
+          >Fog
+          <input id="fog" type="range" min="0.005" max="0.3" step="0.005" value="0.055" />
+        </label>
+        <label class="range-control"
+          >Drift
+          <input id="drift" type="range" min="0" max="2" step="0.05" value="1.05" />
+        </label>
+        <label class="check-control"><input id="moon" type="checkbox" checked /> Moon</label>
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/fog/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#02040a" />
+    <title>Moonlit water · Moon Temple moonlit water</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2302040a'/%3E%3Ccircle cx='10.7' cy='4.5' r='1.8' fill='%23e8f3ff'/%3E%3Ccircle cx='10.7' cy='9' r='.9' fill='%23a8d8ff' fill-opacity='.7'/%3E%3Ccircle cx='10.2' cy='11' r='1.2' fill='%23a8d8ff' fill-opacity='.5'/%3E%3Ccircle cx='11.3' cy='13.4' r='1.6' fill='%23a8d8ff' fill-opacity='.35'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- moonlit-water fixed behind the whole page, as a site would use it: the glitter path of a low
+       moon on the sea, through a fast lens. The moon and its path stand on the right-hand third of
+       the page (water.css), so the text on the left sits on the dark sea and sky. The page passes
+       the pointer on: up the page pulls the focus out to sea. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=moonlit-water">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 08 / A PATH ACROSS THE SEA</p>
+          <h1 id="title"><span class="plate">Moonlit</span><span class="plate">water.</span></h1>
+          <p class="description plate">
+            A low full moon over a moving sea, through an 85 mm lens at f/1.8 focused a metre and a
+            half away. Every wave that tilts the moon's reflection towards you is a glint at its own
+            distance, so the moon's path becomes a river of soft discs. Move the pointer up the page
+            to pull the focus out to sea and turn the discs back into sparkle.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE SEA BEHIND IT</span><span>08 — AN 85 MM LENS AT F/1.8</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE GLITTER COMES FROM</p>
+          <h2 id="explanation-title" class="plate">A thousand<br />small mirrors.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / PATH</span>
+            <h3>Waves tilted just so.</h3>
+            <p>
+              A flat sea would show one reflection of the moon. A moving one is covered in small
+              facets at every angle, and wherever a facet is tilted to send the moon to your eye, it
+              glints. Those facets lie along a path from the moon to you, wider the rougher the sea.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / DISCS</span>
+            <h3>Each glint at its distance.</h3>
+            <p>
+              Every glint is a point of light somewhere on the sea, from a few metres out to the
+              horizon. Focused close, the far ones blur into discs the shape of the aperture, so the
+              path becomes a river of discs; focused out to sea, they shrink back to sparkle.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / TWINKLE</span>
+            <h3>Never a flash.</h3>
+            <p>
+              A facet tilts into place and out again as the wave passes, so each glint lights and
+              fades. Their twinkling is capped at four a second, and they are many and small, so the
+              path shimmers without ever flashing.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=moonlit-water">Open the effect with every control ↗</a>
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Sea controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Waiting for moonrise…</span>
+          <span id="focus-name">Focused close</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="check-control"
+          ><input id="follow" type="checkbox" checked /> Follow pointer</label
+        >
+        <label class="range-control"
+          >Focus
+          <input id="focus" type="range" min="0" max="1" step="0.001" value="0.141" />
+          <output id="focus-value" for="focus">1.5 m</output>
+        </label>
+        <label class="range-control"
+          >Moon
+          <input id="height" type="range" min="0.5" max="30" step="0.1" value="3.5" />
+          <output id="height-value" for="height">3.5°</output>
+        </label>
+        <label class="range-control"
+          >Phase
+          <input id="phase" type="range" min="0.05" max="0.95" step="0.01" value="0.5" />
+        </label>
+        <label class="range-control"
+          >Swell
+          <input id="waves" type="range" min="0" max="2" step="0.01" value="0.6" />
+        </label>
+        <label class="range-control"
+          >Wind
+          <input id="wind" type="range" min="0" max="15" step="0.1" value="4" />
+        </label>
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/water/main.ts"></script>
+  </body>
+</html>

@@ -2,6 +2,7 @@ import type { FrameTime, ParamSchema } from '../../effects/types.ts';
 import type { PassProfiler } from '../profiler.ts';
 import type { RenderTarget } from '../targets.ts';
 import { createPostChain, type PostChain, type PostSettings } from './chain.ts';
+import { createNightVision, NIGHT_LEVELS, type NightLevel, type NightVision } from './night.ts';
 import { ALPHA_MODES, type AlphaMode } from './output.ts';
 
 /*
@@ -32,6 +33,14 @@ export const TAIL_PARAMS = {
     label: 'bloom threshold',
   },
   bloomRadius: { type: 'number', default: 0.7, min: 0, max: 1, step: 0.01, label: 'bloom radius' },
+  // Story 5.6: the scene as dark-adapted eyes see it, before bloom. `moonlit` takes paper white as
+  // 0.1 cd/m^2, `starlit` as 0.003: colour drains, blue holds up and red falls away (night.ts).
+  nightVision: {
+    type: 'select',
+    default: 'off',
+    options: Object.keys(NIGHT_LEVELS) as NightLevel[],
+    label: 'night vision',
+  },
 } as const satisfies ParamSchema;
 
 /**
@@ -59,6 +68,8 @@ export interface TailValues {
   alpha?: string;
   alphaGain?: number;
   underlay?: number;
+  /** A key of NIGHT_LEVELS; anything else is off. */
+  nightVision?: string;
 }
 
 export interface HdrTailOptions {
@@ -125,12 +136,18 @@ export function createHdrTail(device: GPUDevice, options: HdrTailOptions): HdrTa
     label: options.label ?? 'tail',
   });
   const hdr = options.hdr === true;
+  let night: NightVision | undefined;
 
   return {
     scene: chain.scene,
     chain,
     resize: (width, height) => chain.resize(width, height),
     encode(encoder, target, time, values, profiler, overrides) {
+      const whiteCd = NIGHT_LEVELS[values.nightVision as NightLevel] ?? 0;
+      if (whiteCd > 0) {
+        night ??= createNightVision(device);
+        night.encode(encoder, chain.scene, whiteCd, profiler);
+      }
       const settings = tailSettings(values, time, hdr);
       // Bloom overrides refine the bloom the values asked for. When the values turned it off
       // (intensity 0), an override brings it back only by naming an intensity of its own.
@@ -150,6 +167,9 @@ export function createHdrTail(device: GPUDevice, options: HdrTailOptions): HdrTa
         profiler,
       );
     },
-    destroy: () => chain.destroy(),
+    destroy() {
+      night?.destroy();
+      chain.destroy();
+    },
   };
 }

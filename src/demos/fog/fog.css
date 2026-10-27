@@ -1,0 +1,37 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Into the fog" page: the shared backdrop page (../backdrop/page.css) in a foggy night's
+ * colours. The accent is the lamp's, set by main.ts from the toolbar.
+ */
+
+:root {
+  --paper: #040406;
+  --plate: #060608aa;
+  --text: #f0eff2;
+  --muted: #b5b2bc;
+  --faint: #827f8a;
+  --lamp: #ffa75c;
+  --hue: var(--lamp);
+}
+
+/* Without WebGPU: a still of the lamp's halo and its cone in the fog, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(
+      circle at 74% 22%,
+      #fff1e0 0 0.5vh,
+      #ffa75c40 2vh,
+      #ffa75c14 14vh,
+      transparent 30vh
+    ),
+    conic-gradient(
+      from 166deg at 74% 22%,
+      transparent 0deg,
+      #ffa75c18 8deg,
+      #ffa75c18 30deg,
+      transparent 38deg
+    ),
+    var(--paper);
+  background-attachment: fixed;
+}

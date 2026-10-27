@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSS blur on a long page</title>
+    <!--
+      Story 6.1: what CSS filter: blur() costs on a long page, which no GPU timing sees. Sixty
+      sections of text, cards and a gradient "photo" each, scrolled at a steady speed by script.
+      ?mode=
+        none        no blur: the baseline
+        static      every section blurred by a fixed amount (0 to 12 px), unchanged while scrolling
+        scroll      each section's blur set every frame from its distance to a focal band at the
+                    middle of the viewport: the focus pull of story 6.2 done in CSS alone
+        scroll-wc   the same with will-change: filter on every section
+        visible     the same as scroll, but only sections on screen are written; the rest are left
+                    at their last value
+      Run by experiments/css-blur-cost.mjs.
+    -->
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #0c0b14;
+        color: #e6e3f5;
+      }
+      section {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 56px 32px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      h2 {
+        grid-column: 1 / -1;
+        margin: 0;
+        font-size: 34px;
+      }
+      p {
+        margin: 0;
+        line-height: 1.6;
+        color: #b9b4d6;
+      }
+      .photo {
+        height: 220px;
+        border-radius: 14px;
+        background:
+          radial-gradient(circle at 30% 40%, #ffd58a 0 6%, transparent 7%),
+          radial-gradient(circle at 70% 30%, #9d94ff 0 4%, transparent 5%),
+          linear-gradient(160deg, #2a2350, #0d0b1c 70%);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .card {
+        padding: 16px;
+        border-radius: 10px;
+        background: #1a1730;
+        border: 1px solid #2e2a50;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main"></main>
+    <script type="module">
+      const mode = new URLSearchParams(location.search).get('mode') ?? 'none';
+      const main = document.getElementById('main');
+      const words =
+        'light falls through the lens and spreads into a disc as wide as the aperture allows when the subject sits nearer than the plane of focus'.split(
+          ' ',
+        );
+      const sentence = (seed, n) =>
+        Array.from({ length: n }, (_, i) => words[(seed * 7 + i * 3) % words.length]).join(' ');
+      for (let i = 0; i < 60; i++) {
+        const section = document.createElement('section');
+        section.innerHTML = `<h2>Section ${i + 1}: ${sentence(i, 4)}</h2>
+          <p>${sentence(i, 60)}.</p><div class="photo"></div>
+          <div class="cards">${[0, 1, 2].map((k) => `<div class="card">${sentence(i + k, 14)}</div>`).join('')}</div>
+          <p>${sentence(i + 5, 40)}.</p>`;
+        if (mode === 'static') section.style.filter = `blur(${(i * 5) % 13}px)`;
+        if (mode === 'scroll-wc') section.style.willChange = 'filter';
+        main.append(section);
+      }
+      const sections = [...main.children];
+      const last = new Map();
+      function focus() {
+        const middle = innerHeight / 2;
+        for (const section of sections) {
+          const box = section.getBoundingClientRect();
+          if (mode === 'visible' && (box.bottom < 0 || box.top > innerHeight)) continue;
+          const distance = Math.abs((box.top + box.bottom) / 2 - middle);
+          // In focus within a band a third of the viewport high, then 1 px of blur per 40 px.
+          const blur = Math.min(12, Math.max(0, (distance - innerHeight / 6) / 40));
+          const value = `blur(${blur.toFixed(1)}px)`;
+          if (last.get(section) !== value) {
+            section.style.filter = value;
+            last.set(section, value);
+          }
+        }
+      }
+      // A steady scroll, wrapping at the bottom.
+      function tick() {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        scrollTo(0, scrollY + 6 > max ? 0 : scrollY + 6);
+        if (mode === 'scroll' || mode === 'scroll-wc' || mode === 'visible') focus();
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+/*
+ * The focus pull page: a dark page with focus-pull fixed behind it. Self-contained on purpose (it is
+ * "someone else's website", not the research shell).
+ */
+
+:root {
+  color-scheme: dark;
+  --paper: #05050a;
+  --plate: #07070ed0;
+  --text: #eeedf7;
+  --muted: #b0aec8;
+  --accent: #9d94ff;
+  --hairline: #ffffff1f;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: var(--text);
+  background: var(--paper);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body[data-state='fallback'] #stage {
+  display: none;
+}
+
+/* Without WebGPU the page still pulls focus; the lights behind it become soft CSS discs. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(circle at 20% 30%, #9d94ff33 0 6%, transparent 7%),
+    radial-gradient(circle at 75% 60%, #ffc27a2e 0 8%, transparent 9%),
+    radial-gradient(circle at 55% 15%, #9d94ff22 0 5%, transparent 6%), var(--paper);
+  background-attachment: fixed;
+}
+
+/* The focal band: two hairlines across the middle of the screen. */
+.band {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(50% - 16vh);
+  height: 32vh;
+  border-block: 1px dashed var(--hairline);
+  pointer-events: none;
+}
+
+.plate {
+  background: var(--plate);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+}
+
+.site-header {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.site-header a {
+  text-decoration: none;
+}
+
+.wordmark span {
+  color: var(--accent);
+  margin-left: 6px;
+}
+
+main {
+  padding: 50vh 16px;
+  display: grid;
+  gap: 38vh;
+}
+
+.pull {
+  width: min(680px, 100%);
+  margin: 0 auto;
+  padding: 32px 36px;
+}
+
+.pull h1,
+.pull h2 {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 5vw, 40px);
+  line-height: 1.1;
+}
+
+.pull p {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.pull .eyebrow {
+  margin-bottom: 12px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.toolbar {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  max-width: calc(100% - 32px);
+}
+
+.toolbar select {
+  margin-left: 6px;
+  background: transparent;
+  color: inherit;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+}
+
+#status {
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band {
+    display: none;
+  }
+}

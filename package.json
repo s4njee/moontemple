@@ -36,6 +36,7 @@
     "predev": "npm run registry",
     "registry": "node scripts/registry.mjs",
     "clean:types": "node -e \"require('node:fs').rmSync('types', { recursive: true, force: true })\"",
+    "lib:sizes": "node scripts/lib-sizes.mjs",
     "build:lib": "vite build --config vite.lib.config.ts && npm run clean:types && tsc -p tsconfig.lib.json && node scripts/rewrite-dts.mjs",
     "catalogue": "node scripts/catalogue.mjs",
     "study": "node scripts/study.mjs",

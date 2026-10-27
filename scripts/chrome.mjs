@@ -5,6 +5,8 @@
 //   await chrome.page('Page.navigate', { url });
 //   const value = await chrome.evaluate('document.title');
 //   chrome.errors;   // console errors and uncaught exceptions since the last reset
+//   chrome.browser('Tracing.start', {...});   // browser-wide commands, such as tracing
+//   chrome.on((message) => ...);              // every event, from every session
 //   chrome.close();
 
 import { spawn } from 'node:child_process';
@@ -82,6 +84,11 @@ export async function launchChrome(chromePath = DEFAULT_CHROME) {
 
   const session = {
     page,
+    browser: (method, params) => send(method, params),
+    on(listener) {
+      listeners.add(listener);
+      return () => listeners.delete(listener);
+    },
     errors: [],
     async evaluate(expression) {
       const result = await page('Runtime.evaluate', {

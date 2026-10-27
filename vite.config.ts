@@ -21,6 +21,10 @@ export default defineConfig({
         'street.html',
         'fireflies.html',
         'lens.html',
+        'focus.html',
+        'moon.html',
+        'fog.html',
+        'water.html',
       ],
       output: {
         // Every effect's meta.ts is needed at once, by the gallery. Left alone, each becomes its

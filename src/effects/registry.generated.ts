@@ -2,35 +2,59 @@
 import type { EffectMeta, EffectModule } from './types.ts';
 import { meta as meta0 } from './aperture-lab/meta.ts';
 import { meta as meta1 } from './bokeh-drift/meta.ts';
-import { meta as meta2 } from './dof-lab/meta.ts';
-import { meta as meta3 } from './dust-in-light/meta.ts';
-import { meta as meta4 } from './fairy-lights/meta.ts';
-import { meta as meta5 } from './fireflies/meta.ts';
-import { meta as meta6 } from './flare-cursor/meta.ts';
-import { meta as meta7 } from './focus-cursor/meta.ts';
-import { meta as meta8 } from './glint-hover/meta.ts';
-import { meta as meta9 } from './glitter/meta.ts';
-import { meta as meta10 } from './hello/meta.ts';
-import { meta as meta11 } from './lens-light/meta.ts';
-import { meta as meta12 } from './lens-model/meta.ts';
-import { meta as meta13 } from './night-street/meta.ts';
-import { meta as meta14 } from './photo-focus/meta.ts';
-import { meta as meta15 } from './snow-at-night/meta.ts';
+import { meta as meta2 } from './bokeh-loader/meta.ts';
+import { meta as meta3 } from './bokeh-text/meta.ts';
+import { meta as meta4 } from './dof-lab/meta.ts';
+import { meta as meta5 } from './dust-in-light/meta.ts';
+import { meta as meta6 } from './fairy-lights/meta.ts';
+import { meta as meta7 } from './fireflies/meta.ts';
+import { meta as meta8 } from './flare-cursor/meta.ts';
+import { meta as meta9 } from './focus-cursor/meta.ts';
+import { meta as meta10 } from './focus-pull/meta.ts';
+import { meta as meta11 } from './glint-hover/meta.ts';
+import { meta as meta12 } from './glitter/meta.ts';
+import { meta as meta13 } from './halation-text/meta.ts';
+import { meta as meta14 } from './hello/meta.ts';
+import { meta as meta15 } from './ice-halo/meta.ts';
+import { meta as meta16 } from './lamp-in-fog/meta.ts';
+import { meta as meta17 } from './lens-light/meta.ts';
+import { meta as meta18 } from './lens-model/meta.ts';
+import { meta as meta19 } from './light-leak/meta.ts';
+import { meta as meta20 } from './lunar-corona/meta.ts';
+import { meta as meta21 } from './moon-through-cloud/meta.ts';
+import { meta as meta22 } from './moonbow/meta.ts';
+import { meta as meta23 } from './moonlit-water/meta.ts';
+import { meta as meta24 } from './night-street/meta.ts';
+import { meta as meta25 } from './photo-focus/meta.ts';
+import { meta as meta26 } from './rack-focus-transition/meta.ts';
+import { meta as meta27 } from './snow-at-night/meta.ts';
 import poster0 from './aperture-lab/poster.webp?url';
 import poster1 from './bokeh-drift/poster.webp?url';
-import poster2 from './dof-lab/poster.webp?url';
-import poster3 from './dust-in-light/poster.webp?url';
-import poster4 from './fairy-lights/poster.webp?url';
-import poster5 from './fireflies/poster.webp?url';
-import poster6 from './flare-cursor/poster.webp?url';
-import poster7 from './focus-cursor/poster.webp?url';
-import poster8 from './glint-hover/poster.webp?url';
-import poster9 from './glitter/poster.webp?url';
-import poster10 from './hello/poster.webp?url';
-import poster11 from './lens-light/poster.webp?url';
-import poster12 from './lens-model/poster.webp?url';
-import poster13 from './night-street/poster.webp?url';
-import poster14 from './photo-focus/poster.webp?url';
+import poster2 from './bokeh-loader/poster.webp?url';
+import poster3 from './bokeh-text/poster.webp?url';
+import poster4 from './dof-lab/poster.webp?url';
+import poster5 from './dust-in-light/poster.webp?url';
+import poster6 from './fairy-lights/poster.webp?url';
+import poster7 from './fireflies/poster.webp?url';
+import poster8 from './flare-cursor/poster.webp?url';
+import poster9 from './focus-cursor/poster.webp?url';
+import poster10 from './focus-pull/poster.webp?url';
+import poster11 from './glint-hover/poster.webp?url';
+import poster12 from './glitter/poster.webp?url';
+import poster13 from './halation-text/poster.webp?url';
+import poster14 from './hello/poster.webp?url';
+import poster15 from './ice-halo/poster.webp?url';
+import poster16 from './lamp-in-fog/poster.webp?url';
+import poster17 from './lens-light/poster.webp?url';
+import poster18 from './lens-model/poster.webp?url';
+import poster19 from './light-leak/poster.webp?url';
+import poster20 from './lunar-corona/poster.webp?url';
+import poster21 from './moon-through-cloud/poster.webp?url';
+import poster22 from './moonbow/poster.webp?url';
+import poster23 from './moonlit-water/poster.webp?url';
+import poster24 from './night-street/poster.webp?url';
+import poster25 from './photo-focus/poster.webp?url';
+import poster26 from './rack-focus-transition/poster.webp?url';
 
 export const metas: readonly EffectMeta[] = [
   meta0,
@@ -49,41 +73,79 @@ export const metas: readonly EffectMeta[] = [
   meta13,
   meta14,
   meta15,
+  meta16,
+  meta17,
+  meta18,
+  meta19,
+  meta20,
+  meta21,
+  meta22,
+  meta23,
+  meta24,
+  meta25,
+  meta26,
+  meta27,
 ];
 
 export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
   'aperture-lab': () => import('./aperture-lab/index.ts').then((module) => module.effect),
   'bokeh-drift': () => import('./bokeh-drift/index.ts').then((module) => module.effect),
+  'bokeh-loader': () => import('./bokeh-loader/index.ts').then((module) => module.effect),
+  'bokeh-text': () => import('./bokeh-text/index.ts').then((module) => module.effect),
   'dof-lab': () => import('./dof-lab/index.ts').then((module) => module.effect),
   'dust-in-light': () => import('./dust-in-light/index.ts').then((module) => module.effect),
   'fairy-lights': () => import('./fairy-lights/index.ts').then((module) => module.effect),
   fireflies: () => import('./fireflies/index.ts').then((module) => module.effect),
   'flare-cursor': () => import('./flare-cursor/index.ts').then((module) => module.effect),
   'focus-cursor': () => import('./focus-cursor/index.ts').then((module) => module.effect),
+  'focus-pull': () => import('./focus-pull/index.ts').then((module) => module.effect),
   'glint-hover': () => import('./glint-hover/index.ts').then((module) => module.effect),
   glitter: () => import('./glitter/index.ts').then((module) => module.effect),
+  'halation-text': () => import('./halation-text/index.ts').then((module) => module.effect),
   hello: () => import('./hello/index.ts').then((module) => module.effect),
+  'ice-halo': () => import('./ice-halo/index.ts').then((module) => module.effect),
+  'lamp-in-fog': () => import('./lamp-in-fog/index.ts').then((module) => module.effect),
   'lens-light': () => import('./lens-light/index.ts').then((module) => module.effect),
   'lens-model': () => import('./lens-model/index.ts').then((module) => module.effect),
+  'light-leak': () => import('./light-leak/index.ts').then((module) => module.effect),
+  'lunar-corona': () => import('./lunar-corona/index.ts').then((module) => module.effect),
+  'moon-through-cloud': () =>
+    import('./moon-through-cloud/index.ts').then((module) => module.effect),
+  moonbow: () => import('./moonbow/index.ts').then((module) => module.effect),
+  'moonlit-water': () => import('./moonlit-water/index.ts').then((module) => module.effect),
   'night-street': () => import('./night-street/index.ts').then((module) => module.effect),
   'photo-focus': () => import('./photo-focus/index.ts').then((module) => module.effect),
+  'rack-focus-transition': () =>
+    import('./rack-focus-transition/index.ts').then((module) => module.effect),
   'snow-at-night': () => import('./snow-at-night/index.ts').then((module) => module.effect),
 };
 
 export const posters: Readonly<Record<string, string>> = {
   'aperture-lab': poster0,
   'bokeh-drift': poster1,
-  'dof-lab': poster2,
-  'dust-in-light': poster3,
-  'fairy-lights': poster4,
-  fireflies: poster5,
-  'flare-cursor': poster6,
-  'focus-cursor': poster7,
-  'glint-hover': poster8,
-  glitter: poster9,
-  hello: poster10,
-  'lens-light': poster11,
-  'lens-model': poster12,
-  'night-street': poster13,
-  'photo-focus': poster14,
+  'bokeh-loader': poster2,
+  'bokeh-text': poster3,
+  'dof-lab': poster4,
+  'dust-in-light': poster5,
+  'fairy-lights': poster6,
+  fireflies: poster7,
+  'flare-cursor': poster8,
+  'focus-cursor': poster9,
+  'focus-pull': poster10,
+  'glint-hover': poster11,
+  glitter: poster12,
+  'halation-text': poster13,
+  hello: poster14,
+  'ice-halo': poster15,
+  'lamp-in-fog': poster16,
+  'lens-light': poster17,
+  'lens-model': poster18,
+  'light-leak': poster19,
+  'lunar-corona': poster20,
+  'moon-through-cloud': poster21,
+  moonbow: poster22,
+  'moonlit-water': poster23,
+  'night-street': poster24,
+  'photo-focus': poster25,
+  'rack-focus-transition': poster26,
 };

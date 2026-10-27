@@ -1,0 +1,51 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Moonlight" page: the shared backdrop page (../backdrop/page.css) in a moonlit sky's colours,
+ * a little blue, with the moon's pale blue as the accent.
+ */
+
+:root {
+  --paper: #03040a;
+  --plate: #04050caa;
+  --text: #eef1f8;
+  --muted: #aeb5c9;
+  --faint: #7c849c;
+  --hue: #b4c8ff;
+}
+
+/* Without WebGPU: a still of the moon in its glow, half veiled, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(
+      circle at 62% 38%,
+      #eef2ff 0 1.6vh,
+      #b4c8ff40 3vh,
+      #b4c8ff12 14vh,
+      transparent 34vh
+    ),
+    linear-gradient(170deg, transparent 52%, #0b0e1a 70%), var(--paper);
+  background-attachment: fixed;
+}
+
+/* The blue tinge: a blue layer over the canvas, multiplied, so red falls by almost a third and
+   green by a fifth while blue stays: white goes a cool blue-white, the warm moon a clear pale blue.
+   It is the stage's own layer, and the stage is isolated on the page's dark paper, so it can only
+   ever darken the sky: before the canvas has drawn it is dark blue, never a sheet of light blue. */
+#stage {
+  isolation: isolate;
+  background: var(--paper);
+}
+
+#stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #b3c6ff;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+body[data-tint='off'] #stage::after {
+  display: none;
+}

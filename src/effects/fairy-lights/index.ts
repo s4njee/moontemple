@@ -2,7 +2,7 @@ import { APERTURE_PARAMS } from '../../gpu/optics/aperture.ts';
 import { flickerIntensity } from '../../gpu/optics/flicker.ts';
 import { cocRadius, focalLengthPx, lensFromCamera } from '../../gpu/optics/lens.ts';
 import { createPointLayer, POINT_FLOATS } from '../../gpu/points.ts';
-import { createHdrTail, TAIL_PARAMS } from '../../gpu/post/index.ts';
+import { createHdrTail, OVERLAY_PARAMS, TAIL_PARAMS } from '../../gpu/post/index.ts';
 import { createRandom } from '../../gpu/random.ts';
 import { defineEffect } from '../types.ts';
 import { meta } from './meta.ts';
@@ -83,9 +83,13 @@ export const effect = defineEffect({
     sway: { type: 'number', default: 1, min: 0, max: 3, step: 0.05 },
     brightness: { type: 'number', default: 1, min: 0, max: 4, step: 0.05 },
     palette: { type: 'select', default: 'warm', options: Object.keys(PALETTES) },
+    // `light`: no night of its own, drawn over the page with luminance alpha (story 7.5), so the
+    // bulbs show on a light page as discs of their own colour rather than vanishing into it.
+    page: { type: 'select', default: 'night', options: ['night', 'light'] },
     ...APERTURE_PARAMS,
     ...TAIL_PARAMS,
     bloom: { ...TAIL_PARAMS.bloom, default: 0.7 },
+    ...OVERLAY_PARAMS,
   },
   presets: {
     'warm white': {},
@@ -94,6 +98,7 @@ export const effect = defineEffect({
     'one string sharp': { focus: 2.9, fNumber: 2 },
     'hexagonal lens': { blades: 6, curvature: 0.05, rim: 0.05 },
     still: { twinkle: 0, sway: 0 },
+    'over a light page': { page: 'light' },
   },
 
   async create({ device, format, hdr, params, profiler }) {
@@ -171,7 +176,12 @@ export const effect = defineEffect({
         points.encode(
           encoder,
           tail.scene.view,
-          { width, height, aperture: params, clear: [0.003, 0.0022, 0.002, 1] },
+          {
+            width,
+            height,
+            aperture: params,
+            clear: params.page === 'light' ? [0, 0, 0, 0] : [0.003, 0.0022, 0.002, 1],
+          },
           profiler,
         );
         tail.encode(encoder, target, time, params, profiler);

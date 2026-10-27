@@ -53,6 +53,9 @@ try {
   });
   for (const id of ids) {
     chrome.errors.length = 0;
+    // An effect whose page opens in a context (meta.layout) is captured on that mock page: a glint
+    // on a button or a lit headline needs the page it lights. For one that only sits behind a page
+    // (lamp-in-fog's backdrop), capture it with its layout set aside.
     await chrome.page('Page.navigate', { url: `${base}/?effect=${id}` });
     const { state } = await waitForEffect(chrome);
     if (state !== 'running') {
