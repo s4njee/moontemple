@@ -1,0 +1,107 @@
+.mt-source {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mt-space-3);
+  min-width: 0;
+}
+
+.mt-source__bar,
+.mt-source__group,
+.mt-source__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--mt-space-2);
+}
+
+.mt-source__related {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mt-space-2);
+}
+
+.mt-source__related[hidden] {
+  display: none;
+}
+
+.mt-source__bar {
+  justify-content: space-between;
+  gap: var(--mt-space-3);
+}
+
+.mt-source__caption {
+  justify-content: space-between;
+  min-height: 20px;
+}
+
+.mt-source__caption > p {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.mt-source__status {
+  color: var(--mt-text-muted);
+  font-size: var(--mt-text-xs);
+}
+
+.mt-source__status[data-state='error'] {
+  color: var(--mt-tier-c);
+}
+
+.mt-source__button {
+  /* Rows of file names stay compact on narrow screens. */
+  min-height: 28px;
+  padding: 0 var(--mt-space-3);
+}
+
+/* Code block: shared by the source viewer and fenced blocks in the notes. */
+pre.mt-source__code {
+  margin: 0;
+  padding: var(--mt-space-3) 0;
+  overflow-x: auto;
+  border: 1px solid var(--mt-border);
+  border-radius: var(--mt-radius-m);
+  background: var(--mt-surface);
+  color: var(--mt-text);
+  font-family: var(--mt-font-mono);
+  font-size: var(--mt-text-s);
+  line-height: 1.6;
+  tab-size: 2;
+  counter-reset: mt-line;
+}
+
+pre.mt-source__code code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  padding: 0;
+  background: none;
+  font: inherit;
+}
+
+.mt-source__line {
+  display: block;
+  padding-right: var(--mt-space-4);
+  white-space: pre;
+  counter-increment: mt-line;
+}
+
+/* The gutter stays put while long lines scroll underneath it. */
+.mt-source__line::before {
+  content: counter(mt-line);
+  display: inline-block;
+  position: sticky;
+  left: 0;
+  min-width: calc(var(--mt-source-digits, 3) * 1ch + var(--mt-space-3) + var(--mt-space-2));
+  margin-right: var(--mt-space-3);
+  padding-left: var(--mt-space-3);
+  padding-right: var(--mt-space-2);
+  background: var(--mt-surface);
+  color: var(--mt-text-muted);
+  text-align: right;
+  user-select: none;
+}
+
+.mt-source__line > span {
+  color: light-dark(var(--shiki-light), var(--shiki-dark));
+}

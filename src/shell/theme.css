@@ -1,0 +1,253 @@
+/*
+ * Design tokens and the few primitives every shell component shares.
+ * The effects carry the page: chrome stays quiet, flat, and low-contrast against them.
+ * Components use these tokens only; no new colours, radii, or font sizes elsewhere.
+ *
+ * Dark first: these effects are points of light seen out of focus, and they read best at night.
+ * The light theme is real and complete, because a light page is the hard test every overlay
+ * effect has to be shown against. Neutrals lean a little violet, like the sky after dusk.
+ * The accent is the only violet-blue, the colour of the orbs; tier colours stay away from it.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --mt-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mt-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --mt-text-xs: 0.75rem;
+  --mt-text-s: 0.8125rem;
+  --mt-text-m: 0.9375rem;
+  --mt-text-l: 1.25rem;
+  --mt-text-xl: 1.75rem;
+
+  --mt-space-1: 4px;
+  --mt-space-2: 8px;
+  --mt-space-3: 12px;
+  --mt-space-4: 16px;
+  --mt-space-5: 24px;
+  --mt-space-6: 40px;
+
+  --mt-radius-s: 4px;
+  --mt-radius-m: 8px;
+  --mt-radius-l: 14px;
+
+  --mt-bg: light-dark(#f5f4fa, #07070f);
+  --mt-surface: light-dark(#fdfcff, #0e0e1a);
+  --mt-surface-2: light-dark(#e7e5f2, #171729);
+  --mt-border: light-dark(#d2cfe3, #26263d);
+  --mt-text: light-dark(#12111c, #eceaf7);
+  --mt-text-muted: light-dark(#5a5773, #9d9bb8);
+  --mt-accent: light-dark(#4b3bd6, #9d94ff);
+  --mt-on-accent: light-dark(#fdfcff, #0b0820);
+  --mt-focus: light-dark(#4b3bd6, #c9c4ff);
+
+  /* Practicality tiers: A drop-in, B feature, C showpiece. Hues clear of the violet accent. */
+  --mt-tier-a: light-dark(#1f7a4d, #6fd6a0);
+  --mt-tier-b: light-dark(#0b6f78, #5fcfd8);
+  --mt-tier-c: light-dark(#8a5300, #f2c46f);
+
+  --mt-header-height: 52px;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='auto'] {
+  color-scheme: light dark;
+}
+
+/*
+ * A subtree can be shown as the other kind of page (the effect stage does this, story 2.7): the
+ * tokens are light-dark() values, so they follow whatever colour scheme the element has.
+ */
+[data-page='light'] {
+  color-scheme: light;
+}
+
+[data-page='dark'] {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--mt-bg);
+  color: var(--mt-text);
+  font: var(--mt-text-m) / 1.5 var(--mt-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--mt-accent);
+  text-underline-offset: 0.15em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mt-focus);
+  outline-offset: 2px;
+}
+
+/* Numbers and code: tabular so readouts do not jitter as they update. */
+.mt-data {
+  font-family: var(--mt-font-mono);
+  font-size: var(--mt-text-s);
+  font-variant-numeric: tabular-nums;
+}
+
+.mt-muted {
+  color: var(--mt-text-muted);
+}
+
+.mt-label {
+  color: var(--mt-text-muted);
+  font-size: var(--mt-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mt-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mt-space-2);
+  min-height: 32px;
+  padding: 0 var(--mt-space-3);
+  border: 1px solid var(--mt-border);
+  border-radius: var(--mt-radius-m);
+  background: var(--mt-surface);
+  color: var(--mt-text);
+  font: inherit;
+  font-size: var(--mt-text-s);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mt-button:hover {
+  background: var(--mt-surface-2);
+}
+
+.mt-button[aria-pressed='true'],
+.mt-button--primary {
+  border-color: var(--mt-accent);
+  background: var(--mt-accent);
+  color: var(--mt-on-accent);
+}
+
+.mt-button--quiet {
+  border-color: transparent;
+  background: transparent;
+}
+
+.mt-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 var(--mt-space-2);
+  border: 1px solid var(--mt-border);
+  border-radius: 999px;
+  color: var(--mt-text-muted);
+  font-size: var(--mt-text-xs);
+  white-space: nowrap;
+}
+
+/* Tier chips: add data-tier="A" | "B" | "C". */
+.mt-chip[data-tier] {
+  border-color: currentColor;
+  font-weight: 600;
+}
+
+.mt-chip[data-tier='A'] {
+  color: var(--mt-tier-a);
+}
+
+.mt-chip[data-tier='B'] {
+  color: var(--mt-tier-b);
+}
+
+.mt-chip[data-tier='C'] {
+  color: var(--mt-tier-c);
+}
+
+.mt-panel {
+  border: 1px solid var(--mt-border);
+  border-radius: var(--mt-radius-l);
+  background: var(--mt-surface);
+}
+
+.mt-tabs {
+  display: flex;
+  gap: var(--mt-space-4);
+  border-bottom: 1px solid var(--mt-border);
+}
+
+.mt-tab {
+  margin-bottom: -1px;
+  padding: var(--mt-space-2) 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--mt-text-muted);
+  font: inherit;
+  font-size: var(--mt-text-s);
+  cursor: pointer;
+}
+
+.mt-tab[aria-selected='true'] {
+  border-bottom-color: var(--mt-accent);
+  color: var(--mt-text);
+}
+
+/* Long-form text: write-ups and notes. */
+.mt-prose {
+  max-width: 68ch;
+  line-height: 1.65;
+}
+
+.mt-prose > * + * {
+  margin-top: var(--mt-space-4);
+}
+
+.mt-prose h2 {
+  margin-top: var(--mt-space-5);
+  font-size: var(--mt-text-l);
+}
+
+.mt-prose h3 {
+  font-size: var(--mt-text-m);
+}
+
+.mt-prose code {
+  padding: 0.1em 0.3em;
+  border-radius: var(--mt-radius-s);
+  background: var(--mt-surface-2);
+  font-family: var(--mt-font-mono);
+  font-size: 0.9em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
