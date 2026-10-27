@@ -26,6 +26,63 @@
           "The template for new effects; a dark ambient hero at a pinch"
         ]
       }
+    },
+    {
+      "id": "lens-model",
+      "title": "Lens model",
+      "summary": "A night street through a camera lens: two rows of lamps and a railing of small lights receding from half a metre to six hundred, each drawn as the aperture at its own circle of confusion, while the focus walks through them. Every point keeps its light as it blurs; switch that off to see why it matters.",
+      "epic": "2",
+      "tier": "A",
+      "tags": [
+        "building block",
+        "depth of field",
+        "bokeh",
+        "aperture"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the street in focus at mid-distance.",
+        "useCases": [
+          "Seeing the lens model and the aperture shapes; a building block, not an effect to ship"
+        ]
+      }
+    },
+    {
+      "id": "bokeh-drift",
+      "title": "Bokeh drift",
+      "summary": "Points of light far behind a lens focused close: a field of soft violet discs at many depths, drifting upwards under one bright light in haze. Each disc is the aperture at its own circle of confusion and keeps the light of the point it came from, so overlaps add up as they do in a photograph. The pointer shifts them by depth.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "hero",
+        "ambient",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the orbs; a CSS version with radial gradients comes close (plan story 7.4).",
+        "useCases": [
+          "A dark hero or section background that moves without asking for attention",
+          "Night, music, nightlife and event sites"
+        ]
+      }
     }
   ]
 }

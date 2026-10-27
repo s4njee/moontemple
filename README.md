@@ -9,7 +9,7 @@ It is built on Fire Temple's page structure and the shared temple core (`@mk7s/h
 ```sh
 npm install
 npm run dev        # http://localhost:5450
-npm test           # the WCAG 2.3.1 flash analyser and the held-frame audit over every effect and preset
+npm test           # lens and point-light tests, the WCAG 2.3.1 flash analyser and the held-frame audit
 npm run build      # registry, typecheck and static build to dist/
 ```
 
@@ -17,15 +17,19 @@ npm run build      # registry, typecheck and static build to dist/
 
 ## Effects
 
-| Id      | What                                                                     | Tier |
-| ------- | ------------------------------------------------------------------------ | ---- |
-| `hello` | The smallest effect: layers of drifting violet orbs under a haloed light | A    |
+| Id            | What                                                                                           | Tier |
+| ------------- | ---------------------------------------------------------------------------------------------- | ---- |
+| `hello`       | The smallest effect: layers of drifting violet orbs under a haloed light                       | A    |
+| `lens-model`  | A night street through a lens: the circle of confusion and every aperture shape, focus walking | A    |
+| `bokeh-drift` | The reference picture: orbs at many depths behind a close focus, keeping their light           | A    |
 
-Nothing has been measured yet; the tier is a guess until the cost harness (plan story 1.7) runs.
+Nothing has been measured yet; the tiers are guesses until the cost harness (plan story 1.7) runs.
 
 ## Shared pieces
 
 - `src/gpu/post/`: the HDR tail every effect ends with (bloom, tonemap, sRGB).
+- `src/gpu/optics/lens.ts` and `src/wgsl/coc.wgsl`: the thin-lens circle of confusion, from a camera or from two numbers.
+- `src/gpu/points.ts` and `src/wgsl/aperture.wgsl`: points of light drawn as the aperture's shape at their circle of confusion, each adding exactly its own light at any size and position (`tests/points.test.ts`). Shared controls in `src/gpu/optics/aperture.ts`.
 - `src/gpu/strokes.ts`: Storm Temple's stroke renderer: instanced segments or a polyline, shaded by a caller's WGSL chunk, with `max` or `add` blending and an afterglow. For streaks, flare spikes and trails.
 - `src/gpu/dom-rects.ts`: the page's marked elements (`data-mt-obstacle`, `data-mt-target`) as rectangles in canvas uv, read every frame.
 - `tests/flash.ts`: Fire Temple's flash analyser, run on Dawn over every effect and preset by `npm test`.
