@@ -12,6 +12,7 @@ npm run dev        # http://localhost:5450
 npm test           # lens and point-light tests, the WCAG 2.3.1 flash analyser and the held-frame audit
 npm run build      # registry, typecheck, static build to dist/ and the bundle check
 npm run study -- --epic 4   # cost study on Dawn: docs/studies/epic-4.md and the Scorecard numbers
+npm run shot -- glitter --times 2   # render an effect headlessly to PNG (output/shots)
 ```
 
 `?effect=<id>` opens an effect, `&hud=1` the performance HUD, and `&p.<param>=<value>` sets a parameter.
@@ -26,6 +27,11 @@ npm run study -- --epic 4   # cost study on Dawn: docs/studies/epic-4.md and the
 | `lens-model`    | A night street through a lens: the circle of confusion and every aperture shape, focus walking                        | A    |
 | `fairy-lights`  | Strings of bulbs at several depths behind a close focus, swaying and twinkling under the flash cap                    | A    |
 | `snow-at-night` | Snow past a street lamp in fog: specks far off, huge faint discs near the lens                                        | A    |
+| `night-street`  | Headlights, tail lights, lamps and neon behind a fast lens, mirrored in a wet road; the pointer pulls focus           | A    |
+| `glitter`       | Thousands of tilted facets that glint as a moving light passes, sharp in focus and discs out of it                    | A    |
+| `fireflies`     | Fireflies glowing on their own rhythms in depth; the pointer moves the plane of focus                                 | A    |
+| `dust-in-light` | Dust in a shaft of sunlight, the beam's glow in closed form                                                           | A    |
+| `aperture-lab`  | Every aperture shape and aberration, chosen with the pointer; the near field flipped                                  | A    |
 | `dof-lab`       | One night shot, the depth-of-field methods, and a reference traced through the whole lens; split and difference views | C    |
 | `focus-cursor`  | Floating lanterns, and a lens whose focus racks to whatever the pointer is on                                         | A    |
 | `bokeh-drift`   | The reference picture: orbs at many depths behind a close focus, keeping their light                                  | A    |

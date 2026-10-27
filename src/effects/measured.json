@@ -1,4 +1,15 @@
 {
+  "aperture-lab": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.48
+      }
+    ],
+    "bundleKb": 19.7
+  },
   "bokeh-drift": {
     "gpuMs": [
       {
@@ -28,6 +39,17 @@
     ],
     "bundleKb": 26.3
   },
+  "dust-in-light": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.48
+      }
+    ],
+    "bundleKb": 21.9
+  },
   "fairy-lights": {
     "gpuMs": [
       {
@@ -39,6 +61,17 @@
     ],
     "bundleKb": 19.9
   },
+  "fireflies": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.44
+      }
+    ],
+    "bundleKb": 20.1
+  },
   "focus-cursor": {
     "bundleKb": 20.2,
     "gpuMs": [
@@ -49,6 +82,17 @@
         "ms": 0.46
       }
     ]
+  },
+  "glitter": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.5
+      }
+    ],
+    "bundleKb": 20.4
   },
   "hello": {
     "gpuMs": [
@@ -85,6 +129,17 @@
       }
     ],
     "bundleKb": 18.9
+  },
+  "night-street": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.81
+      }
+    ],
+    "bundleKb": 20.5
   },
   "snow-at-night": {
     "gpuMs": [

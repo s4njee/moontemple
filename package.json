@@ -39,6 +39,7 @@
     "build:lib": "vite build --config vite.lib.config.ts && npm run clean:types && tsc -p tsconfig.lib.json && node scripts/rewrite-dts.mjs",
     "catalogue": "node scripts/catalogue.mjs",
     "study": "node scripts/study.mjs",
+    "shot": "node scripts/shot.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",

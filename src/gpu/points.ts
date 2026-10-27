@@ -156,3 +156,28 @@ export function createPointLayer(device: GPUDevice, options: PointLayerOptions):
     },
   };
 }
+
+/** Collects points for `setPoints` frame by frame, growing as needed. */
+export class PointList {
+  data = new Float32Array(256 * POINT_FLOATS);
+  count = 0;
+
+  clear(): void {
+    this.count = 0;
+  }
+
+  /** A point at (x, y) device pixels with signed radius `radius` and total light (r, g, b). */
+  push(x: number, y: number, radius: number, r: number, g: number, b: number): void {
+    if ((this.count + 1) * POINT_FLOATS > this.data.length) {
+      const grown = new Float32Array(this.data.length * 2);
+      grown.set(this.data);
+      this.data = grown;
+    }
+    this.data.set([x, y, radius, 0, r, g, b, 0], this.count * POINT_FLOATS);
+    this.count++;
+  }
+
+  upload(layer: PointLayer): void {
+    layer.setPoints(this.data, this.count);
+  }
+}

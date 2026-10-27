@@ -84,6 +84,34 @@
       }
     },
     {
+      "id": "aperture-lab",
+      "title": "Aperture lab",
+      "summary": "Every aperture shape and aberration side by side in time: a grid of lights far behind the focus and a row close in front of it, all drawn through one lens whose aperture the pointer chooses, left to right, and whose f-number it sets, top to bottom. Odd blade counts show the near row flipped.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "building block",
+        "bokeh",
+        "aperture",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A contact sheet of the apertures.",
+        "useCases": [
+          "Choosing an aperture for another effect; the page the notes link to"
+        ]
+      }
+    },
+    {
       "id": "bokeh-drift",
       "title": "Bokeh drift",
       "summary": "Points of light far behind a lens focused close: a field of soft violet discs at many depths, drifting upwards under one bright light in haze. Each disc is the aperture at its own circle of confusion and keeps the light of the point it came from, so overlaps add up as they do in a photograph. The pointer shifts them by depth.",
@@ -113,6 +141,34 @@
       }
     },
     {
+      "id": "dust-in-light",
+      "title": "Dust in light",
+      "summary": "A shaft of sunlight slanting through a dark room towards the lens, and the dust drifting in it: motes light up only inside the beam, sharp where it crosses the plane of focus and soft discs where it comes close to the lens. The beam itself glows with the light the air scatters.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "ambient",
+        "volumetric",
+        "hero"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the beam and the dust.",
+        "useCases": [
+          "A quiet, cinematic hero for editorial, architecture and interior sites"
+        ]
+      }
+    },
+    {
       "id": "fairy-lights",
       "title": "Fairy lights",
       "summary": "Strings of small bulbs hanging in sagging curves across the frame at several depths, behind a lens focused close: every bulb is a soft disc, swaying with its string and twinkling on a signal capped below the flash threshold.",
@@ -138,6 +194,91 @@
         "useCases": [
           "A seasonal or festive hero",
           "Event, wedding and hospitality sites"
+        ]
+      }
+    },
+    {
+      "id": "fireflies",
+      "title": "Fireflies",
+      "summary": "Fireflies over a meadow at dusk, wandering in depth and each glowing on its own slow rhythm, through a fast lens: the few near the plane of focus are sharp points, the rest soft discs that swell as they drift towards the lens. Move the pointer up and down to move the plane of focus through them.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "ambient",
+        "pointer",
+        "nature"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the meadow with the fireflies glowing.",
+        "useCases": [
+          "A calm evening hero for nature, outdoor and wellness sites"
+        ]
+      }
+    },
+    {
+      "id": "glitter",
+      "title": "Glitter",
+      "summary": "A sheet of glitter receding from the lens, its thousands of tiny facets each tilted its own way: a facet flashes only when it mirrors the light into the lens, so a moving light sends a ripple of sparks across it, sharp where the sheet is in focus and soft discs where it is not.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "glint",
+        "pointer",
+        "hero"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the sheet with a band of sparks.",
+        "useCases": [
+          "Fashion, beauty, celebration and jewellery heroes",
+          "A product reveal"
+        ]
+      }
+    },
+    {
+      "id": "night-street",
+      "title": "Night street",
+      "summary": "A city street at night through a fast lens focused close: oncoming headlights and receding tail lights in two lanes, rows of sodium lamps, clusters of neon and slow traffic lights, every one a soft disc of its own colour. Move the pointer up and down to pull the focus from near to far.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "hero",
+        "city",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the street; a looped video does the plain version well.",
+        "useCases": [
+          "A night-time hero for city, travel, music and nightlife sites"
         ]
       }
     },
