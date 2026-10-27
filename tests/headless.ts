@@ -148,7 +148,7 @@ export async function mountHeadless(id: string, options: HeadlessOptions): Promi
 /** Sends a pointer event to a headless canvas. `x`, `y` are 0..1 across it. */
 export function sendPointer(
   canvas: HTMLCanvasElement,
-  type: 'pointerdown' | 'pointermove' | 'pointerup' | 'pointerleave',
+  type: 'pointerenter' | 'pointerdown' | 'pointermove' | 'pointerup' | 'pointerleave',
   x: number,
   y: number,
   timeMs = 0,
@@ -160,7 +160,7 @@ export function sendPointer(
     pointerType: 'mouse',
     isPrimary: true,
     button: 0,
-    buttons: type === 'pointerup' || type === 'pointerleave' ? 0 : 1,
+    buttons: type === 'pointerdown' || type === 'pointermove' ? 1 : 0,
     clientX: x * canvas.width,
     clientY: y * canvas.height,
     timeStamp: timeMs,

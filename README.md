@@ -20,11 +20,14 @@ npm run study -- --epic 4   # cost study on Dawn: docs/studies/epic-4.md and the
 
 `spectrum.html` ("Slow spectrum") is a standalone page with `bokeh-drift` fixed behind the whole page on its `rgb` palette: the field turns slowly round the colour wheel, a turn a minute, and the page's accents turn with it.
 
-| Id            | What                                                                                           | Tier |
-| ------------- | ---------------------------------------------------------------------------------------------- | ---- |
-| `hello`       | The smallest effect: layers of drifting violet orbs under a haloed light                       | A    |
-| `lens-model`  | A night street through a lens: the circle of confusion and every aperture shape, focus walking | A    |
-| `bokeh-drift` | The reference picture: orbs at many depths behind a close focus, keeping their light           | A    |
+| Id              | What                                                                                               | Tier |
+| --------------- | -------------------------------------------------------------------------------------------------- | ---- |
+| `hello`         | The smallest effect: layers of drifting violet orbs under a haloed light                           | A    |
+| `lens-model`    | A night street through a lens: the circle of confusion and every aperture shape, focus walking     | A    |
+| `fairy-lights`  | Strings of bulbs at several depths behind a close focus, swaying and twinkling under the flash cap | A    |
+| `snow-at-night` | Snow past a street lamp in fog: specks far off, huge faint discs near the lens                     | A    |
+| `focus-cursor`  | Floating lanterns, and a lens whose focus racks to whatever the pointer is on                      | A    |
+| `bokeh-drift`   | The reference picture: orbs at many depths behind a close focus, keeping their light               | A    |
 
 Tiers come from `npm run study` on Dawn and HUD readings in Chrome on an Apple M1 Max (`src/effects/measured.json`, `docs/studies/`). No integrated GPU or phone has been measured, so they are provisional.
 

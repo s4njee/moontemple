@@ -83,6 +83,93 @@
           "Night, music, nightlife and event sites"
         ]
       }
+    },
+    {
+      "id": "fairy-lights",
+      "title": "Fairy lights",
+      "summary": "Strings of small bulbs hanging in sagging curves across the frame at several depths, behind a lens focused close: every bulb is a soft disc, swaying with its string and twinkling on a signal capped below the flash threshold.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "hero",
+        "seasonal",
+        "twinkle"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the strings; a CSS version of a few rows of soft dots is close.",
+        "useCases": [
+          "A seasonal or festive hero",
+          "Event, wedding and hospitality sites"
+        ]
+      }
+    },
+    {
+      "id": "snow-at-night",
+      "title": "Snow at night",
+      "summary": "Snow falling past a street lamp in a little fog, seen through a lens focused a few metres out: flakes near the lamp catch its light, far ones are specks, and the ones that pass close to the lens are huge faint discs drifting across the frame.",
+      "epic": "4",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "weather",
+        "hero",
+        "seasonal"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the lamp and the falling snow.",
+        "useCases": [
+          "A winter hero or seasonal section",
+          "Weather, travel and outdoor brands"
+        ]
+      }
+    },
+    {
+      "id": "focus-cursor",
+      "title": "Focus cursor",
+      "summary": "A field of floating lanterns from two metres to sixty, and a lens whose focus follows the pointer: whatever lantern you point at comes sharp, the rest melt into discs, and the focus racks between them the way a camera’s does. Without a pointer it wanders on its own.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "pointer",
+        "depth of field",
+        "hero"
+      ],
+      "status": "demo",
+      "poster": null,
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still with the focus mid-field; the rack needs the shader.",
+        "useCases": [
+          "A hero that answers the pointer without asking for a click",
+          "Photography, film and camera sites"
+        ]
+      }
     }
   ]
 }
