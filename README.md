@@ -17,6 +17,8 @@ npm run build      # registry, typecheck and static build to dist/
 
 ## Effects
 
+`spectrum.html` ("Slow spectrum") is a standalone page with `bokeh-drift` fixed behind the whole page on its `rgb` palette: the field turns slowly round the colour wheel, a turn a minute, and the page's accents turn with it.
+
 | Id            | What                                                                                           | Tier |
 | ------------- | ---------------------------------------------------------------------------------------------- | ---- |
 | `hello`       | The smallest effect: layers of drifting violet orbs under a haloed light                       | A    |

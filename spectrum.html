@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05050a" />
+    <title>Slow spectrum · Moon Temple bokeh drift</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2307070f'/%3E%3Ccircle cx='8' cy='6' r='3.2' fill='%23dcd9ff'/%3E%3Ccircle cx='4' cy='11.5' r='1.6' fill='%23ff5a5a'/%3E%3Ccircle cx='9.5' cy='12' r='1.4' fill='%2350e08a'/%3E%3Ccircle cx='13' cy='9.5' r='1.3' fill='%236b5cff'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- bokeh-drift fixed behind the whole page, as a site would use it, on its rgb palette: the
+       field turns slowly round the hue wheel, red to green to blue and back. The page's own text
+       sits on dark plates so it stays readable whatever colour passes behind it. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=bokeh-drift&amp;preset=rgb+sweep">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 01 / LIGHT OUT OF FOCUS</p>
+          <h1 id="title"><span class="plate">Slow</span><span class="plate">spectrum.</span></h1>
+          <p class="description plate">
+            A hundred points of light far behind a lens focused close, drifting upwards while the
+            whole field turns round the colour wheel: red, then green, then blue, a full turn a
+            minute. Move the pointer and the nearer lights move more.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE LIGHTS FAR BEHIND IT</span
+          ><span>01 — A LENS FOCUSED CLOSE</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE DISCS COME FROM</p>
+          <h2 id="explanation-title" class="plate">Points of light,<br />out of focus.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / DEPTH</span>
+            <h3>Blurred by distance.</h3>
+            <p>
+              The lens is focused half a metre away and the lights are between one and a half and
+              thirty metres behind it, so each becomes a disc nearly the size of a point at
+              infinity: the nearer ones a little smaller, rising faster and swaying wider.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / LIGHT</span>
+            <h3>Each disc keeps its light.</h3>
+            <p>
+              A disc is the lens's aperture drawn at that light's blur, carrying exactly the light
+              of the point it came from. Where discs overlap they add, which is what makes a crowd
+              of them look photographed rather than drawn.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / COLOUR</span>
+            <h3>One wheel, turning slowly.</h3>
+            <p>
+              Every light takes the same hue, give or take the spread, and the hue moves on in real
+              seconds. Its brightness is evened out so the green third does not glare: it breathes,
+              and never flashes.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=bokeh-drift&amp;preset=rgb+sweep"
+            >Open the effect with every control ↗</a
+          >
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Drift controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Lighting the field…</span>
+          <span id="hue-name">Red</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="select-control"
+          >Lens
+          <select id="lens">
+            <option value="round" selected>Round</option>
+            <option value="hexagon">Hexagon</option>
+            <option value="bubble">Soap bubble</option>
+            <option value="swirl">Swirly</option>
+          </select>
+        </label>
+        <label class="range-control"
+          >One turn
+          <input id="cycle" type="range" min="10" max="240" step="1" value="60" />
+          <output id="cycle-value" for="cycle">60 s</output>
+        </label>
+        <label class="range-control"
+          >Spread
+          <input id="spread" type="range" min="0" max="0.5" step="0.01" value="0.12" />
+        </label>
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/spectrum/main.ts"></script>
+  </body>
+</html>

@@ -44,6 +44,25 @@ const PALETTES: Record<string, { from: Rgb; to: Rgb; light: Rgb; ground: Rgb }> 
   },
 };
 
+/**
+ * A colour round the hue wheel, `turn` in 0..1 from red through green and blue: a cosine wheel,
+ * divided by part of its luminance so the green third is not several times brighter than the blue
+ * one. What is left of the swing is slow and smooth, a breathing rather than a flash.
+ */
+export function hueColour(turn: number): Rgb {
+  const a = 2 * Math.PI * turn;
+  const c: Rgb = [
+    0.5 + 0.5 * Math.cos(a),
+    0.5 + 0.5 * Math.cos(a - (2 * Math.PI) / 3),
+    0.5 + 0.5 * Math.cos(a + (2 * Math.PI) / 3),
+  ];
+  // Pushed towards the primaries, so the sweep reads as red, green and blue rather than pastel.
+  const saturated = c.map((v) => v * v) as Rgb;
+  const luminance = 0.2126 * saturated[0] + 0.7152 * saturated[1] + 0.0722 * saturated[2];
+  const k = Math.pow(0.15 / Math.max(luminance, 0.02), 0.6);
+  return [saturated[0] * k, saturated[1] * k, saturated[2] * k];
+}
+
 /** The disc size every orb's light is scaled to, as a share of the image height. */
 const REFERENCE_BLUR = 0.045;
 /** Where the light sits, in uv, and how far away it is. */
@@ -100,7 +119,17 @@ export const effect = defineEffect({
     brightness: { type: 'number', default: 1, min: 0, max: 4, step: 0.05, label: 'orbs' },
     light: { type: 'number', default: 1, min: 0, max: 3, step: 0.05, label: 'light above' },
     haze: { type: 'number', default: 1, min: 0, max: 3, step: 0.05 },
-    palette: { type: 'select', default: 'violet', options: Object.keys(PALETTES) },
+    palette: { type: 'select', default: 'violet', options: [...Object.keys(PALETTES), 'rgb'] },
+    cycle: {
+      type: 'number',
+      default: 60,
+      min: 0,
+      max: 240,
+      step: 1,
+      label: 'rgb: seconds a turn (0 holds)',
+    },
+    hue: { type: 'number', default: 0, min: 0, max: 1, step: 0.01, label: 'rgb: hue' },
+    spread: { type: 'number', default: 0.12, min: 0, max: 0.5, step: 0.01, label: 'rgb: spread' },
     ...APERTURE_PARAMS,
     rim: { ...APERTURE_PARAMS.rim, default: 0.25 },
     ...TAIL_PARAMS,
@@ -113,6 +142,7 @@ export const effect = defineEffect({
     'soap bubbles': { rim: 0.9, count: 90, blur: 0.06 },
     'swirly lens': { vignette: 0.9, count: 200, blur: 0.03 },
     'pulled focus': { focus: 6, count: 160 },
+    'rgb sweep': { palette: 'rgb' },
   },
 
   async create({ device, format, hdr, canvas, params, profiler }) {
@@ -134,6 +164,8 @@ export const effect = defineEffect({
     let width = 1;
     let height = 1;
     let clock = 0;
+    // Real seconds for the colour sweep, so the drift speed does not hurry it.
+    let colourClock = 0;
     // The pointer's offset from the centre, eased so the field settles rather than jumps.
     const look = { x: 0, y: 0 };
 
@@ -145,6 +177,7 @@ export const effect = defineEffect({
       },
       frame(time, encoder, target) {
         clock += time.delta * params.speed;
+        colourClock += time.delta;
         const count = Math.round(params.count);
         if (orbs.length !== count) {
           orbs = buildOrbs(count);
@@ -157,7 +190,21 @@ export const effect = defineEffect({
         look.x += (aim.x - look.x) * ease;
         look.y += (aim.y - look.y) * ease;
 
-        const palette = PALETTES[params.palette] ?? PALETTES.violet!;
+        // The rgb palette sweeps round the hue wheel, each orb a little ahead of or behind the rest.
+        const sweep = params.palette === 'rgb';
+        // A page can hold the sweep (`cycle` 0) and turn `hue` itself, to keep its own colours in step.
+        const turn = (params.cycle > 0 ? colourClock / params.cycle : 0) + params.hue;
+        const palette = sweep
+          ? (() => {
+              const now = hueColour(turn);
+              return {
+                from: now,
+                to: now,
+                light: [0.75 + 0.25 * now[0], 0.75 + 0.25 * now[1], 0.75 + 0.25 * now[2]] as Rgb,
+                ground: [0.0015, 0.0015, 0.0025] as Rgb,
+              };
+            })()
+          : (PALETTES[params.palette] ?? PALETTES.violet!);
         const lens = { focus: params.focus, blurAtInfinity: params.blur * height };
         // An orb's light is set against a disc of the reference size, so changing the focus or the
         // blur spreads the same light wider or narrower, as a lens does.
@@ -182,11 +229,13 @@ export const effect = defineEffect({
           const sway = (0.012 / orb.z) * Math.sin(clock * 0.4 + orb.phase);
           const shift = (params.parallax * 0.08) / orb.z;
           const x = (orb.u + sway - look.x * shift) * width;
-          const colour: Rgb = [
-            palette.from[0] + (palette.to[0] - palette.from[0]) * orb.hue,
-            palette.from[1] + (palette.to[1] - palette.from[1]) * orb.hue,
-            palette.from[2] + (palette.to[2] - palette.from[2]) * orb.hue,
-          ];
+          const colour: Rgb = sweep
+            ? hueColour(turn + (orb.hue - 0.5) * params.spread)
+            : [
+                palette.from[0] + (palette.to[0] - palette.from[0]) * orb.hue,
+                palette.from[1] + (palette.to[1] - palette.from[1]) * orb.hue,
+                palette.from[2] + (palette.to[2] - palette.from[2]) * orb.hue,
+              ];
           put(
             x,
             (v - look.y * shift) * height,
