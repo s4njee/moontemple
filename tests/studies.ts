@@ -2,6 +2,17 @@
 // preset", which `tests/study.test.ts` runs anyway. Keyed by epic. Use these for sweeps that
 // answer a research question (how cost grows with a parameter).
 
+/** Every method in src/gpu/dof/index.ts, listed here so the study needs no GPU module to load. */
+const DOF_METHOD_IDS = [
+  'sharp',
+  'hexagon',
+  'gather',
+  'circular',
+  'sprites',
+  'layers',
+  'tilt-shift',
+];
+
 export interface StudyConfig {
   effect: string;
   /** Shown in the report, e.g. "count=220". */
@@ -26,8 +37,8 @@ export const STUDY_SWEEPS: Readonly<Record<string, readonly StudyConfig[]>> = {
   '3': [
     // Each method alone (no reference drawn), at subject and background focus; and the reference
     // alone, whose cost is the rays a frame.
-    ...sweep('dof-lab', 'method', ['sharp', 'hexagon'], { view: 'method' }),
-    ...sweep('dof-lab', 'method', ['sharp', 'hexagon'], { view: 'method', focus: 40 }),
+    ...sweep('dof-lab', 'method', DOF_METHOD_IDS, { view: 'method' }),
+    ...sweep('dof-lab', 'method', DOF_METHOD_IDS, { view: 'method', focus: 40 }),
     ...sweep('dof-lab', 'samples', [8, 32], { view: 'reference', rays: 1e9 }),
   ],
   '4': [

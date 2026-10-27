@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030507" />
+    <title>Fireflies · Moon Temple fireflies</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23030507'/%3E%3Ccircle cx='5' cy='6' r='2.4' fill='%23ffe2c2' fill-opacity='.45'/%3E%3Ccircle cx='11' cy='10' r='1.2' fill='%23ffe2c2'/%3E%3Ccircle cx='10.5' cy='4' r='.8' fill='%23ffe2c2'/%3E%3Ccircle cx='4.5' cy='12' r='.6' fill='%23ffe2c2'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- fireflies fixed behind the whole page, as a site would use it: a meadow at dusk through a
+       fast lens. The page passes the pointer on to it, so moving down the page moves the plane of
+       focus out through the swarm. The text sits on dark plates so it stays readable. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=fireflies">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 04 / A MEADOW AT DUSK</p>
+          <h1 id="title"><span class="plate">Fireflies.</span></h1>
+          <p class="description plate">
+            A hundred and eighty fireflies over the grass, each glowing on its own slow rhythm,
+            through a 50 mm lens at f/1.4 focused two and a half metres out. The few near the focus
+            are sharp points; the rest are soft discs. Move the pointer down the page to move the
+            focus out through them.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE MEADOW BEHIND IT</span
+          ><span>04 — A 50 MM LENS AT F/1.4</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE GLOW COMES FROM</p>
+          <h2 id="explanation-title" class="plate">Small lights,<br />slowly breathing.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / FOCUS</span>
+            <h3>Moved by the pointer.</h3>
+            <p>
+              The top of the page focuses half a metre away, the bottom fourteen metres across the
+              meadow, and the lens eases between them. A firefly in the plane of focus is a point;
+              one nearer or farther is a disc as wide as its blur.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / GLOW</span>
+            <h3>Each on its own rhythm.</h3>
+            <p>
+              Every firefly swells and fades once every few seconds, a third of a second at its
+              brightest, and glows faintly between. No two share a period, so the swarm never pulses
+              together and never flashes.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / DEPTH</span>
+            <h3>Wandering in depth.</h3>
+            <p>
+              They drift slowly in every direction, towards the lens and away from it as well as
+              across, so a disc swells as its firefly comes closer and shrinks to a point as it
+              passes through the focus.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=fireflies">Open the effect with every control ↗</a>
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Firefly controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Waiting for dusk…</span>
+          <span id="focus-name">Focused in the meadow</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="select-control"
+          >Lens
+          <select id="lens">
+            <option value="round" selected>Round</option>
+            <option value="nine">Nine blades</option>
+            <option value="bubble">Soap bubble</option>
+            <option value="swirl">Swirly</option>
+          </select>
+        </label>
+        <label class="check-control"
+          ><input id="follow" type="checkbox" checked /> Follow pointer</label
+        >
+        <label class="range-control"
+          >Focus
+          <input id="focus" type="range" min="0" max="1" step="0.001" value="0.483" />
+          <output id="focus-value" for="focus">2.5 m</output>
+        </label>
+        <label class="range-control"
+          >Fireflies
+          <input id="count" type="range" min="30" max="600" step="10" value="180" />
+        </label>
+        <label class="range-control"
+          >Wander
+          <input id="wander" type="range" min="0" max="3" step="0.05" value="3" />
+        </label>
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/fireflies/main.ts"></script>
+  </body>
+</html>

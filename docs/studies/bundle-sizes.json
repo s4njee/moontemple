@@ -1,104 +1,292 @@
 {
   "eager": {
-    "chunks": 14,
-    "raw": 34588,
-    "gzip": 16056
+    "chunks": 18,
+    "raw": 48467,
+    "gzip": 21333
   },
   "effects": {
-    "bokeh-drift": {
+    "aperture-lab": {
       "chunks": 9,
-      "ownGzip": 2143,
-      "gzip": 22617,
-      "raw": 54461,
+      "ownGzip": 1193,
+      "gzip": 22662,
+      "raw": 56344,
       "files": [
-        "assets/aperture-BbWIOjMq.js",
-        "assets/bokeh-drift-CqxH8Rq7.js",
-        "assets/fullscreen-BDXEFvdz.js",
-        "assets/haze-YxKuTtpu.js",
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/aperture-lab-CQM7lHdW.js",
+        "assets/camera-DXipjeXY.js",
+        "assets/lens-CGu8lXWn.js",
         "assets/pointer-cHhAUYaw.js",
-        "assets/random-oKhbLFAQ.js",
-        "assets/scatter-DIKBO_Te.js",
+        "assets/points-8CRgJpOS.js",
         "assets/shader-xzRCRHTt.js",
-        "assets/tail-DAqVOInN.js"
+        "assets/tail-CUWOW_lX.js"
       ],
       "gzipKb": 22.1
     },
-    "fairy-lights": {
-      "chunks": 6,
-      "ownGzip": 1523,
-      "gzip": 20329,
-      "raw": 50404,
+    "bokeh-drift": {
+      "chunks": 12,
+      "ownGzip": 2225,
+      "gzip": 25855,
+      "raw": 62797,
       "files": [
-        "assets/aperture-BbWIOjMq.js",
-        "assets/fairy-lights-BucdqLHW.js",
-        "assets/flicker-B3Rt4t5T.js",
-        "assets/random-oKhbLFAQ.js",
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/bokeh-drift-BF8iO0RL.js",
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/haze-CkCCPZ9b.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/scatter-F3aB8iun.js",
         "assets/shader-xzRCRHTt.js",
-        "assets/tail-DAqVOInN.js"
+        "assets/tail-CUWOW_lX.js"
       ],
-      "gzipKb": 19.9
+      "gzipKb": 25.2
+    },
+    "dof-lab": {
+      "chunks": 10,
+      "ownGzip": 7483,
+      "gzip": 29068,
+      "raw": 75074,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/display-DY3pe38e.js",
+        "assets/dof-lab-CpyKrOVW.js",
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/hash-bWx0F85T.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 28.4
+    },
+    "dust-in-light": {
+      "chunks": 11,
+      "ownGzip": 1798,
+      "gzip": 24821,
+      "raw": 60135,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/beam-DmWSVG7E.js",
+        "assets/camera-DXipjeXY.js",
+        "assets/dust-in-light-D20mQMid.js",
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 24.2
+    },
+    "fairy-lights": {
+      "chunks": 9,
+      "ownGzip": 1560,
+      "gzip": 23206,
+      "raw": 57384,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/fairy-lights-UaOLcUlD.js",
+        "assets/flicker-B3Rt4t5T.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 22.7
+    },
+    "fireflies": {
+      "chunks": 10,
+      "ownGzip": 1343,
+      "gzip": 23081,
+      "raw": 56696,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/camera-DXipjeXY.js",
+        "assets/fireflies-B5NAQ5cE.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 22.5
+    },
+    "flare-cursor": {
+      "chunks": 10,
+      "ownGzip": 1247,
+      "gzip": 27792,
+      "raw": 67985,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/flare-cursor-Bk7lvIMO.js",
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/glare-CfYh_D3c.js",
+        "assets/halation-NB-t215q.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 27.1
     },
     "focus-cursor": {
-      "chunks": 7,
-      "ownGzip": 1430,
-      "gzip": 20683,
-      "raw": 50909,
+      "chunks": 10,
+      "ownGzip": 1461,
+      "gzip": 23554,
+      "raw": 57884,
       "files": [
-        "assets/aperture-BbWIOjMq.js",
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
         "assets/flicker-B3Rt4t5T.js",
-        "assets/focus-cursor-5Pn5J0_2.js",
+        "assets/focus-cursor-mGgm_Yln.js",
+        "assets/lens-CGu8lXWn.js",
         "assets/pointer-cHhAUYaw.js",
-        "assets/random-oKhbLFAQ.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
         "assets/shader-xzRCRHTt.js",
-        "assets/tail-DAqVOInN.js"
+        "assets/tail-CUWOW_lX.js"
       ],
-      "gzipKb": 20.2
+      "gzipKb": 23
+    },
+    "glint-hover": {
+      "chunks": 10,
+      "ownGzip": 1371,
+      "gzip": 27145,
+      "raw": 66219,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/dom-rects-0PbTm_2S.js",
+        "assets/flicker-B3Rt4t5T.js",
+        "assets/glare-CfYh_D3c.js",
+        "assets/glint-hover-D0HYNyNA.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 26.5
+    },
+    "glitter": {
+      "chunks": 10,
+      "ownGzip": 1590,
+      "gzip": 23328,
+      "raw": 57268,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/camera-DXipjeXY.js",
+        "assets/glitter-w8nn7nVh.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 22.8
     },
     "hello": {
       "chunks": 6,
-      "ownGzip": 828,
-      "gzip": 17855,
-      "raw": 45759,
+      "ownGzip": 829,
+      "gzip": 18020,
+      "raw": 46343,
       "files": [
         "assets/fullscreen-BDXEFvdz.js",
         "assets/hash-bWx0F85T.js",
-        "assets/hello-Va84Q1tY.js",
+        "assets/hello-OPoOrizu.js",
         "assets/orbs-ERvYl8kj.js",
         "assets/shader-xzRCRHTt.js",
-        "assets/tail-DAqVOInN.js"
+        "assets/tail-CUWOW_lX.js"
       ],
-      "gzipKb": 17.4
+      "gzipKb": 17.6
+    },
+    "lens-light": {
+      "chunks": 12,
+      "ownGzip": 1710,
+      "gzip": 28802,
+      "raw": 70043,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/camera-DXipjeXY.js",
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/glare-CfYh_D3c.js",
+        "assets/halation-NB-t215q.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/lens-light-CZtZI-2v.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 28.1
     },
     "lens-model": {
-      "chunks": 5,
-      "ownGzip": 1207,
-      "gzip": 19341,
-      "raw": 48300,
+      "chunks": 8,
+      "ownGzip": 1247,
+      "gzip": 22221,
+      "raw": 55280,
       "files": [
-        "assets/aperture-BbWIOjMq.js",
-        "assets/lens-model-D3G0b8JD.js",
-        "assets/random-oKhbLFAQ.js",
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/lens-model-q-azfNG4.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
         "assets/shader-xzRCRHTt.js",
-        "assets/tail-DAqVOInN.js"
+        "assets/tail-CUWOW_lX.js"
       ],
-      "gzipKb": 18.9
+      "gzipKb": 21.7
+    },
+    "night-street": {
+      "chunks": 10,
+      "ownGzip": 1712,
+      "gzip": 23450,
+      "raw": 57525,
+      "files": [
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
+        "assets/camera-DXipjeXY.js",
+        "assets/lens-CGu8lXWn.js",
+        "assets/night-street-DxigwGhG.js",
+        "assets/pointer-cHhAUYaw.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-CUWOW_lX.js"
+      ],
+      "gzipKb": 22.9
     },
     "snow-at-night": {
-      "chunks": 8,
-      "ownGzip": 1874,
-      "gzip": 21816,
-      "raw": 52698,
+      "chunks": 11,
+      "ownGzip": 1973,
+      "gzip": 25037,
+      "raw": 60931,
       "files": [
-        "assets/aperture-BbWIOjMq.js",
+        "assets/aperture-BoTskX4-.js",
+        "assets/aperture-FsKt1EIq.js",
         "assets/fullscreen-BDXEFvdz.js",
+        "assets/lens-CGu8lXWn.js",
         "assets/night-V94eiA4B.js",
-        "assets/random-oKhbLFAQ.js",
-        "assets/scatter-DIKBO_Te.js",
+        "assets/points-8CRgJpOS.js",
+        "assets/random-C3ebpKAC.js",
+        "assets/scatter-F3aB8iun.js",
         "assets/shader-xzRCRHTt.js",
-        "assets/snow-at-night-giHFZebQ.js",
-        "assets/tail-DAqVOInN.js"
+        "assets/snow-at-night-DOrUeygt.js",
+        "assets/tail-CUWOW_lX.js"
       ],
-      "gzipKb": 21.3
+      "gzipKb": 24.5
     }
   }
 }

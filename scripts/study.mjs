@@ -6,7 +6,8 @@
 // 1. Builds the site and records what each effect costs to download (docs/studies/bundle-sizes.json).
 // 2. Measures GPU time headlessly on Dawn (tests/study.test.ts, method in tests/bench.ts)
 //    -> docs/studies/epic-<n>.json.
-// 3. Writes docs/studies/epic-<n>.md from that JSON.
+// 3. Writes docs/studies/epic-<n>.md from that JSON, after the hand-written findings in
+//    docs/studies/epic-<n>.findings.md when there are any.
 // 4. Updates src/effects/measured.json, which the Scorecard tab reads: the bundle size and the
 //    1080p default-settings GPU time of each measured effect, per device.
 //
@@ -31,6 +32,7 @@ if (!epic && !effects) {
 const name = epic ? `epic-${epic}` : 'selected';
 const jsonPath = `docs/studies/${name}.json`;
 const markdownPath = `docs/studies/${name}.md`;
+const findingsPath = `docs/studies/${name}.findings.md`;
 const bundlePath = 'docs/studies/bundle-sizes.json';
 const measuredPath = 'src/effects/measured.json';
 
@@ -76,6 +78,9 @@ const lines = [
   '',
   report.note,
   '',
+  ...(existsSync(findingsPath)
+    ? [readFileSync(findingsPath, 'utf8').trim(), '', '## The measurements', '']
+    : []),
   "Two limits on reading these numbers. Repeated runs of a light effect differ by up to about half a millisecond (see the Range column), and a GPU's clock follows its load, so a light effect can read slower per unit of work than a heavy one: differences under about half a millisecond mean nothing. And the Tier A and B budgets are set for an integrated GPU; a time measured on a faster one can show an effect is over budget but cannot show that it fits.",
   '',
 ];

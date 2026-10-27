@@ -23,12 +23,14 @@ const DofView = defineUniformStruct('DofView', {
   samples: 'f32',
   point_depth: 'f32',
   scene: 'u32',
+  pan: 'f32',
 });
 
 /** Full-frame sensor height over focal length: the shot is taken with an 85 mm lens. */
 export const DOF_VIEW_SCALE = 24 / 85;
 
-export type DofShot = 'night' | 'point';
+/** `edges` is the shot of story 3.8: see `edges_trace` in scene.wgsl. */
+export type DofShot = 'night' | 'point' | 'edges';
 
 export interface DofShotSettings {
   lens: ThinLens;
@@ -36,6 +38,8 @@ export interface DofShotSettings {
   shot: DofShot;
   /** For the `point` shot: how far away the point is, metres. */
   pointDepth?: number;
+  /** The camera moved this far to the right, metres: a slow pan with parallax (story 3.7). */
+  pan?: number;
 }
 
 export interface DofScene {
@@ -124,7 +128,8 @@ export function createDofScene(device: GPUDevice): DofScene {
       curvature: shape.curvature,
       samples,
       point_depth: current.pointDepth ?? 10,
-      scene: current.shot === 'point' ? 1 : 0,
+      scene: { night: 0, point: 1, edges: 2 }[current.shot],
+      pan: current.pan ?? 0,
     });
     uniforms.upload();
   }

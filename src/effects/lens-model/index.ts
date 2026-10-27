@@ -17,12 +17,28 @@ interface Lamp {
 const SODIUM: [number, number, number] = [1, 0.55, 0.2];
 const LED: [number, number, number] = [0.75, 0.85, 1];
 
-/** Two rows of street lamps, a railing of small lights, and a distant city. */
-function buildStreet(): Lamp[] {
+/**
+ * Rows of street lamps, a railing of small lights, and a distant city. The first two rows are the
+ * street's, either side of it; more rows stand farther out on alternate sides, each pair higher,
+ * LED and sodium in turn, and half a lamp out of step with the pair inside it, so the rows read as
+ * separate streams converging on the vanishing point.
+ */
+function buildStreet(rows: number): Lamp[] {
   const lamps: Lamp[] = [];
+  const lines = Array.from({ length: rows }, (_, k) => {
+    const pair = Math.floor(k / 2);
+    return {
+      x: (k % 2 === 0 ? -2.2 : 2.2) * (1 + pair),
+      y: -1.6 - 1.1 * pair,
+      stagger: 0.5 * (pair % 2),
+      colour: pair % 2 === 0 ? SODIUM : LED,
+    };
+  });
   for (let i = 0; i < 26; i++) {
-    const z = 3 * Math.pow(1.17, i);
-    for (const x of [-2.2, 2.2]) lamps.push({ at: [x, -1.6, z], colour: SODIUM, intensity: 1 });
+    for (const line of lines) {
+      const z = 3 * Math.pow(1.17, i + line.stagger);
+      lamps.push({ at: [line.x, line.y, z], colour: line.colour, intensity: 1 });
+    }
   }
   for (let i = 0; i < 40; i++) {
     const z = 0.6 * Math.pow(1.11, i);
@@ -59,6 +75,7 @@ export const effect = defineEffect({
     focus: { type: 'number', default: 1.5, min: 0.5, max: 80, step: 0.1, label: 'focus (m)' },
     sweep: { type: 'boolean', default: true, label: 'walk the focus' },
     conserve: { type: 'boolean', default: true, label: 'conserve light' },
+    rows: { type: 'number', default: 2, min: 1, max: 12, step: 1, label: 'rows of lamps' },
     ...APERTURE_PARAMS,
     ...TAIL_PARAMS,
   },
@@ -75,8 +92,9 @@ export const effect = defineEffect({
   async create({ device, format, hdr, params, profiler }) {
     const tail = createHdrTail(device, { format, hdr, label: 'lens model' });
     const points = createPointLayer(device, { label: 'lens model', format: tail.scene.format });
-    const lamps = buildStreet();
-    const data = new Float32Array(lamps.length * POINT_FLOATS);
+    let rows = Math.round(params.rows);
+    let lamps = buildStreet(rows);
+    let data = new Float32Array(lamps.length * POINT_FLOATS);
     let width = 1;
     let height = 1;
     let clock = 0;
@@ -89,6 +107,11 @@ export const effect = defineEffect({
       },
       frame(time, encoder, target) {
         clock += time.delta;
+        if (Math.round(params.rows) !== rows) {
+          rows = Math.round(params.rows);
+          lamps = buildStreet(rows);
+          data = new Float32Array(lamps.length * POINT_FLOATS);
+        }
         // The focus walks from near to far and back, slowly: a held frame keeps the set focus.
         const walk =
           params.sweep && !time.still ? 0.5 - 0.5 * Math.cos((clock / 12) * 2 * Math.PI) : 0;

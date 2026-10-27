@@ -46,6 +46,8 @@ export interface EffectHostOptions {
   resolutionScale?: number;
   /** Let an effect that asks for an HDR canvas have one. Off by default. */
   allowHdr?: boolean;
+  /** How fast the effect's time runs: 0.25 plays everything at a quarter speed. Default 1. */
+  timeScale?: number;
 }
 
 export interface LoadedEffect {
@@ -124,6 +126,7 @@ export function createEffectHost(
   let hideFallback: (() => void) | undefined;
   let size = { width: 0, height: 0, dpr: 1 };
   let resolutionScale = options.resolutionScale ?? 1;
+  const timeScale = options.timeScale ?? 1;
   let paused = options.paused ?? false;
   let suspended = false;
   let timingRequests = 0;
@@ -138,7 +141,12 @@ export function createEffectHost(
     profiler.beginFrame();
     const encoder = device.createCommandEncoder({ label: `${label} frame` });
     instance.frame(
-      { ...time, still: paused || suspended },
+      {
+        ...time,
+        time: time.time * timeScale,
+        delta: time.delta * timeScale,
+        still: paused || suspended,
+      },
       encoder,
       context.getCurrentTexture().createView(),
     );

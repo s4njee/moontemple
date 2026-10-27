@@ -4,7 +4,11 @@
  */
 import { createFullscreenPipeline, renderFullscreen } from '../fullscreen.ts';
 import fullscreen from '../../wgsl/fullscreen.wgsl';
+import { createCircularDof } from './circular.ts';
+import { createGatherDof } from './gather.ts';
 import { createHexagonDof } from './hexagon.ts';
+import { createLayersDof, createTiltShiftDof } from './layers.ts';
+import { createSpriteDof } from './sprites.ts';
 import type { DofMethodFactory } from './types.ts';
 
 export * from './types.ts';
@@ -42,6 +46,11 @@ const createSharp: DofMethodFactory = (device) => {
 export const DOF_METHODS = {
   sharp: createSharp,
   hexagon: createHexagonDof,
+  gather: createGatherDof,
+  circular: createCircularDof,
+  sprites: createSpriteDof,
+  layers: createLayersDof,
+  'tilt-shift': createTiltShiftDof,
 } as const satisfies Record<string, DofMethodFactory>;
 
 export type DofMethodId = keyof typeof DOF_METHODS;

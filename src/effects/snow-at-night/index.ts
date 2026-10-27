@@ -7,6 +7,7 @@ import { createRandom } from '../../gpu/random.ts';
 import { withChunks } from '../../gpu/shader.ts';
 import { createUniformBuffer, defineUniformStruct } from '../../gpu/uniforms.ts';
 import { defineEffect } from '../types.ts';
+import { rotateHue } from './hue.ts';
 import { meta } from './meta.ts';
 import shader from './night.wgsl';
 
@@ -91,6 +92,7 @@ export const effect = defineEffect({
       options: Object.keys(LAMPS),
       label: 'lamp colour',
     },
+    hue: { type: 'number', default: 0, min: -180, max: 180, step: 1, label: 'lamp hue (°)' },
     ...APERTURE_PARAMS,
     ...TAIL_PARAMS,
     bloom: { ...TAIL_PARAMS.bloom, default: 0.7 },
@@ -145,7 +147,7 @@ export const effect = defineEffect({
         };
         const lens = lensFromCamera(camera);
         const f = focalLengthPx(camera);
-        const lampColour = LAMPS[params.colour] ?? LAMPS.sodium!;
+        const lampColour = rotateHue(LAMPS[params.colour] ?? LAMPS.sodium!, params.hue);
         // A flake's light: the lamp's falling on it (inverse square) and a little sky, scattered
         // towards the lens and falling off with the flake's own distance, scaled by its size.
         const scale = 0.5 * Math.PI * (0.03 * height) ** 2;

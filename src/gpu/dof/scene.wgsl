@@ -15,13 +15,14 @@
 //
 // Units are metres; the camera is at the origin looking along +z, x to the right and y down. A
 // pixel's pinhole ray is (x, y, 1) with x, y its offset from the centre in view heights times
-// `view_scale`. The lens radius is chosen so a point at depth z blurs to exactly
+// `view_scale`. The whole camera, lens and all, can be moved `pan` metres to the right. The lens radius is chosen so a point at depth z blurs to exactly
 // `blur_at_infinity * (1 - focus / z)` pixels, the model in src/gpu/optics/lens.ts.
 //
 // The shot (`scene` 0): a sharp subject card at 2.5 m, a dark post and rail at 0.9 m in front of it,
 // a neon sign at 6 m, a lit block at 12 m, a string of bulbs at 18 m, a city of windows and point
 // lights at 60 m, and a road from under the camera to the city. `scene` 1 is one bright point at
-// `point_depth`, for checking the reference against the lens model.
+// `point_depth`, for checking the reference against the lens model. `scene` 2 is the edges shot
+// (story 3.8): three depths with hard edges between them, see `edges_trace`.
 
 @group(0) @binding(0) var<uniform> view: DofView;
 
@@ -105,8 +106,51 @@ fn city(p: vec2f) -> vec3f {
   return c;
 }
 
+/// The edges shot (story 3.8): the three classic failures of a post-process depth of field, each
+/// made by focusing on one of three planes.
+///
+///   30 m  a wall of bright lamps on dim blue.
+///   3 m   a striped panel over the left of the frame, with a row of small LEDs; its right edge is
+///         a hard vertical line against the wall.
+///   1 m   a grey post just right of the panel's edge, over the wall, with a warm stripe and a
+///         bright bulb near its top, and a dark rail across the whole frame.
+///
+/// Focused at 1 m, the blurred panel and wall must not halo the sharp post. Focused at 3 m, the
+/// blurred post must spread over the sharp panel edge and the wall without the wall leaking
+/// through it. Focused at 30 m, both nearer planes blur over the lamps.
+fn edges_trace(o: vec3f, d: vec3f) -> Hit {
+  // The wall.
+  var p = (o + d * ((30.0 - o.z) / d.z)).xy;
+  let cell = floor(p / 0.8);
+  let lamp = disc_mask(p - (cell + 0.5) * 0.8, 0.05) * select(0.0, 1.0, ihash_2to1(vec2i(cell)) > 0.4);
+  var best = Hit(vec3f(0.004, 0.006, 0.016) + vec3f(50.0, 36.0, 22.0) * lamp, 30.0);
+  // The panel.
+  p = (o + d * ((3.0 - o.z) / d.z)).xy;
+  if (p.x < 0.1 && abs(p.y) < 0.5) {
+    let stripe = select(0.02, 0.6, fract(p.x / 0.06) < 0.5);
+    let led = disc_mask(vec2f(p.x - 0.05 * round(p.x / 0.05), p.y + 0.12), 0.006);
+    best = Hit(vec3f(stripe) * vec3f(0.9, 0.95, 1.0) + vec3f(4.0, 18.0, 24.0) * led, 3.0);
+  }
+  // The post and rail.
+  p = (o + d * ((1.0 - o.z) / d.z)).xy;
+  let post = p.x > 0.045 && p.x < 0.075 && p.y > -0.2;
+  let rail = abs(p.y - 0.035) < 0.006;
+  if (post || rail) {
+    var c = vec3f(0.01);
+    if (post) {
+      c = vec3f(0.15, 0.14, 0.13) + vec3f(1.2, 0.5, 0.15) * select(0.0, 1.0, abs(p.x - 0.052) < 0.003);
+      c += vec3f(40.0, 30.0, 18.0) * disc_mask(p - vec2f(0.06, -0.09), 0.006);
+    }
+    best = Hit(c, 1.0);
+  }
+  return best;
+}
+
 fn scene_trace(o: vec3f, d: vec3f) -> Hit {
   var best = Hit(vec3f(0.0), 1e9);
+  if (view.scene == 2u) {
+    return edges_trace(o, d);
+  }
   if (view.scene == 1u) {
     // One point of light, in the dark.
     let t = (view.point_depth - o.z) / d.z;
@@ -174,10 +218,10 @@ struct Sharp {
   for (var j = 0; j < 4; j++) {
     for (var i = 0; i < 4; i++) {
       let px = floor(in.position.xy) + (vec2f(f32(i), f32(j)) + 0.5) / 4.0;
-      sum += scene_trace(vec3f(0.0), pinhole_ray(px)).colour;
+      sum += scene_trace(vec3f(view.pan, 0.0, 0.0), pinhole_ray(px)).colour;
     }
   }
-  let centre = scene_trace(vec3f(0.0), pinhole_ray(in.position.xy));
+  let centre = scene_trace(vec3f(view.pan, 0.0, 0.0), pinhole_ray(in.position.xy));
   return Sharp(vec4f(sum / 16.0, 1.0), centre.depth);
 }
 
@@ -224,8 +268,8 @@ struct ReferenceVarying {
     let theta = 2.0 * APERTURE_PI * u.x;
     let reach = aperture_radius(theta, a);
     let lens = vec2f(cos(theta), sin(theta)) * sqrt(u.y) * reach * view.lens_radius;
-    let towards = pinhole_ray(floor(in.position.xy) + jitter) * view.focus;
-    let origin = vec3f(lens, 0.0);
+    let towards = pinhole_ray(floor(in.position.xy) + jitter) * view.focus + vec3f(view.pan, 0.0, 0.0);
+    let origin = vec3f(lens.x + view.pan, lens.y, 0.0);
     let hit = scene_trace(origin, normalize(towards - origin));
     let w = reach * reach;
     sum += hit.colour * w;

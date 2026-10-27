@@ -13,8 +13,15 @@ export default defineConfig({
     // registry lists eagerly, and a small one would otherwise be pasted into the first load.
     assetsInlineLimit: 0,
     rolldownOptions: {
-      // The gallery and the standalone page that places an effect on an ordinary page.
-      input: ['index.html', 'spectrum.html'],
+      // The gallery and the standalone pages that place an effect on an ordinary page.
+      input: [
+        'index.html',
+        'spectrum.html',
+        'snow.html',
+        'street.html',
+        'fireflies.html',
+        'lens.html',
+      ],
       output: {
         // Every effect's meta.ts is needed at once, by the gallery. Left alone, each becomes its
         // own tiny chunk (the effect's lazy chunk imports it too), which is one request per effect

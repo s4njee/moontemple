@@ -11,6 +11,15 @@ const NEAR = 0.5;
 const FAR = 14;
 /** A firefly's glow: a slow swell and fade, its width in seconds (the Gaussian's sigma). */
 const PULSE = 0.35;
+/**
+ * The glow's colour: a firefly's own yellow-green, or a warm white for a page that wants the
+ * swarm without the green. Both at about the same luminance, so switching does not change the
+ * brightness.
+ */
+const COLOURS: Record<string, readonly [number, number, number]> = {
+  firefly: [0.72, 1, 0.16],
+  'warm white': [1, 0.86, 0.66],
+};
 
 interface Firefly {
   /** Where it hovers, metres (x across the view at its depth, y down from eye level, z ahead). */
@@ -53,6 +62,7 @@ export const effect = defineEffect({
     wander: { type: 'number', default: 1, min: 0, max: 3, step: 0.05 },
     pointerFocus: { type: 'boolean', default: true, label: 'pointer moves focus' },
     brightness: { type: 'number', default: 1, min: 0, max: 4, step: 0.05 },
+    colour: { type: 'select', default: 'firefly', options: Object.keys(COLOURS) },
     ...APERTURE_PARAMS,
     ...TAIL_PARAMS,
     bloom: { ...TAIL_PARAMS.bloom, default: 0.9 },
@@ -63,6 +73,7 @@ export const effect = defineEffect({
     'focus near': { focus: 0.8 },
     'focus far': { focus: 9 },
     'deep focus': { fNumber: 11 },
+    'warm white': { colour: 'warm white' },
   },
 
   async create({ device, format, hdr, canvas, params, profiler }) {
@@ -105,6 +116,7 @@ export const effect = defineEffect({
 
         list.clear();
         const t = clock * params.wander;
+        const [cr, cg, cb] = COLOURS[params.colour] ?? COLOURS.firefly!;
         for (const fly of fireflies) {
           // Wandering: smooth noise in each direction, a metre or so either way, slower far off.
           const z = fly.z * (1 + 0.15 * noise1(t * 0.07 + fly.seed * 1.3, 3));
@@ -119,7 +131,7 @@ export const effect = defineEffect({
           const radius = camera.coc(z);
           if (!camera.visible(px, py, radius)) continue;
           const l = (scale * glow) / (z * z);
-          list.push(px, py, radius, 0.72 * l, l, 0.16 * l);
+          list.push(px, py, radius, cr * l, cg * l, cb * l);
         }
         list.upload(points);
         points.encode(

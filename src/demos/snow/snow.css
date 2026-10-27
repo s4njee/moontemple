@@ -1,0 +1,34 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Night snow" page: the shared backdrop page (../backdrop/page.css) in a blizzard's colours.
+ * The accent is the lamp's, set by main.ts from the toolbar, and it never turns round a wheel.
+ */
+
+:root {
+  --paper: #04050a;
+  --plate: #05060caa;
+  --text: #eef0f6;
+  --muted: #aeb3c4;
+  --faint: #7d8296;
+  --lamp: #ffa45c;
+  --hue: var(--lamp);
+}
+
+/* Without WebGPU: a still of the lamp's halo in the fog and a few flakes, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(
+      circle at 27% 16%,
+      #fff4e8 0 0.8%,
+      #ffa45c55 3%,
+      #ffa45c18 18%,
+      transparent 40%
+    ),
+    radial-gradient(circle at 62% 58%, #ffffff18 0 5vh, transparent calc(5vh + 1px)),
+    radial-gradient(circle at 18% 44%, #ffd6b040 0 1.2vh, transparent calc(1.2vh + 1px)),
+    radial-gradient(circle at 38% 24%, #ffd6b060 0 0.6vh, transparent calc(0.6vh + 1px)),
+    radial-gradient(circle at 80% 30%, #ffffff30 0 0.4vh, transparent calc(0.4vh + 1px)),
+    var(--paper);
+  background-attachment: fixed;
+}

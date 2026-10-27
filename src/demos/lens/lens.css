@@ -1,0 +1,26 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Through the lens" page: the shared backdrop page (../backdrop/page.css) in a night street's
+ * colours, with a vibrant red accent.
+ */
+
+:root {
+  --paper: #030308;
+  --plate: #05050caa;
+  --text: #eeeff7;
+  --muted: #afb2c8;
+  --faint: #7f829c;
+  --hue: #ff2e3f;
+}
+
+/* Without WebGPU: a still of the street's lamps as discs of two sizes, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(circle at 30% 34%, #ffb07040 0 5vh, transparent calc(5vh + 1px)),
+    radial-gradient(circle at 70% 34%, #ffb07040 0 5vh, transparent calc(5vh + 1px)),
+    radial-gradient(circle at 40% 46%, #ffb07066 0 2vh, transparent calc(2vh + 1px)),
+    radial-gradient(circle at 60% 46%, #ffb07066 0 2vh, transparent calc(2vh + 1px)),
+    radial-gradient(circle at 46% 62%, #8fb8ff44 0 3vh, transparent calc(3vh + 1px)), var(--paper);
+  background-attachment: fixed;
+}

@@ -21,7 +21,7 @@ const Params = defineUniformStruct('Params', {
 
 const VIEWS = ['split', 'method', 'reference', 'sharp', 'difference'] as const;
 const METHODS = Object.keys(DOF_METHODS) as DofMethodId[];
-const SHOTS: readonly DofShot[] = ['night', 'point'];
+const SHOTS: readonly DofShot[] = ['night', 'point', 'edges'];
 /** The aperture a hexagon-only method draws: blades at 30 degrees put its corners where its rays meet. */
 const HEXAGON: Partial<ApertureSettings> = {
   blades: 6,
@@ -84,6 +84,9 @@ export const effect = defineEffect({
     'foreground in focus': { focus: 0.9, fNumber: 2.8 },
     difference: { view: 'difference' },
     'one point': { shot: 'point', view: 'split' },
+    'edges: post in focus': { shot: 'edges', focus: 1 },
+    'edges: panel in focus': { shot: 'edges', focus: 3 },
+    'edges: lamps in focus': { shot: 'edges', focus: 30 },
   },
 
   async create({ device, format, hdr, canvas, params, profiler }) {

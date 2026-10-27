@@ -1,0 +1,26 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Fireflies" page: the shared backdrop page (../backdrop/page.css) in a meadow's colours at
+ * dusk, with the fireflies' warm white (main.ts asks the effect for it) as the accent.
+ */
+
+:root {
+  --paper: #030507;
+  --plate: #04060aaa;
+  --text: #eef2ec;
+  --muted: #adb6ad;
+  --faint: #7b857c;
+  --hue: #ffe2c2;
+}
+
+/* Without WebGPU: a still of a few fireflies glowing, near ones soft and far ones points, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(circle at 22% 58%, #ffe2c230 0 4.5vh, transparent calc(4.5vh + 1px)),
+    radial-gradient(circle at 70% 34%, #ffe2c226 0 3.5vh, transparent calc(3.5vh + 1px)),
+    radial-gradient(circle at 48% 70%, #ffe2c2aa 0 0.35vh, transparent 0.8vh),
+    radial-gradient(circle at 84% 62%, #ffe2c299 0 0.3vh, transparent 0.7vh),
+    radial-gradient(circle at 36% 40%, #ffe2c288 0 0.25vh, transparent 0.6vh), var(--paper);
+  background-attachment: fixed;
+}

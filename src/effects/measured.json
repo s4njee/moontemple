@@ -237,15 +237,31 @@
     ],
     "bundleKb": 22.9
   },
+  "photo-focus": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 1.44
+      }
+    ]
+  },
   "snow-at-night": {
     "gpuMs": [
       {
         "device": "Apple M1 Max",
         "deviceClass": "apple-silicon",
         "method": "marginal",
-        "ms": 0.52
+        "ms": 0.55
+      },
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "browser-span",
+        "ms": 0.83
       }
     ],
-    "bundleKb": 21.3
+    "bundleKb": 24.5
   }
 }

@@ -1,0 +1,27 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Night street" page: the shared backdrop page (../backdrop/page.css) in a city's colours,
+ * with one neon accent that stays put.
+ */
+
+:root {
+  --paper: #05040a;
+  --plate: #06050caa;
+  --text: #f0eef6;
+  --muted: #b4afc6;
+  --faint: #827d98;
+  --hue: #ff4f9a;
+}
+
+/* Without WebGPU: a still of the street's lights as soft discs, in CSS. */
+body[data-state='fallback'] {
+  background:
+    radial-gradient(circle at 18% 30%, #ff8a2a55 0 4vh, transparent calc(4vh + 1px)),
+    radial-gradient(circle at 72% 22%, #ff3d8f44 0 3vh, transparent calc(3vh + 1px)),
+    radial-gradient(circle at 40% 64%, #e8eeff40 0 5vh, transparent calc(5vh + 1px)),
+    radial-gradient(circle at 82% 58%, #ff2a1a48 0 4.4vh, transparent calc(4.4vh + 1px)),
+    radial-gradient(circle at 58% 40%, #2ad8ff33 0 2.6vh, transparent calc(2.6vh + 1px)),
+    var(--paper);
+  background-attachment: fixed;
+}

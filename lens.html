@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030308" />
+    <title>Through the lens · Moon Temple lens model</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23030308'/%3E%3Cpolygon points='8,3 12.3,5.5 12.3,10.5 8,13 3.7,10.5 3.7,5.5' fill='none' stroke='%23ff2e3f' stroke-width='1.4'/%3E%3Ccircle cx='8' cy='8' r='1.4' fill='%23ffb070'/%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- lens-model fixed behind the whole page, as a site would use it: a night street drawn through
+       a camera lens, every lamp the aperture's shape at its own blur. The toolbar is the camera:
+       aperture, f-number, focal length and focus. The text sits on dark plates. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=lens-model">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 05 / HOW A LENS BLURS LIGHT</p>
+          <h1 id="title"><span class="plate">Through</span><span class="plate">the lens.</span></h1>
+          <p class="description plate">
+            Rows of street lamps and a railing of small lights, from half a metre to six hundred
+            metres away, drawn through a camera lens: every light becomes the aperture's shape at
+            its own blur while the focus walks out and back. Change the aperture, the f-number and
+            the focal length below. The light starts unconserved, the way a cheap blur draws it:
+            switch conserving light on to see the street as a lens would.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE STREET BEHIND IT</span
+          ><span>05 — A THIN LENS, AN APERTURE, A FOCUS</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE SHAPES COME FROM</p>
+          <h2 id="explanation-title" class="plate">One lens,<br />three numbers.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / BLUR</span>
+            <h3>Set by the lens.</h3>
+            <p>
+              A thin lens sends each point it is not focused on to a disc. The disc grows with the
+              aperture, which is the focal length over the f-number, and with how far the point is
+              from the focus. A long lens wide open blurs the most; stopped down to f/8 most of the
+              street comes sharp.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / SHAPE</span>
+            <h3>The shape is the aperture.</h3>
+            <p>
+              Each disc is the aperture itself, drawn at its blur: six straight blades make
+              hexagons, a soap-bubble lens a bright rim, a mirror lens a ring, and an old lens
+              vignetted at its edges cat's eyes that turn round the centre of the frame.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / LIGHT</span>
+            <h3>Blur keeps the light.</h3>
+            <p>
+              A blurred lamp spreads the same light over a wider disc, so it is dimmer per pixel and
+              no less bright in all. Switch that off and every disc keeps the brightness it had in
+              focus: the street turns to glare, the usual mistake of a blur drawn as a sprite.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=lens-model">Open the effect with every control ↗</a>
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Lens controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Opening the lens…</span>
+          <span id="lens-name">50 mm f/1.4</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="select-control"
+          >Aperture
+          <select id="aperture">
+            <option value="round" selected>Round</option>
+            <option value="hexagon">Hexagon</option>
+            <option value="zoom">Old zoom</option>
+            <option value="bubble">Soap bubble</option>
+            <option value="swirl">Swirly</option>
+            <option value="mirror">Mirror lens</option>
+          </select>
+        </label>
+        <label class="range-control"
+          >f/
+          <input id="f-number" type="range" min="1.2" max="16" step="0.1" value="1.4" />
+          <output id="f-number-value" for="f-number">1.4</output>
+        </label>
+        <label class="range-control"
+          >Lens
+          <input id="focal" type="range" min="18" max="135" step="1" value="50" />
+          <output id="focal-value" for="focal">50 mm</output>
+        </label>
+        <label class="range-control"
+          >Streams
+          <input id="rows" type="range" min="1" max="12" step="1" value="2" />
+          <output id="rows-value" for="rows">2</output>
+        </label>
+        <label class="check-control"><input id="walk" type="checkbox" checked /> Walk focus</label>
+        <label class="range-control"
+          >Focus
+          <input id="focus" type="range" min="0" max="1" step="0.001" value="0.216" />
+          <output id="focus-value" for="focus">1.5 m</output>
+        </label>
+        <label class="check-control"><input id="conserve" type="checkbox" /> Conserve light</label>
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/lens/main.ts"></script>
+  </body>
+</html>

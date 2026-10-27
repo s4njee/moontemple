@@ -14,18 +14,23 @@ import { meta as meta10 } from './hello/meta.ts';
 import { meta as meta11 } from './lens-light/meta.ts';
 import { meta as meta12 } from './lens-model/meta.ts';
 import { meta as meta13 } from './night-street/meta.ts';
-import { meta as meta14 } from './snow-at-night/meta.ts';
+import { meta as meta14 } from './photo-focus/meta.ts';
+import { meta as meta15 } from './snow-at-night/meta.ts';
 import poster0 from './aperture-lab/poster.webp?url';
 import poster1 from './bokeh-drift/poster.webp?url';
 import poster2 from './dof-lab/poster.webp?url';
 import poster3 from './dust-in-light/poster.webp?url';
 import poster4 from './fairy-lights/poster.webp?url';
 import poster5 from './fireflies/poster.webp?url';
+import poster6 from './flare-cursor/poster.webp?url';
 import poster7 from './focus-cursor/poster.webp?url';
+import poster8 from './glint-hover/poster.webp?url';
 import poster9 from './glitter/poster.webp?url';
 import poster10 from './hello/poster.webp?url';
+import poster11 from './lens-light/poster.webp?url';
 import poster12 from './lens-model/poster.webp?url';
 import poster13 from './night-street/poster.webp?url';
+import poster14 from './photo-focus/poster.webp?url';
 
 export const metas: readonly EffectMeta[] = [
   meta0,
@@ -43,6 +48,7 @@ export const metas: readonly EffectMeta[] = [
   meta12,
   meta13,
   meta14,
+  meta15,
 ];
 
 export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
@@ -60,6 +66,7 @@ export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
   'lens-light': () => import('./lens-light/index.ts').then((module) => module.effect),
   'lens-model': () => import('./lens-model/index.ts').then((module) => module.effect),
   'night-street': () => import('./night-street/index.ts').then((module) => module.effect),
+  'photo-focus': () => import('./photo-focus/index.ts').then((module) => module.effect),
   'snow-at-night': () => import('./snow-at-night/index.ts').then((module) => module.effect),
 };
 
@@ -70,9 +77,13 @@ export const posters: Readonly<Record<string, string>> = {
   'dust-in-light': poster3,
   'fairy-lights': poster4,
   fireflies: poster5,
+  'flare-cursor': poster6,
   'focus-cursor': poster7,
+  'glint-hover': poster8,
   glitter: poster9,
   hello: poster10,
+  'lens-light': poster11,
   'lens-model': poster12,
   'night-street': poster13,
+  'photo-focus': poster14,
 };
