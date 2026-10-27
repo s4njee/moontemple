@@ -25,6 +25,7 @@ export default defineConfig({
         'moon.html',
         'fog.html',
         'water.html',
+        'prism.html',
       ],
       output: {
         // Every effect's meta.ts is needed at once, by the gallery. Left alone, each becomes its

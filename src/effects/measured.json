@@ -135,6 +135,26 @@
       }
     ]
   },
+  "glass-badge": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 1.57
+      }
+    ]
+  },
+  "glass-solid": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 1.94
+      }
+    ]
+  },
   "glint-hover": {
     "bundleKb": 26.5,
     "gpuMs": [
@@ -247,6 +267,26 @@
       }
     ]
   },
+  "prism": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 1.64
+      }
+    ]
+  },
+  "prism-icosahedron": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 2.86
+      }
+    ]
+  },
   "snow-at-night": {
     "gpuMs": [
       {
@@ -263,5 +303,35 @@
       }
     ],
     "bundleKb": 24.5
+  },
+  "spectral-bokeh": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.5
+      }
+    ]
+  },
+  "spectral-halo": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.79
+      }
+    ]
+  },
+  "wire-loader": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.9
+      }
+    ]
   }
 }

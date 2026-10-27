@@ -11,23 +11,30 @@ import { meta as meta7 } from './fireflies/meta.ts';
 import { meta as meta8 } from './flare-cursor/meta.ts';
 import { meta as meta9 } from './focus-cursor/meta.ts';
 import { meta as meta10 } from './focus-pull/meta.ts';
-import { meta as meta11 } from './glint-hover/meta.ts';
-import { meta as meta12 } from './glitter/meta.ts';
-import { meta as meta13 } from './halation-text/meta.ts';
-import { meta as meta14 } from './hello/meta.ts';
-import { meta as meta15 } from './ice-halo/meta.ts';
-import { meta as meta16 } from './lamp-in-fog/meta.ts';
-import { meta as meta17 } from './lens-light/meta.ts';
-import { meta as meta18 } from './lens-model/meta.ts';
-import { meta as meta19 } from './light-leak/meta.ts';
-import { meta as meta20 } from './lunar-corona/meta.ts';
-import { meta as meta21 } from './moon-through-cloud/meta.ts';
-import { meta as meta22 } from './moonbow/meta.ts';
-import { meta as meta23 } from './moonlit-water/meta.ts';
-import { meta as meta24 } from './night-street/meta.ts';
-import { meta as meta25 } from './photo-focus/meta.ts';
-import { meta as meta26 } from './rack-focus-transition/meta.ts';
-import { meta as meta27 } from './snow-at-night/meta.ts';
+import { meta as meta11 } from './glass-badge/meta.ts';
+import { meta as meta12 } from './glass-solid/meta.ts';
+import { meta as meta13 } from './glint-hover/meta.ts';
+import { meta as meta14 } from './glitter/meta.ts';
+import { meta as meta15 } from './halation-text/meta.ts';
+import { meta as meta16 } from './hello/meta.ts';
+import { meta as meta17 } from './ice-halo/meta.ts';
+import { meta as meta18 } from './lamp-in-fog/meta.ts';
+import { meta as meta19 } from './lens-light/meta.ts';
+import { meta as meta20 } from './lens-model/meta.ts';
+import { meta as meta21 } from './light-leak/meta.ts';
+import { meta as meta22 } from './lunar-corona/meta.ts';
+import { meta as meta23 } from './moon-through-cloud/meta.ts';
+import { meta as meta24 } from './moonbow/meta.ts';
+import { meta as meta25 } from './moonlit-water/meta.ts';
+import { meta as meta26 } from './night-street/meta.ts';
+import { meta as meta27 } from './photo-focus/meta.ts';
+import { meta as meta28 } from './prism/meta.ts';
+import { meta as meta29 } from './prism-icosahedron/meta.ts';
+import { meta as meta30 } from './rack-focus-transition/meta.ts';
+import { meta as meta31 } from './snow-at-night/meta.ts';
+import { meta as meta32 } from './spectral-bokeh/meta.ts';
+import { meta as meta33 } from './spectral-halo/meta.ts';
+import { meta as meta34 } from './wire-loader/meta.ts';
 import poster0 from './aperture-lab/poster.webp?url';
 import poster1 from './bokeh-drift/poster.webp?url';
 import poster2 from './bokeh-loader/poster.webp?url';
@@ -39,22 +46,29 @@ import poster7 from './fireflies/poster.webp?url';
 import poster8 from './flare-cursor/poster.webp?url';
 import poster9 from './focus-cursor/poster.webp?url';
 import poster10 from './focus-pull/poster.webp?url';
-import poster11 from './glint-hover/poster.webp?url';
-import poster12 from './glitter/poster.webp?url';
-import poster13 from './halation-text/poster.webp?url';
-import poster14 from './hello/poster.webp?url';
-import poster15 from './ice-halo/poster.webp?url';
-import poster16 from './lamp-in-fog/poster.webp?url';
-import poster17 from './lens-light/poster.webp?url';
-import poster18 from './lens-model/poster.webp?url';
-import poster19 from './light-leak/poster.webp?url';
-import poster20 from './lunar-corona/poster.webp?url';
-import poster21 from './moon-through-cloud/poster.webp?url';
-import poster22 from './moonbow/poster.webp?url';
-import poster23 from './moonlit-water/poster.webp?url';
-import poster24 from './night-street/poster.webp?url';
-import poster25 from './photo-focus/poster.webp?url';
-import poster26 from './rack-focus-transition/poster.webp?url';
+import poster11 from './glass-badge/poster.webp?url';
+import poster12 from './glass-solid/poster.webp?url';
+import poster13 from './glint-hover/poster.webp?url';
+import poster14 from './glitter/poster.webp?url';
+import poster15 from './halation-text/poster.webp?url';
+import poster16 from './hello/poster.webp?url';
+import poster17 from './ice-halo/poster.webp?url';
+import poster18 from './lamp-in-fog/poster.webp?url';
+import poster19 from './lens-light/poster.webp?url';
+import poster20 from './lens-model/poster.webp?url';
+import poster21 from './light-leak/poster.webp?url';
+import poster22 from './lunar-corona/poster.webp?url';
+import poster23 from './moon-through-cloud/poster.webp?url';
+import poster24 from './moonbow/poster.webp?url';
+import poster25 from './moonlit-water/poster.webp?url';
+import poster26 from './night-street/poster.webp?url';
+import poster27 from './photo-focus/poster.webp?url';
+import poster28 from './prism/poster.webp?url';
+import poster29 from './prism-icosahedron/poster.webp?url';
+import poster30 from './rack-focus-transition/poster.webp?url';
+import poster32 from './spectral-bokeh/poster.webp?url';
+import poster33 from './spectral-halo/poster.webp?url';
+import poster34 from './wire-loader/poster.webp?url';
 
 export const metas: readonly EffectMeta[] = [
   meta0,
@@ -85,6 +99,13 @@ export const metas: readonly EffectMeta[] = [
   meta25,
   meta26,
   meta27,
+  meta28,
+  meta29,
+  meta30,
+  meta31,
+  meta32,
+  meta33,
+  meta34,
 ];
 
 export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
@@ -99,6 +120,8 @@ export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
   'flare-cursor': () => import('./flare-cursor/index.ts').then((module) => module.effect),
   'focus-cursor': () => import('./focus-cursor/index.ts').then((module) => module.effect),
   'focus-pull': () => import('./focus-pull/index.ts').then((module) => module.effect),
+  'glass-badge': () => import('./glass-badge/index.ts').then((module) => module.effect),
+  'glass-solid': () => import('./glass-solid/index.ts').then((module) => module.effect),
   'glint-hover': () => import('./glint-hover/index.ts').then((module) => module.effect),
   glitter: () => import('./glitter/index.ts').then((module) => module.effect),
   'halation-text': () => import('./halation-text/index.ts').then((module) => module.effect),
@@ -115,9 +138,14 @@ export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
   'moonlit-water': () => import('./moonlit-water/index.ts').then((module) => module.effect),
   'night-street': () => import('./night-street/index.ts').then((module) => module.effect),
   'photo-focus': () => import('./photo-focus/index.ts').then((module) => module.effect),
+  prism: () => import('./prism/index.ts').then((module) => module.effect),
+  'prism-icosahedron': () => import('./prism-icosahedron/index.ts').then((module) => module.effect),
   'rack-focus-transition': () =>
     import('./rack-focus-transition/index.ts').then((module) => module.effect),
   'snow-at-night': () => import('./snow-at-night/index.ts').then((module) => module.effect),
+  'spectral-bokeh': () => import('./spectral-bokeh/index.ts').then((module) => module.effect),
+  'spectral-halo': () => import('./spectral-halo/index.ts').then((module) => module.effect),
+  'wire-loader': () => import('./wire-loader/index.ts').then((module) => module.effect),
 };
 
 export const posters: Readonly<Record<string, string>> = {
@@ -132,20 +160,27 @@ export const posters: Readonly<Record<string, string>> = {
   'flare-cursor': poster8,
   'focus-cursor': poster9,
   'focus-pull': poster10,
-  'glint-hover': poster11,
-  glitter: poster12,
-  'halation-text': poster13,
-  hello: poster14,
-  'ice-halo': poster15,
-  'lamp-in-fog': poster16,
-  'lens-light': poster17,
-  'lens-model': poster18,
-  'light-leak': poster19,
-  'lunar-corona': poster20,
-  'moon-through-cloud': poster21,
-  moonbow: poster22,
-  'moonlit-water': poster23,
-  'night-street': poster24,
-  'photo-focus': poster25,
-  'rack-focus-transition': poster26,
+  'glass-badge': poster11,
+  'glass-solid': poster12,
+  'glint-hover': poster13,
+  glitter: poster14,
+  'halation-text': poster15,
+  hello: poster16,
+  'ice-halo': poster17,
+  'lamp-in-fog': poster18,
+  'lens-light': poster19,
+  'lens-model': poster20,
+  'light-leak': poster21,
+  'lunar-corona': poster22,
+  'moon-through-cloud': poster23,
+  moonbow: poster24,
+  'moonlit-water': poster25,
+  'night-street': poster26,
+  'photo-focus': poster27,
+  prism: poster28,
+  'prism-icosahedron': poster29,
+  'rack-focus-transition': poster30,
+  'spectral-bokeh': poster32,
+  'spectral-halo': poster33,
+  'wire-loader': poster34,
 };

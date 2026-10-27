@@ -444,6 +444,7 @@ export const CSS_FALLBACKS: Readonly<Record<string, CssFallbackConfig | null>> =
   },
 
   'lens-light': null,
+  'wire-loader': null,
 
   'lens-model': {
     seed: 29,
@@ -706,6 +707,10 @@ export const NO_CSS_FALLBACK: Readonly<Record<string, { reason: string; see?: st
   'aperture-lab': {
     reason:
       'The lab is the aperture: blade counts, f-numbers, the cat’s eye and the near row flipped through focus are its whole subject, and a CSS circle shows none of them. The contact sheet of apertures is the fallback.',
+  },
+  'wire-loader': {
+    reason:
+      'A CSS 3D cube of bordered faces can turn, but not an icosahedron, and the effect is in what CSS cannot do: hidden edges fading as the solid turns, light that stays even along every edge, corner flares and an HDR glow. A small looping video or the poster is the honest fallback.',
   },
   'lens-light': {
     reason:

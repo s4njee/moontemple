@@ -12,8 +12,8 @@
   </head>
   <!-- moonlit-water fixed behind the whole page, as a site would use it: the glitter path of a low
        moon on the sea, through a fast lens. The moon and its path stand on the right-hand third of
-       the page (water.css), so the text on the left sits on the dark sea and sky. The page passes
-       the pointer on: up the page pulls the focus out to sea. -->
+       the page (water.css), so the text on the left sits on the dark sea and sky. The page sweeps
+       the focus slowly out to sea and back. -->
   <body data-state="loading">
     <div id="stage" aria-hidden="true"></div>
 
@@ -32,10 +32,10 @@
           <p class="eyebrow plate">EXPERIMENT 08 / A PATH ACROSS THE SEA</p>
           <h1 id="title"><span class="plate">Moonlit</span><span class="plate">water.</span></h1>
           <p class="description plate">
-            A low full moon over a moving sea, through an 85 mm lens at f/1.8 focused a metre and a
-            half away. Every wave that tilts the moon's reflection towards you is a glint at its own
-            distance, so the moon's path becomes a river of soft discs. Move the pointer up the page
-            to pull the focus out to sea and turn the discs back into sparkle.
+            A low full moon over a breezy sea, through an 85 mm lens at f/1.8. Every ripple that
+            tilts the moon's reflection towards you is a glint at its own distance, so the moon's
+            path is a wide river of them. The focus sweeps slowly out to sea and back: close, the
+            glints blur into soft discs; far, they sharpen into sparkle.
           </p>
           <a class="button plate" href="#how-it-works">How it works ↓</a>
         </div>
@@ -96,12 +96,12 @@
       </div>
       <div class="toolbar-controls">
         <label class="check-control"
-          ><input id="follow" type="checkbox" checked /> Follow pointer</label
+          ><input id="sweep" type="checkbox" checked /> Sweep focus</label
         >
         <label class="range-control"
           >Focus
-          <input id="focus" type="range" min="0" max="1" step="0.001" value="0.141" />
-          <output id="focus-value" for="focus">1.5 m</output>
+          <input id="focus" type="range" min="0" max="1" step="0.001" value="0.22" />
+          <output id="focus-value" for="focus">2.5 m</output>
         </label>
         <label class="range-control"
           >Moon
@@ -114,11 +114,11 @@
         </label>
         <label class="range-control"
           >Swell
-          <input id="waves" type="range" min="0" max="2" step="0.01" value="0.6" />
+          <input id="waves" type="range" min="0" max="2" step="0.01" value="0" />
         </label>
         <label class="range-control"
           >Wind
-          <input id="wind" type="range" min="0" max="15" step="0.1" value="4" />
+          <input id="wind" type="range" min="0" max="15" step="0.1" value="12" />
         </label>
         <button id="pause" type="button" disabled>Pause</button>
       </div>

@@ -1,0 +1,910 @@
+{
+  "epic": "9",
+  "measuredAt": "2026-10-27T13:00:30.403Z",
+  "device": "Apple M1 Max",
+  "deviceClass": "apple-silicon",
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "device": "apple-m1-max",
+    "description": "Metal driver on macOS Version 26.6.2 (Build 25G83)"
+  },
+  "runtime": "Dawn (node webgpu bindings)",
+  "method": {
+    "metric": "GPU timestamps: frame span (first pass start to last pass end) and marginal cost per extra frame",
+    "warmupFrames": 12,
+    "rounds": 11,
+    "repeats": 4
+  },
+  "note": "Only this adapter was measured. spanMs includes the timing floor (see the \"(floor)\" rows); slopeMs is the cost of one more frame of the same work and is the number to compare by. A slope at or below zero means the work is below what this method can resolve.",
+  "rows": [
+    {
+      "effect": "(floor)",
+      "config": "one constant-colour pass",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.065536,
+      "slopeMs": 0.065536,
+      "slopeMinMs": 0.021845333333333338,
+      "slopeMaxMs": 0.3713706666666667,
+      "passes": 1,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(tail)",
+      "config": "constant scene + bloom + output",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.524288,
+      "slopeMs": 0.41506133333333334,
+      "slopeMinMs": 0.3713706666666667,
+      "slopeMaxMs": 0.8082773333333334,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "default",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 2.031616,
+      "slopeMs": 1.9442346666666668,
+      "slopeMinMs": 1.8568533333333332,
+      "slopeMaxMs": 2.7306666666666666,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset flint icosahedron",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.703936,
+      "slopeMs": 1.9879253333333333,
+      "slopeMinMs": 1.703936,
+      "slopeMaxMs": 2.534058666666667,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset three channels",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.441792,
+      "slopeMs": 1.5291733333333333,
+      "slopeMinMs": 1.3544106666666664,
+      "slopeMaxMs": 1.835008,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset crown",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.703936,
+      "slopeMs": 1.9223893333333333,
+      "slopeMinMs": 1.703936,
+      "slopeMaxMs": 2.8835840000000004,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset diamond",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 2.031616,
+      "slopeMs": 1.9879253333333333,
+      "slopeMinMs": 1.7913173333333334,
+      "slopeMaxMs": 2.1845333333333334,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset traced caustics",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.900544,
+      "slopeMs": 2.3156053333333335,
+      "slopeMinMs": 1.9660799999999998,
+      "slopeMaxMs": 2.7306666666666666,
+      "passes": 14,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset bubble",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.441792,
+      "slopeMs": 1.572864,
+      "slopeMinMs": 1.3762560000000004,
+      "slopeMaxMs": 1.9442346666666668,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset filmed glass",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.769472,
+      "slopeMs": 2.0753066666666666,
+      "slopeMinMs": 1.8568533333333335,
+      "slopeMaxMs": 2.3811413333333333,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset dodecahedron",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.6384,
+      "slopeMs": 1.572864,
+      "slopeMinMs": 1.3325653333333334,
+      "slopeMaxMs": 1.8350080000000002,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "default",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.441792,
+      "slopeMs": 1.6383999999999999,
+      "slopeMinMs": 1.419946666666667,
+      "slopeMaxMs": 4.303530666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset flint prism",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.441792,
+      "slopeMs": 1.6384,
+      "slopeMinMs": 1.4199466666666665,
+      "slopeMaxMs": 1.7476266666666669,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset crown glass",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.769472,
+      "slopeMs": 1.6602453333333331,
+      "slopeMinMs": 1.4417920000000002,
+      "slopeMaxMs": 1.900544,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset diamond",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 2.031616,
+      "slopeMs": 2.337450666666667,
+      "slopeMinMs": 1.7257813333333332,
+      "slopeMaxMs": 4.063232,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset hydrogen lamp",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.376256,
+      "slopeMs": 1.3544106666666667,
+      "slopeMinMs": 1.0048853333333334,
+      "slopeMaxMs": 2.7962026666666673,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset mercury lamp",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.114112,
+      "slopeMs": 1.1578026666666668,
+      "slopeMinMs": 0.9393493333333334,
+      "slopeMaxMs": 1.572864,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset wide slit",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.507328,
+      "slopeMs": 1.6165546666666668,
+      "slopeMinMs": 1.419946666666667,
+      "slopeMaxMs": 1.6602453333333334,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset turning wide",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.835008,
+      "slopeMs": 1.8568533333333332,
+      "slopeMinMs": 1.4199466666666665,
+      "slopeMaxMs": 2.534058666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "default",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.524288,
+      "slopeMs": 0.5024426666666667,
+      "slopeMinMs": 0.17476266666666662,
+      "slopeMaxMs": 0.8956586666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset fast lens",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.589824,
+      "slopeMs": 0.6772053333333333,
+      "slopeMinMs": 0.4369066666666667,
+      "slopeMaxMs": 0.851968,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset three channels",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.524288,
+      "slopeMs": 0.4805973333333333,
+      "slopeMinMs": 0.41506133333333334,
+      "slopeMaxMs": 0.8301226666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset singlet",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.31072,
+      "slopeMs": 1.1578026666666668,
+      "slopeMinMs": 0.6116693333333334,
+      "slopeMaxMs": 1.9442346666666668,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset red rim behind focus",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.31072,
+      "slopeMs": 1.245184,
+      "slopeMinMs": 1.0267306666666667,
+      "slopeMaxMs": 1.9660799999999998,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset no aberration",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.458752,
+      "slopeMs": 0.4150613333333333,
+      "slopeMinMs": 0.021845333333333272,
+      "slopeMaxMs": 0.8738133333333332,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset f/2.8",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 1.114112,
+      "slopeMs": 0.917504,
+      "slopeMinMs": 0.4369066666666666,
+      "slopeMaxMs": 1.3981013333333336,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset held focus",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.98304,
+      "slopeMs": 1.0922666666666665,
+      "slopeMinMs": 0.5898239999999999,
+      "slopeMaxMs": 1.4854826666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "sampling=spectral",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "sampling": "spectral"
+      },
+      "spanMs": 2.162688,
+      "slopeMs": 1.4854826666666667,
+      "slopeMinMs": 1.3325653333333334,
+      "slopeMaxMs": 1.7694720000000002,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "sampling=three-channel",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "sampling": "three-channel"
+      },
+      "spanMs": 1.441792,
+      "slopeMs": 1.2670293333333333,
+      "slopeMinMs": 1.1578026666666668,
+      "slopeMaxMs": 1.5291733333333333,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "resolution=0.25",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "resolution": 0.25
+      },
+      "spanMs": 1.703936,
+      "slopeMs": 1.5510186666666665,
+      "slopeMinMs": 0.9611946666666666,
+      "slopeMaxMs": 2.5122133333333334,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "resolution=0.5",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "resolution": 0.5
+      },
+      "spanMs": 2.228224,
+      "slopeMs": 1.4854826666666667,
+      "slopeMinMs": 1.3544106666666664,
+      "slopeMaxMs": 2.2282240000000004,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "resolution=1",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "resolution": 1
+      },
+      "spanMs": 4.128768,
+      "slopeMs": 3.9758506666666666,
+      "slopeMinMs": 3.8447786666666666,
+      "slopeMaxMs": 4.478293333333332,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "caustics=off",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "caustics": "off"
+      },
+      "spanMs": 1.703936,
+      "slopeMs": 1.5291733333333335,
+      "slopeMinMs": 1.3107199999999999,
+      "slopeMaxMs": 1.813162666666667,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "caustics=stand-in",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "caustics": "stand-in"
+      },
+      "spanMs": 1.900544,
+      "slopeMs": 1.5947093333333333,
+      "slopeMinMs": 1.4854826666666667,
+      "slopeMaxMs": 1.8568533333333332,
+      "passes": 13,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "caustics=traced",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "caustics": "traced"
+      },
+      "spanMs": 1.900544,
+      "slopeMs": 1.9879253333333333,
+      "slopeMinMs": 1.8786986666666667,
+      "slopeMaxMs": 2.184533333333334,
+      "passes": 14,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(floor)",
+      "config": "one constant-colour pass",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.065536,
+      "slopeMs": 0.043690666666666676,
+      "slopeMinMs": 0.02184533333333333,
+      "slopeMaxMs": 0.065536,
+      "passes": 1,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(tail)",
+      "config": "constant scene + bloom + output",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.393216,
+      "slopeMs": 0.3713706666666667,
+      "slopeMinMs": 0.262144,
+      "slopeMaxMs": 0.524288,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "default",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.048576,
+      "slopeMs": 0.851968,
+      "slopeMinMs": 0.6772053333333332,
+      "slopeMaxMs": 1.0048853333333334,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset flint icosahedron",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.376256,
+      "slopeMs": 1.2670293333333333,
+      "slopeMinMs": 1.0048853333333332,
+      "slopeMaxMs": 1.9660799999999998,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset three channels",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.376256,
+      "slopeMs": 1.0267306666666667,
+      "slopeMinMs": 0.851968,
+      "slopeMaxMs": 1.2233386666666668,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset crown",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.376256,
+      "slopeMs": 1.2014933333333333,
+      "slopeMinMs": 0.8956586666666667,
+      "slopeMaxMs": 1.6165546666666666,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset diamond",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.114112,
+      "slopeMs": 0.9611946666666666,
+      "slopeMinMs": 0.7427413333333334,
+      "slopeMaxMs": 3.4515626666666663,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset traced caustics",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.507328,
+      "slopeMs": 1.3544106666666667,
+      "slopeMinMs": 1.135957333333333,
+      "slopeMaxMs": 2.861738666666666,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset bubble",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.245184,
+      "slopeMs": 1.114112,
+      "slopeMinMs": 0.6553599999999999,
+      "slopeMaxMs": 2.271914666666667,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset filmed glass",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.245184,
+      "slopeMs": 1.245184,
+      "slopeMinMs": 0.8738133333333334,
+      "slopeMaxMs": 1.5947093333333333,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "preset dodecahedron",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.98304,
+      "slopeMs": 0.9393493333333334,
+      "slopeMinMs": 0.8082773333333333,
+      "slopeMaxMs": 1.1359573333333335,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "default",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.507328,
+      "slopeMs": 1.703936,
+      "slopeMinMs": 1.245184,
+      "slopeMaxMs": 4.041386666666667,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset flint prism",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.703936,
+      "slopeMs": 1.7913173333333337,
+      "slopeMinMs": 1.31072,
+      "slopeMaxMs": 3.342336,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset crown glass",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.6384,
+      "slopeMs": 1.8131626666666667,
+      "slopeMinMs": 1.3107199999999999,
+      "slopeMaxMs": 2.8180480000000006,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset diamond",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.6384,
+      "slopeMs": 1.31072,
+      "slopeMinMs": 0.9393493333333334,
+      "slopeMaxMs": 3.2768,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset hydrogen lamp",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.114112,
+      "slopeMs": 1.048576,
+      "slopeMinMs": 0.7427413333333334,
+      "slopeMaxMs": 1.4417919999999997,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset mercury lamp",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.179648,
+      "slopeMs": 1.2014933333333335,
+      "slopeMinMs": 0.9611946666666666,
+      "slopeMaxMs": 2.5122133333333334,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset wide slit",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.31072,
+      "slopeMs": 1.1359573333333335,
+      "slopeMinMs": 0.5024426666666667,
+      "slopeMaxMs": 1.5291733333333333,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "prism",
+      "config": "preset turning wide",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.179648,
+      "slopeMs": 1.3544106666666667,
+      "slopeMinMs": 0.8956586666666667,
+      "slopeMaxMs": 1.6820906666666666,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "default",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.917504,
+      "slopeMs": 0.851968,
+      "slopeMinMs": 0.7645866666666667,
+      "slopeMaxMs": 0.98304,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset fast lens",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.917504,
+      "slopeMs": 0.8738133333333332,
+      "slopeMinMs": 0.8082773333333333,
+      "slopeMaxMs": 1.0267306666666667,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset three channels",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.65536,
+      "slopeMs": 0.589824,
+      "slopeMinMs": 0.5461333333333332,
+      "slopeMaxMs": 0.6990506666666666,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset singlet",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.114112,
+      "slopeMs": 1.048576,
+      "slopeMinMs": 1.0048853333333334,
+      "slopeMaxMs": 1.1578026666666668,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset red rim behind focus",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 1.31072,
+      "slopeMs": 1.419946666666667,
+      "slopeMinMs": 0.9393493333333334,
+      "slopeMaxMs": 1.9442346666666666,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset no aberration",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.524288,
+      "slopeMs": 0.4805973333333333,
+      "slopeMinMs": 0.45875200000000005,
+      "slopeMaxMs": 0.6772053333333333,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset f/2.8",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.786432,
+      "slopeMs": 0.7208960000000001,
+      "slopeMinMs": 0.6553599999999999,
+      "slopeMaxMs": 0.7645866666666666,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "spectral-bokeh",
+      "config": "preset held focus",
+      "width": 1266,
+      "height": 585,
+      "spanMs": 0.917504,
+      "slopeMs": 0.8738133333333334,
+      "slopeMinMs": 0.8082773333333333,
+      "slopeMaxMs": 0.9830399999999999,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "sampling=spectral",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "sampling": "spectral"
+      },
+      "spanMs": 1.572864,
+      "slopeMs": 1.6602453333333334,
+      "slopeMinMs": 0.9611946666666666,
+      "slopeMaxMs": 2.4248320000000003,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "sampling=three-channel",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "sampling": "three-channel"
+      },
+      "spanMs": 1.572864,
+      "slopeMs": 1.2233386666666666,
+      "slopeMinMs": 1.0048853333333332,
+      "slopeMaxMs": 2.0753066666666666,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "resolution=0.25",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "resolution": 0.25
+      },
+      "spanMs": 1.507328,
+      "slopeMs": 1.3544106666666664,
+      "slopeMinMs": 0.8956586666666667,
+      "slopeMaxMs": 2.031616,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "resolution=0.5",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "resolution": 0.5
+      },
+      "spanMs": 1.441792,
+      "slopeMs": 1.4636373333333335,
+      "slopeMinMs": 1.0267306666666667,
+      "slopeMaxMs": 2.118997333333333,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "resolution=1",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "resolution": 1
+      },
+      "spanMs": 2.097152,
+      "slopeMs": 1.6165546666666668,
+      "slopeMinMs": 1.2670293333333331,
+      "slopeMaxMs": 2.0316159999999996,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "caustics=off",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "caustics": "off"
+      },
+      "spanMs": 1.179648,
+      "slopeMs": 0.8956586666666667,
+      "slopeMinMs": 0.7864319999999999,
+      "slopeMaxMs": 1.2014933333333333,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "caustics=stand-in",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "caustics": "stand-in"
+      },
+      "spanMs": 1.245184,
+      "slopeMs": 1.0048853333333332,
+      "slopeMinMs": 0.7208960000000001,
+      "slopeMaxMs": 1.572864,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "glass-solid",
+      "config": "caustics=traced",
+      "width": 1266,
+      "height": 585,
+      "params": {
+        "caustics": "traced"
+      },
+      "spanMs": 1.31072,
+      "slopeMs": 1.2888746666666666,
+      "slopeMinMs": 1.0704213333333332,
+      "slopeMaxMs": 2.424832,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    }
+  ]
+}

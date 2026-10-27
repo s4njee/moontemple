@@ -41,6 +41,19 @@ export const STUDY_SWEEPS: Readonly<Record<string, readonly StudyConfig[]>> = {
     ...sweep('dof-lab', 'method', DOF_METHOD_IDS, { view: 'method', focus: 40 }),
     ...sweep('dof-lab', 'samples', [8, 32], { view: 'reference', rays: 1e9 }),
   ],
+  '9': [
+    // 9.4: the glass body's cost by sampling and trace resolution; 9.5: caustics traced or not.
+    ...sweep('glass-solid', 'sampling', ['spectral', 'three-channel']),
+    ...sweep('glass-solid', 'resolution', [0.25, 0.5, 1]),
+    ...sweep('glass-solid', 'caustics', ['off', 'stand-in', 'traced']),
+  ],
+  '10': [
+    // 10.8: each piece of the showpiece on its own, by switching the others off.
+    ...sweep('prism-icosahedron', 'halo', [0, 0.45]),
+    ...sweep('prism-icosahedron', 'focus', [0, 0.035]),
+    ...sweep('prism-icosahedron', 'resolution', [0.25, 0.5, 1]),
+    ...sweep('prism-icosahedron', 'flares', [0, 0.9]),
+  ],
   '4': [
     // 4.1: the orbs' cost should follow their total area, count × blur².
     ...sweep('bokeh-drift', 'count', [50, 220, 440]),

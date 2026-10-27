@@ -1,0 +1,754 @@
+{
+  "points": {
+    "lens": {
+      "focus": 2,
+      "blurAtInfinity": 22.457416386920304
+    },
+    "size": [640, 400],
+    "rays": 16384,
+    "scores": {
+      "singlet x1": {
+        "channelShiftPx": {
+          "r": -1.66,
+          "g": 0.41,
+          "b": 3.43
+        },
+        "scores": {
+          "reference, another seed": {
+            "rmse": 4.34,
+            "ssim": 0.9885,
+            "chroma": 2.44
+          },
+          "none": {
+            "rmse": 13.01,
+            "ssim": 0.9479,
+            "chroma": 5.61
+          },
+          "3 channels": {
+            "rmse": 11.42,
+            "ssim": 0.953,
+            "chroma": 7.22
+          },
+          "8 wavelengths": {
+            "rmse": 3.36,
+            "ssim": 0.9922,
+            "chroma": 1.92
+          },
+          "16 wavelengths": {
+            "rmse": 3.18,
+            "ssim": 0.993,
+            "chroma": 1.78
+          }
+        },
+        "colours": {
+          "reference": {
+            "1.2 m": {
+              "rim": "orange",
+              "middle": "blue",
+              "rimBR": 0.36,
+              "middleBR": 2.092,
+              "rimG": 1.046,
+              "middleG": 0.831
+            },
+            "6 m": {
+              "rim": "cyan",
+              "middle": "orange",
+              "rimBR": 2.124,
+              "middleBR": 0.546,
+              "rimG": 1.342,
+              "middleG": 0.956
+            }
+          },
+          "3 channels": {
+            "1.2 m": {
+              "rim": "yellow",
+              "middle": "blue",
+              "rimBR": 0.058,
+              "middleBR": 2.077,
+              "rimG": 1.329,
+              "middleG": 0.849
+            },
+            "6 m": {
+              "rim": "cyan",
+              "middle": "orange",
+              "rimBR": 2.237,
+              "middleBR": 0.523,
+              "rimG": 1.283,
+              "middleG": 0.984
+            }
+          },
+          "8 wavelengths": {
+            "1.2 m": {
+              "rim": "yellow",
+              "middle": "blue",
+              "rimBR": 0.348,
+              "middleBR": 2.114,
+              "rimG": 1.076,
+              "middleG": 0.804
+            },
+            "6 m": {
+              "rim": "cyan",
+              "middle": "orange",
+              "rimBR": 2.145,
+              "middleBR": 0.536,
+              "rimG": 1.333,
+              "middleG": 0.963
+            }
+          }
+        }
+      },
+      "over-corrected singlet x1": {
+        "channelShiftPx": {
+          "r": 1.66,
+          "g": -0.41,
+          "b": -3.43
+        },
+        "scores": {
+          "reference, another seed": {
+            "rmse": 3.62,
+            "ssim": 0.991,
+            "chroma": 2.05
+          },
+          "none": {
+            "rmse": 12.65,
+            "ssim": 0.9504,
+            "chroma": 5.45
+          },
+          "3 channels": {
+            "rmse": 11.39,
+            "ssim": 0.9551,
+            "chroma": 7.32
+          },
+          "8 wavelengths": {
+            "rmse": 2.86,
+            "ssim": 0.9938,
+            "chroma": 1.67
+          },
+          "16 wavelengths": {
+            "rmse": 2.67,
+            "ssim": 0.9946,
+            "chroma": 1.5
+          }
+        },
+        "colours": {
+          "reference": {
+            "1.2 m": {
+              "rim": "cyan",
+              "middle": "orange",
+              "rimBR": 2.169,
+              "middleBR": 0.544,
+              "rimG": 1.321,
+              "middleG": 0.954
+            },
+            "6 m": {
+              "rim": "orange",
+              "middle": "blue",
+              "rimBR": 0.364,
+              "middleBR": 2.108,
+              "rimG": 1.05,
+              "middleG": 0.834
+            }
+          },
+          "3 channels": {
+            "1.2 m": {
+              "rim": "cyan",
+              "middle": "orange",
+              "rimBR": 2.278,
+              "middleBR": 0.523,
+              "rimG": 1.282,
+              "middleG": 0.984
+            },
+            "6 m": {
+              "rim": "yellow",
+              "middle": "blue",
+              "rimBR": 0.061,
+              "middleBR": 2.077,
+              "rimG": 1.333,
+              "middleG": 0.849
+            }
+          },
+          "8 wavelengths": {
+            "1.2 m": {
+              "rim": "cyan",
+              "middle": "orange",
+              "rimBR": 2.169,
+              "middleBR": 0.536,
+              "rimG": 1.334,
+              "middleG": 0.963
+            },
+            "6 m": {
+              "rim": "yellow",
+              "middle": "blue",
+              "rimBR": 0.35,
+              "middleBR": 2.11,
+              "rimG": 1.079,
+              "middleG": 0.806
+            }
+          }
+        }
+      },
+      "achromat x1": {
+        "channelShiftPx": {
+          "r": -0.19,
+          "g": -0.11,
+          "b": -0.43
+        },
+        "scores": {
+          "reference, another seed": {
+            "rmse": 1.58,
+            "ssim": 0.9944,
+            "chroma": 0.68
+          },
+          "none": {
+            "rmse": 2.75,
+            "ssim": 0.9951,
+            "chroma": 1.27
+          },
+          "3 channels": {
+            "rmse": 2.29,
+            "ssim": 0.9955,
+            "chroma": 1.22
+          },
+          "8 wavelengths": {
+            "rmse": 1.27,
+            "ssim": 0.9965,
+            "chroma": 0.55
+          },
+          "16 wavelengths": {
+            "rmse": 1.23,
+            "ssim": 0.9965,
+            "chroma": 0.5
+          }
+        },
+        "colours": {
+          "reference": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 1.043,
+              "middleBR": 0.971,
+              "rimG": 0.963,
+              "middleG": 1.027
+            },
+            "6 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 0.929,
+              "middleBR": 1.035,
+              "rimG": 1.062,
+              "middleG": 0.968
+            }
+          },
+          "3 channels": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 1.055,
+              "middleBR": 0.97,
+              "rimG": 0.956,
+              "middleG": 1.027
+            },
+            "6 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 0.933,
+              "middleBR": 1.033,
+              "rimG": 1.056,
+              "middleG": 0.971
+            }
+          },
+          "8 wavelengths": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 1.044,
+              "middleBR": 0.969,
+              "rimG": 0.958,
+              "middleG": 1.027
+            },
+            "6 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 0.926,
+              "middleBR": 1.037,
+              "rimG": 1.066,
+              "middleG": 0.961
+            }
+          }
+        }
+      },
+      "achromat x10": {
+        "channelShiftPx": {
+          "r": -1.9,
+          "g": -1.05,
+          "b": -4.35
+        },
+        "scores": {
+          "reference, another seed": {
+            "rmse": 3.38,
+            "ssim": 0.988,
+            "chroma": 2.14
+          },
+          "none": {
+            "rmse": 11.65,
+            "ssim": 0.9402,
+            "chroma": 4.94
+          },
+          "3 channels": {
+            "rmse": 11.1,
+            "ssim": 0.9434,
+            "chroma": 7.26
+          },
+          "8 wavelengths": {
+            "rmse": 3.49,
+            "ssim": 0.9871,
+            "chroma": 2.25
+          },
+          "16 wavelengths": {
+            "rmse": 2.69,
+            "ssim": 0.99,
+            "chroma": 1.7
+          }
+        },
+        "colours": {
+          "reference": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 0.89,
+              "middleBR": 0.842,
+              "rimG": 1.053,
+              "middleG": 1.159
+            },
+            "6 m": {
+              "rim": "green",
+              "middle": "blue",
+              "rimBR": 0.692,
+              "middleBR": 1.378,
+              "rimG": 1.4,
+              "middleG": 0.758
+            }
+          },
+          "3 channels": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "green",
+              "rimBR": 0.839,
+              "middleBR": 0.762,
+              "rimG": 1.028,
+              "middleG": 1.257
+            },
+            "6 m": {
+              "rim": "green",
+              "middle": "blue",
+              "rimBR": 0.007,
+              "middleBR": 1.515,
+              "rimG": 3.17,
+              "middleG": 0.702
+            }
+          },
+          "8 wavelengths": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 0.892,
+              "middleBR": 0.836,
+              "rimG": 1.058,
+              "middleG": 1.179
+            },
+            "6 m": {
+              "rim": "green",
+              "middle": "blue",
+              "rimBR": 0.701,
+              "middleBR": 1.405,
+              "rimG": 1.449,
+              "middleG": 0.725
+            }
+          }
+        }
+      },
+      "secondary x10": {
+        "channelShiftPx": {
+          "r": -1.93,
+          "g": -0.9,
+          "b": -2.3
+        },
+        "scores": {
+          "reference, another seed": {
+            "rmse": 2.62,
+            "ssim": 0.9939,
+            "chroma": 1.64
+          },
+          "none": {
+            "rmse": 9.66,
+            "ssim": 0.9739,
+            "chroma": 2.58
+          },
+          "3 channels": {
+            "rmse": 8.01,
+            "ssim": 0.9768,
+            "chroma": 3.62
+          },
+          "8 wavelengths": {
+            "rmse": 2.15,
+            "ssim": 0.9953,
+            "chroma": 1.27
+          },
+          "16 wavelengths": {
+            "rmse": 1.93,
+            "ssim": 0.996,
+            "chroma": 1.19
+          }
+        },
+        "colours": {
+          "reference": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 1.004,
+              "middleBR": 0.962,
+              "rimG": 0.993,
+              "middleG": 1.131
+            },
+            "6 m": {
+              "rim": "green",
+              "middle": "white",
+              "rimBR": 0.903,
+              "middleBR": 1.08,
+              "rimG": 1.457,
+              "middleG": 0.794
+            }
+          },
+          "3 channels": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 0.998,
+              "middleBR": 0.957,
+              "rimG": 0.925,
+              "middleG": 1.156
+            },
+            "6 m": {
+              "rim": "green",
+              "middle": "white",
+              "rimBR": 0.75,
+              "middleBR": 1.059,
+              "rimG": 1.977,
+              "middleG": 0.835
+            }
+          },
+          "8 wavelengths": {
+            "1.2 m": {
+              "rim": "white",
+              "middle": "white",
+              "rimBR": 1,
+              "middleBR": 0.965,
+              "rimG": 0.998,
+              "middleG": 1.143
+            },
+            "6 m": {
+              "rim": "green",
+              "middle": "white",
+              "rimBR": 0.902,
+              "middleBR": 1.064,
+              "rimG": 1.518,
+              "middleG": 0.774
+            }
+          }
+        }
+      }
+    }
+  },
+  "gather": {
+    "size": [640, 400],
+    "rays": 8192,
+    "scores": {
+      "singlet x1, fringe (focus 2 m)": {
+        "reference, another seed": {
+          "rmse": 7.11,
+          "ssim": 0.975,
+          "chroma": 3.94
+        },
+        "reference without the aberration": {
+          "rmse": 14.62,
+          "ssim": 0.9189,
+          "chroma": 6.96
+        },
+        "sharp": {
+          "rmse": 42.41,
+          "ssim": 0.8128,
+          "chroma": 6.98
+        },
+        "gather, none": {
+          "rmse": 16.54,
+          "ssim": 0.8461,
+          "chroma": 6.98
+        },
+        "gather, 3 channels": {
+          "rmse": 17.06,
+          "ssim": 0.8391,
+          "chroma": 7.61
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 18.27,
+          "ssim": 0.7746,
+          "chroma": 6.15
+        }
+      },
+      "singlet x1, fringe-bars (focus 2 m)": {
+        "reference, another seed": {
+          "rmse": 1.28,
+          "ssim": 0.9977,
+          "chroma": 0.87
+        },
+        "reference without the aberration": {
+          "rmse": 6.68,
+          "ssim": 0.9702,
+          "chroma": 4
+        },
+        "sharp": {
+          "rmse": 31.92,
+          "ssim": 0.8917,
+          "chroma": 4.01
+        },
+        "gather, none": {
+          "rmse": 6.57,
+          "ssim": 0.9442,
+          "chroma": 4.01
+        },
+        "gather, 3 channels": {
+          "rmse": 6,
+          "ssim": 0.9415,
+          "chroma": 2.79
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 6.61,
+          "ssim": 0.9209,
+          "chroma": 2.13
+        }
+      },
+      "singlet x1, night (focus 2.5 m)": {
+        "reference, another seed": {
+          "rmse": 5.59,
+          "ssim": 0.9684,
+          "chroma": 3.74
+        },
+        "reference without the aberration": {
+          "rmse": 15.34,
+          "ssim": 0.9155,
+          "chroma": 6.76
+        },
+        "sharp": {
+          "rmse": 46.2,
+          "ssim": 0.5706,
+          "chroma": 9.59
+        },
+        "gather, none": {
+          "rmse": 17.82,
+          "ssim": 0.8764,
+          "chroma": 7.66
+        },
+        "gather, 3 channels": {
+          "rmse": 13.81,
+          "ssim": 0.889,
+          "chroma": 6.69
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 11.98,
+          "ssim": 0.9113,
+          "chroma": 4.95
+        }
+      },
+      "singlet x1, edges (focus 3 m)": {
+        "reference, another seed": {
+          "rmse": 7.39,
+          "ssim": 0.9693,
+          "chroma": 4.67
+        },
+        "reference without the aberration": {
+          "rmse": 22.75,
+          "ssim": 0.8123,
+          "chroma": 9.34
+        },
+        "sharp": {
+          "rmse": 50.72,
+          "ssim": 0.6179,
+          "chroma": 11.41
+        },
+        "gather, none": {
+          "rmse": 25.03,
+          "ssim": 0.7979,
+          "chroma": 10.3
+        },
+        "gather, 3 channels": {
+          "rmse": 19.43,
+          "ssim": 0.8444,
+          "chroma": 9.56
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 16.59,
+          "ssim": 0.902,
+          "chroma": 5.92
+        }
+      },
+      "achromat x10, fringe (focus 2 m)": {
+        "reference, another seed": {
+          "rmse": 5.4,
+          "ssim": 0.9756,
+          "chroma": 3.41
+        },
+        "reference without the aberration": {
+          "rmse": 14.31,
+          "ssim": 0.9038,
+          "chroma": 6.29
+        },
+        "sharp": {
+          "rmse": 42.79,
+          "ssim": 0.7882,
+          "chroma": 6.31
+        },
+        "gather, none": {
+          "rmse": 17.76,
+          "ssim": 0.8397,
+          "chroma": 6.31
+        },
+        "gather, 3 channels": {
+          "rmse": 15.36,
+          "ssim": 0.8652,
+          "chroma": 7.26
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 15.44,
+          "ssim": 0.8574,
+          "chroma": 4.45
+        }
+      },
+      "achromat x10, fringe-bars (focus 2 m)": {
+        "reference, another seed": {
+          "rmse": 1.33,
+          "ssim": 0.9972,
+          "chroma": 0.85
+        },
+        "reference without the aberration": {
+          "rmse": 8.45,
+          "ssim": 0.9582,
+          "chroma": 3.84
+        },
+        "sharp": {
+          "rmse": 32.74,
+          "ssim": 0.878,
+          "chroma": 3.84
+        },
+        "gather, none": {
+          "rmse": 7.74,
+          "ssim": 0.9487,
+          "chroma": 3.84
+        },
+        "gather, 3 channels": {
+          "rmse": 6.38,
+          "ssim": 0.956,
+          "chroma": 3.57
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 5.74,
+          "ssim": 0.9541,
+          "chroma": 1.46
+        }
+      },
+      "achromat x10, night (focus 2.5 m)": {
+        "reference, another seed": {
+          "rmse": 2.36,
+          "ssim": 0.9914,
+          "chroma": 1.41
+        },
+        "reference without the aberration": {
+          "rmse": 11.77,
+          "ssim": 0.9596,
+          "chroma": 4.53
+        },
+        "sharp": {
+          "rmse": 44.09,
+          "ssim": 0.6051,
+          "chroma": 9
+        },
+        "gather, none": {
+          "rmse": 16.76,
+          "ssim": 0.8805,
+          "chroma": 5.56
+        },
+        "gather, 3 channels": {
+          "rmse": 13.08,
+          "ssim": 0.9106,
+          "chroma": 6.39
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 12.17,
+          "ssim": 0.9104,
+          "chroma": 3.86
+        }
+      },
+      "achromat x10, edges (focus 3 m)": {
+        "reference, another seed": {
+          "rmse": 2.57,
+          "ssim": 0.996,
+          "chroma": 1.51
+        },
+        "reference without the aberration": {
+          "rmse": 17.15,
+          "ssim": 0.9222,
+          "chroma": 7.87
+        },
+        "sharp": {
+          "rmse": 48.35,
+          "ssim": 0.7137,
+          "chroma": 11.28
+        },
+        "gather, none": {
+          "rmse": 23.91,
+          "ssim": 0.828,
+          "chroma": 8.5
+        },
+        "gather, 3 channels": {
+          "rmse": 19.27,
+          "ssim": 0.892,
+          "chroma": 8.86
+        },
+        "gather, 8 wavelengths": {
+          "rmse": 16.35,
+          "ssim": 0.8967,
+          "chroma": 4.29
+        }
+      }
+    }
+  },
+  "cost": {
+    "spectral-bokeh, defaults": {
+      "none": {
+        "ms": 0.677,
+        "metric": "gpu-timestamp"
+      },
+      "channels": {
+        "ms": 0.59,
+        "metric": "gpu-timestamp"
+      },
+      "wavelengths": {
+        "ms": 0.743,
+        "metric": "gpu-timestamp"
+      }
+    },
+    "gather, night shot": {
+      "none": {
+        "ms": 1.201,
+        "metric": "gpu-timestamp"
+      },
+      "3 channels": {
+        "ms": 3.386,
+        "metric": "gpu-timestamp"
+      },
+      "8 wavelengths": {
+        "ms": 9.481,
+        "metric": "gpu-timestamp"
+      }
+    }
+  }
+}

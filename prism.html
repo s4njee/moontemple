@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <title>Light, divided · Moon Temple prism</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23000'/%3E%3Cpath d='M1 9.6 6.4 8.4' stroke='%23fff' stroke-width='.8'/%3E%3Cpath d='M8 3.5 12 11.5H4z' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3Cpath d='M9.6 8.6 15 8.2v2.8z' fill='url(%23s)'/%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ff3b30'/%3E%3Cstop offset='.25' stop-color='%23ff9f0a'/%3E%3Cstop offset='.45' stop-color='%23ffd60a'/%3E%3Cstop offset='.65' stop-color='%2330d158'/%3E%3Cstop offset='.85' stop-color='%230a84ff'/%3E%3Cstop offset='1' stop-color='%23bf5af2'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+    />
+  </head>
+  <!-- prism fixed behind the whole page, as a site would use it: white light through a glass prism
+       fanning out into a spectrum, on black. A nod to a famous record sleeve of 1973: everything
+       but the light is black and white, and the one colour on the page is the spectrum itself. -->
+  <body data-state="loading">
+    <div id="stage" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark plate" href="./">MOON TEMPLE <span>FIELD STUDIES</span></a>
+      <nav class="plate" aria-label="Demo navigation">
+        <a href="#experiment">Experiment</a>
+        <a href="./?effect=prism">Gallery ↗</a>
+        <a href="#how-it-works">How it works ↓</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="experiment" class="experiment" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow plate">EXPERIMENT 09 / ONE BEAM, ONE PRISM</p>
+          <h1 id="title"><span class="plate">Light,</span><span class="plate">divided.</span></h1>
+          <p class="description plate">
+            A sheet of white light crosses a dark room, passes through a glass prism and comes out
+            the other side as every colour it was made of, red bent least and violet most. Every ray
+            is traced through the glass one wavelength at a time, so the band is exactly as wide as
+            the glass makes it.
+          </p>
+          <a class="button plate" href="#how-it-works">How it works ↓</a>
+        </div>
+
+        <div class="experiment-caption">
+          <span>THE PAGE IN FRONT / THE DARK ROOM BEHIND IT</span
+          ><span>09 — WHITE LIGHT, A FLINT GLASS PRISM</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="explanation" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <p class="eyebrow plate">WHERE THE COLOURS COME FROM</p>
+          <h2 id="explanation-title" class="plate">White is<br />every colour.</h2>
+        </div>
+        <div class="notes">
+          <article class="note plate">
+            <span class="note-number">01 / DISPERSION</span>
+            <h3>Glass bends blue more.</h3>
+            <p>
+              Light slows down in glass, and short wavelengths slow down most, so each colour turns
+              by a slightly different angle at each face. Through two faces of a prism the
+              difference adds up, and white light comes out as a fan of colours.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">02 / GLASS</span>
+            <h3>The glass sets the width.</h3>
+            <p>
+              Crown glass spreads the colours a little, heavy flint glass about twice as much, and
+              diamond more again. Switch the glass and the band on the wall narrows or widens, as it
+              did for Newton in 1666.
+            </p>
+          </article>
+          <article class="note plate">
+            <span class="note-number">03 / LAMPS</span>
+            <h3>Not every light is white.</h3>
+            <p>
+              A hot filament gives every colour, so its spectrum is a continuous band. A gas lamp
+              gives only a few: hydrogen four lines, mercury five, sodium one bright yellow pair.
+              The prism sorts whatever goes in.
+            </p>
+          </article>
+        </div>
+        <footer>
+          <a class="plate" href="./?effect=prism">Open the effect with every control ↗</a>
+          <span class="plate">Moon Temple / WebGPU / 2026</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="toolbar" aria-label="Prism controls">
+      <div class="live-status">
+        <i aria-hidden="true"></i>
+        <div>
+          <span id="status" role="status">Opening the slit…</span>
+          <span id="lamp-name">White light, flint glass</span>
+        </div>
+      </div>
+      <div class="toolbar-controls">
+        <label class="select-control"
+          >Glass
+          <select id="glass">
+            <option value="crown">Crown</option>
+            <option value="flint" selected>Flint</option>
+            <option value="diamond">Diamond</option>
+          </select>
+        </label>
+        <label class="select-control"
+          >Lamp
+          <select id="source">
+            <option value="white" selected>White</option>
+            <option value="hydrogen">Hydrogen</option>
+            <option value="mercury">Mercury</option>
+            <option value="sodium">Sodium</option>
+          </select>
+        </label>
+        <label class="range-control"
+          >Turn
+          <input id="sweep" type="range" min="0" max="20" step="0.5" value="18" />
+          <output id="sweep-value" for="sweep">±18°</output>
+        </label>
+        <label class="range-control"
+          >Haze
+          <input id="haze" type="range" min="0" max="0.2" step="0.005" value="0.1" />
+        </label>
+        <label class="range-control"
+          >Zoom
+          <input id="zoom" type="range" min="0.35" max="1.6" step="0.01" value="0.85" dir="rtl" />
+        </label>
+        <button id="pause" type="button" disabled>Pause</button>
+      </div>
+    </aside>
+
+    <script type="module" src="/src/demos/prism/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+@import '../backdrop/page.css';
+
+/*
+ * The "Light, divided" page: the shared backdrop page (../backdrop/page.css) in black and white,
+ * after a famous record sleeve of 1973. The only colour on the page is the spectrum: in the light
+ * behind it, and in one thin band under the hero and on the toolbar's dot.
+ */
+
+:root {
+  --paper: #000;
+  --plate: #000000b3;
+  --text: #f4f4f4;
+  --muted: #b4b4b4;
+  --faint: #7a7a7a;
+  --hue: #f4f4f4;
+  --spectrum: linear-gradient(
+    90deg,
+    #ff3b30,
+    #ff9f0a 20%,
+    #ffd60a 38%,
+    #30d158 56%,
+    #0a84ff 76%,
+    #bf5af2
+  );
+}
+
+body {
+  letter-spacing: 0.01em;
+}
+
+/* Thin, wide type: the sleeve's spare caption rather than a shout. */
+h1 {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+.eyebrow {
+  letter-spacing: 0.4em;
+}
+
+/* The spectrum, once: a thin band along the foot of the hero, above its caption. */
+.experiment-caption {
+  position: relative;
+  border-top: 0;
+}
+
+.experiment-caption::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--spectrum);
+}
+
+/* The toolbar's dot is a little spectrum too, not a colour of its own. */
+.live-status i {
+  background: conic-gradient(#ff3b30, #ffd60a, #30d158, #0a84ff, #bf5af2, #ff3b30);
+  box-shadow: none;
+}
+
+/* Without WebGPU: a still of the beam, the prism and the fan of colours, in CSS. */
+body[data-state='fallback'] {
+  background:
+    linear-gradient(-8deg, transparent 49.7%, #ffffff90 50%, transparent 50.3%) 0 0 / 48% 100%
+      no-repeat,
+    conic-gradient(
+        from 82deg at 58% 50%,
+        transparent 0deg,
+        #ff3b3060 2deg,
+        #ffd60a60 6deg,
+        #30d15860 10deg,
+        #0a84ff60 14deg,
+        #bf5af260 18deg,
+        transparent 20deg
+      )
+      no-repeat,
+    var(--paper);
+  background-attachment: fixed;
+}
+
+/* The sleeve's layout on a wide screen: the words in the dark on the left, the beam, the prism and
+   the fan of colours on the right. The effect draws a table-top room seen from an angle, with the
+   prism near its left, so behind the whole page the headline would sit right on it; instead the
+   canvas starts a third of the way across and the text keeps to that first third. Narrower than
+   1.4 : 1 the effect keeps the scene's width and shows more above and below, so prism and band stay
+   in frame. A fade at its left edge melts the room's dark into the page's black. */
+@media (min-width: 900px) {
+  #stage {
+    left: 34vw;
+  }
+
+  #stage::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3vw;
+    background: linear-gradient(90deg, var(--paper), transparent);
+    pointer-events: none;
+  }
+
+  .intro {
+    max-width: 29vw;
+  }
+
+  h1 {
+    font-size: clamp(48px, 5.6vw, 96px);
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
+
+/* Orbit controls (main.ts): over the room the pointer can grab it. */
+body[data-over-room='true'],
+body[data-orbiting] {
+  cursor: grab;
+}
+
+body[data-orbiting] {
+  cursor: grabbing;
+  user-select: none;
+}
