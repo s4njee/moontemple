@@ -6,7 +6,7 @@ A grid of eighteen lights stands at 40 m, far behind the focus, and a row of fiv
 
 ## Cost
 
-On an Apple M1 Max: 0.48 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), the tail alone. Twenty-three large discs. No Chrome reading.
+On an Apple M1 Max: 0.48 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), the tail alone. Twenty-three large discs. In Chrome, 0.81 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)).
 
 ## Pitfalls
 

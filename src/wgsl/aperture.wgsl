@@ -23,6 +23,15 @@
 // vignetting, the cat's eye of a fast lens, which swirls round the frame like a Petzval's. It
 // removes light, as it does in a lens.
 //
+// `obstruction` cuts a hole of that share of the radius out of the middle: the secondary mirror of a
+// catadioptric lens, whose bokeh is a ring. The hole is the shape scaled down, so the light left is
+// the area times 1 - obstruction^2, and the profile's mean over the ring (`profile_mean`, worked out
+// on the CPU) replaces its mean over the whole shape.
+//
+// With `use_table` the radius at each angle comes from `table`, 64 radii at even angles from +x
+// towards +y (src/gpu/optics/shapes.ts): any outline star-shaped about its centre, a heart, a star,
+// or a polygon baked rather than computed.
+//
 // Edges are a one-pixel linear ramp on an approximate distance. Steiner's formula gives that
 // ramp's integral for a convex shape exactly: area + pi / 12 px^2. Below a radius of about three
 // pixels no shape can be seen, so the light is the exact area of the pixel inside a disc instead,
@@ -45,12 +54,27 @@ struct Aperture {
   vignette: f32,
   /** Where the point sits, relative to the image centre, in half-diagonals (0 centre, 1 corner). */
   field: vec2f,
+  /** The hole in the middle, as a share of the radius; 0 for none. */
+  obstruction: f32,
+  /** The profile's mean over what is left of the shape. */
+  profile_mean: f32,
+  /** 1 to take the radius from `table`. */
+  use_table: f32,
+  table: array<vec4f, 16>,
 }
 
 const APERTURE_PI: f32 = 3.14159265358979;
 
 /// The shape's radius at angle `theta`, circumradius 1.
 fn aperture_radius(theta: f32, a: Aperture) -> f32 {
+  if (a.use_table > 0.5) {
+    // A value array can only be indexed by a constant; a copy in a variable can be indexed by any.
+    var table = a.table;
+    let f = fract(theta / (2.0 * APERTURE_PI)) * 64.0;
+    let i = u32(floor(f)) % 64u;
+    let j = (i + 1u) % 64u;
+    return mix(table[i / 4u][i % 4u], table[j / 4u][j % 4u], fract(f));
+  }
   if (a.blades < 3.0) {
     return 1.0;
   }
@@ -105,16 +129,21 @@ const APERTURE_MIN_RADIUS: f32 = 0.5;
 
 fn aperture_light(offset: vec2f, radius: f32, a: Aperture) -> f32 {
   let r = max(abs(radius), APERTURE_MIN_RADIUS);
+  // Where the drawn shape takes over from a plain disc. A drawn outline with notches (a star, a
+  // heart) needs more pixels before its one-pixel edge conserves light, and cannot be seen as
+  // itself any smaller anyway.
+  let lo = select(2.5, 6.0, a.use_table > 0.5);
+  let hi = select(4.0, 12.0, a.use_table > 0.5);
 
   // Small: the exact share of a disc inside this pixel.
   var small = 0.0;
-  if (r < 4.0) {
+  if (r < hi) {
     small = aperture_disc_area(offset.x - 0.5, offset.x + 0.5, offset.y - 0.5, offset.y + 0.5, r) /
       (APERTURE_PI * r * r);
   }
   // Large: the shape, its profile and the cat's eye, with a one-pixel edge.
   var large = 0.0;
-  if (r > 2.5) {
+  if (r > lo) {
     // In front of focus the image of the aperture is flipped.
     let p = select(offset, -offset, radius < 0.0) / r;
     let edge = aperture_radius(atan2(p.y, p.x), a);
@@ -122,7 +151,12 @@ fn aperture_light(offset: vec2f, radius: f32, a: Aperture) -> f32 {
     let inside = clamp(0.5 - (rho - 1.0) * edge * r, 0.0, 1.0);
     let clip = p + a.field * a.vignette * 1.2;
     let cat = clamp(0.5 - (length(clip) - 1.0) * r, 0.0, 1.0);
-    large = min(inside, cat) * aperture_profile(min(rho, 1.0), a) / (a.unit_area * r * r + APERTURE_PI / 12.0);
+    // The hole's edge is a ramp too. Steiner's term for the outer edge adds pi / 12; the hole's,
+    // with the opposite sense, takes it away again, so a ring's light is its area alone.
+    let k = a.obstruction;
+    let hole = select(1.0, clamp(0.5 + (rho - k) * edge * r, 0.0, 1.0), k > 0.0);
+    let area = a.unit_area * r * r * (1.0 - k * k) + select(APERTURE_PI / 12.0, 0.0, k > 0.0);
+    large = min(min(inside, cat), hole) * aperture_profile(min(rho, 1.0), a) / (a.profile_mean * area);
   }
-  return mix(small, large, smoothstep(2.5, 4.0, r));
+  return mix(small, large, smoothstep(lo, hi, r));
 }

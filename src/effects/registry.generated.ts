@@ -6,12 +6,26 @@ import { meta as meta2 } from './dof-lab/meta.ts';
 import { meta as meta3 } from './dust-in-light/meta.ts';
 import { meta as meta4 } from './fairy-lights/meta.ts';
 import { meta as meta5 } from './fireflies/meta.ts';
-import { meta as meta6 } from './focus-cursor/meta.ts';
-import { meta as meta7 } from './glitter/meta.ts';
-import { meta as meta8 } from './hello/meta.ts';
-import { meta as meta9 } from './lens-model/meta.ts';
-import { meta as meta10 } from './night-street/meta.ts';
-import { meta as meta11 } from './snow-at-night/meta.ts';
+import { meta as meta6 } from './flare-cursor/meta.ts';
+import { meta as meta7 } from './focus-cursor/meta.ts';
+import { meta as meta8 } from './glint-hover/meta.ts';
+import { meta as meta9 } from './glitter/meta.ts';
+import { meta as meta10 } from './hello/meta.ts';
+import { meta as meta11 } from './lens-light/meta.ts';
+import { meta as meta12 } from './lens-model/meta.ts';
+import { meta as meta13 } from './night-street/meta.ts';
+import { meta as meta14 } from './snow-at-night/meta.ts';
+import poster0 from './aperture-lab/poster.webp?url';
+import poster1 from './bokeh-drift/poster.webp?url';
+import poster2 from './dof-lab/poster.webp?url';
+import poster3 from './dust-in-light/poster.webp?url';
+import poster4 from './fairy-lights/poster.webp?url';
+import poster5 from './fireflies/poster.webp?url';
+import poster7 from './focus-cursor/poster.webp?url';
+import poster9 from './glitter/poster.webp?url';
+import poster10 from './hello/poster.webp?url';
+import poster12 from './lens-model/poster.webp?url';
+import poster13 from './night-street/poster.webp?url';
 
 export const metas: readonly EffectMeta[] = [
   meta0,
@@ -26,6 +40,9 @@ export const metas: readonly EffectMeta[] = [
   meta9,
   meta10,
   meta11,
+  meta12,
+  meta13,
+  meta14,
 ];
 
 export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
@@ -35,12 +52,27 @@ export const loaders: Readonly<Record<string, () => Promise<EffectModule>>> = {
   'dust-in-light': () => import('./dust-in-light/index.ts').then((module) => module.effect),
   'fairy-lights': () => import('./fairy-lights/index.ts').then((module) => module.effect),
   fireflies: () => import('./fireflies/index.ts').then((module) => module.effect),
+  'flare-cursor': () => import('./flare-cursor/index.ts').then((module) => module.effect),
   'focus-cursor': () => import('./focus-cursor/index.ts').then((module) => module.effect),
+  'glint-hover': () => import('./glint-hover/index.ts').then((module) => module.effect),
   glitter: () => import('./glitter/index.ts').then((module) => module.effect),
   hello: () => import('./hello/index.ts').then((module) => module.effect),
+  'lens-light': () => import('./lens-light/index.ts').then((module) => module.effect),
   'lens-model': () => import('./lens-model/index.ts').then((module) => module.effect),
   'night-street': () => import('./night-street/index.ts').then((module) => module.effect),
   'snow-at-night': () => import('./snow-at-night/index.ts').then((module) => module.effect),
 };
 
-export const posters: Readonly<Record<string, string>> = {};
+export const posters: Readonly<Record<string, string>> = {
+  'aperture-lab': poster0,
+  'bokeh-drift': poster1,
+  'dof-lab': poster2,
+  'dust-in-light': poster3,
+  'fairy-lights': poster4,
+  fireflies: poster5,
+  'focus-cursor': poster7,
+  glitter: poster9,
+  hello: poster10,
+  'lens-model': poster12,
+  'night-street': poster13,
+};

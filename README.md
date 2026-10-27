@@ -13,6 +13,8 @@ npm test           # lens and point-light tests, the WCAG 2.3.1 flash analyser a
 npm run build      # registry, typecheck, static build to dist/ and the bundle check
 npm run study -- --epic 4   # cost study on Dawn: docs/studies/epic-4.md and the Scorecard numbers
 npm run shot -- glitter --times 2   # render an effect headlessly to PNG (output/shots)
+npm run browser-check -- --report docs/studies/browser-check.md   # every effect in headless Chrome (dev server running)
+npm run posters -- --force   # fallback posters from held frames, as WebP
 ```
 
 `?effect=<id>` opens an effect, `&hud=1` the performance HUD, and `&p.<param>=<value>` sets a parameter.
@@ -23,7 +25,7 @@ npm run shot -- glitter --times 2   # render an effect headlessly to PNG (output
 
 | Id              | What                                                                                                                  | Tier |
 | --------------- | --------------------------------------------------------------------------------------------------------------------- | ---- |
-| `hello`         | The smallest effect: layers of drifting violet orbs under a haloed light                                              | A    |
+| `hello`         | The smallest effect: layers of drifting violet orbs under a haloed light                                              | B    |
 | `lens-model`    | A night street through a lens: the circle of confusion and every aperture shape, focus walking                        | A    |
 | `fairy-lights`  | Strings of bulbs at several depths behind a close focus, swaying and twinkling under the flash cap                    | A    |
 | `snow-at-night` | Snow past a street lamp in fog: specks far off, huge faint discs near the lens                                        | A    |
@@ -32,11 +34,14 @@ npm run shot -- glitter --times 2   # render an effect headlessly to PNG (output
 | `fireflies`     | Fireflies glowing on their own rhythms in depth; the pointer moves the plane of focus                                 | A    |
 | `dust-in-light` | Dust in a shaft of sunlight, the beam's glow in closed form                                                           | A    |
 | `aperture-lab`  | Every aperture shape and aberration, chosen with the pointer; the near field flipped                                  | A    |
+| `lens-light` | Colour fringes, halation, diffraction spikes, flare ghosts and an anamorphic streak, each on its own control | A |
+| `glint-hover` | Star glints on the corners of the page's buttons and cards nearest the pointer | A |
+| `flare-cursor` | The pointer as a light: spikes and aperture-shaped ghosts swinging through the centre | A |
 | `dof-lab`       | One night shot, the depth-of-field methods, and a reference traced through the whole lens; split and difference views | C    |
 | `focus-cursor`  | Floating lanterns, and a lens whose focus racks to whatever the pointer is on                                         | A    |
 | `bokeh-drift`   | The reference picture: orbs at many depths behind a close focus, keeping their light                                  | A    |
 
-Tiers come from `npm run study` on Dawn and HUD readings in Chrome on an Apple M1 Max (`src/effects/measured.json`, `docs/studies/`). No integrated GPU or phone has been measured, so they are provisional.
+Tiers come from `npm run study` on Dawn and `npm run browser-check` in Chrome on an Apple M1 Max (`src/effects/measured.json`, `docs/studies/`): the lowest tier both readings fit. No integrated GPU or phone has been measured, so they are provisional.
 
 ## Shared pieces
 

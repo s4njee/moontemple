@@ -16,32 +16,54 @@ Two limits on reading these numbers. Repeated runs of a light effect differ by u
 
 | Effect | Configuration | Passes | Span (ms) | Per frame (ms) | Range (ms) |
 | --- | --- | ---: | ---: | ---: | --- |
-| (floor) | one constant-colour pass | 1 | 0.07 | 0.07 | -0.11 to 0.26 |
-| (tail) | constant scene + bloom + output | 11 | 0.59 | 0.42 | 0.20 to 0.70 |
-| focus-cursor | default | 11 | 0.66 | 0.46 | -0.11 to 0.52 |
-| focus-cursor | preset f/1.4 | 11 | 0.72 | 0.39 | 0.31 to 0.55 |
-| focus-cursor | preset f/4 | 11 | 0.79 | 0.39 | 0.11 to 0.98 |
-| focus-cursor | preset slow focus motor | 11 | 0.72 | 0.37 | 0.20 to 0.57 |
-| focus-cursor | preset nine blades | 11 | 0.66 | 0.46 | 0.28 to 0.59 |
-| focus-cursor | preset lantern festival | 11 | 0.66 | 0.42 | 0.33 to 0.61 |
+| (floor) | one constant-colour pass | 1 | 0.07 | 0.07 | -0.17 to 0.42 |
+| (tail) | constant scene + bloom + output | 11 | 0.79 | 0.44 | 0.09 to 0.59 |
+| flare-cursor | default | 14 | 0.66 | 0.83 | 0.68 to 1.07 |
+| flare-cursor | preset modern lens | 14 | 0.66 | 0.83 | 0.72 to 1.07 |
+| flare-cursor | preset anamorphic | 14 | 1.38 | 0.66 | 0.22 to 0.87 |
+| flare-cursor | preset vintage zoom | 14 | 0.72 | 0.83 | 0.26 to 1.07 |
+| flare-cursor | preset clean light | 12 | 0.59 | 0.50 | 0.22 to 0.70 |
+| focus-cursor | default | 11 | 0.46 | 0.48 | 0.28 to 0.66 |
+| focus-cursor | preset f/1.4 | 11 | 0.52 | 0.44 | 0.28 to 0.68 |
+| focus-cursor | preset f/4 | 11 | 0.46 | 0.59 | 0.31 to 0.70 |
+| focus-cursor | preset slow focus motor | 11 | 0.59 | 0.48 | 0.17 to 0.68 |
+| focus-cursor | preset nine blades | 11 | 0.72 | 0.42 | 0.24 to 0.63 |
+| focus-cursor | preset lantern festival | 11 | 0.52 | 0.61 | 0.33 to 0.79 |
+| glint-hover | default | 12 | 0.59 | 0.55 | 0.39 to 0.81 |
+| glint-hover | preset white glint | 12 | 0.59 | 0.50 | 0.26 to 0.76 |
+| glint-hover | preset gold | 12 | 0.59 | 0.68 | 0.28 to 0.76 |
+| glint-hover | preset long spikes | 12 | 0.59 | 0.70 | 0.22 to 0.76 |
+| glint-hover | preset still glints | 12 | 0.72 | 0.52 | 0.24 to 0.72 |
 
 ## 960 × 540
 
 | Effect | Configuration | Passes | Span (ms) | Per frame (ms) | Range (ms) |
 | --- | --- | ---: | ---: | ---: | --- |
-| (floor) | one constant-colour pass | 1 | 0.00 | 0.07 | -0.15 to 0.20 |
-| (tail) | constant scene + bloom + output | 9 | 0.52 | 0.31 | 0.20 to 0.48 |
-| focus-cursor | default | 9 | 0.59 | 0.28 | 0.22 to 0.46 |
-| focus-cursor | preset f/1.4 | 9 | 0.39 | 0.33 | 0.13 to 0.44 |
-| focus-cursor | preset f/4 | 9 | 0.46 | 0.33 | 0.09 to 0.55 |
-| focus-cursor | preset slow focus motor | 9 | 0.46 | 0.35 | 0.11 to 0.52 |
-| focus-cursor | preset nine blades | 9 | 0.52 | 0.33 | 0.24 to 0.68 |
-| focus-cursor | preset lantern festival | 9 | 0.52 | 0.35 | 0.20 to 0.55 |
+| (floor) | one constant-colour pass | 1 | 0.07 | 0.04 | -0.17 to 0.11 |
+| (tail) | constant scene + bloom + output | 9 | 0.39 | 0.48 | 0.04 to 0.63 |
+| flare-cursor | default | 12 | 0.79 | 0.70 | 0.31 to 0.83 |
+| flare-cursor | preset modern lens | 12 | 0.59 | 0.59 | 0.35 to 0.79 |
+| flare-cursor | preset anamorphic | 12 | 0.66 | 0.57 | 0.46 to 0.81 |
+| flare-cursor | preset vintage zoom | 12 | 0.59 | 0.59 | 0.37 to 0.81 |
+| flare-cursor | preset clean light | 10 | 0.46 | 0.39 | 0.20 to 0.83 |
+| focus-cursor | default | 9 | 0.39 | 0.35 | 0.20 to 0.55 |
+| focus-cursor | preset f/1.4 | 9 | 0.66 | 0.35 | -0.44 to 0.94 |
+| focus-cursor | preset f/4 | 9 | 0.39 | 0.35 | -0.02 to 0.55 |
+| focus-cursor | preset slow focus motor | 9 | 0.39 | 0.42 | 0.31 to 0.70 |
+| focus-cursor | preset nine blades | 9 | 0.59 | 0.28 | 0.11 to 0.55 |
+| focus-cursor | preset lantern festival | 9 | 0.33 | 0.39 | 0.04 to 0.74 |
+| glint-hover | default | 10 | 0.39 | 0.46 | 0.26 to 0.61 |
+| glint-hover | preset white glint | 10 | 0.46 | 0.39 | 0.15 to 0.59 |
+| glint-hover | preset gold | 10 | 0.33 | 0.42 | 0.31 to 0.68 |
+| glint-hover | preset long spikes | 10 | 0.52 | 0.33 | 0.26 to 0.68 |
+| glint-hover | preset still glints | 10 | 0.46 | 0.39 | 0.07 to 0.76 |
 
 ## Download size
 
-What the page fetches to show the effect, beyond the first-load bundle (15.7 kB gzipped, no shaders).
+What the page fetches to show the effect, beyond the first-load bundle (20.8 kB gzipped, no shaders).
 
 | Effect | Chunks | Own chunk (kB gzip) | Total (kB gzip) |
 | --- | ---: | ---: | ---: |
-| focus-cursor | 7 | 1.4 | 20.2 |
+| flare-cursor | 10 | 1.2 | 27.1 |
+| focus-cursor | 10 | 1.4 | 23.0 |
+| glint-hover | 10 | 1.3 | 26.5 |

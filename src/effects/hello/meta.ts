@@ -4,7 +4,7 @@ export const meta: EffectMeta = {
   id: 'hello',
   title: 'Hello',
   epic: '1',
-  tier: 'A',
+  tier: 'B',
   tags: ['scaffold', 'bokeh'],
   summary:
     'The smallest effect: three layers of soft violet orbs drifting in the dark under one haloed light, in one fragment pass through the HDR tail. Every later effect starts from this shape.',

@@ -183,17 +183,38 @@ struct Sharp {
 
 @group(0) @binding(1) var previous: texture_2d<f32>;
 
-@fragment fn reference(in: FullscreenVarying) -> @location(0) vec4f {
+// The batch number comes in as the draw's first instance, not through the uniforms: several batches
+// can be encoded before one submit (a held frame traces the whole reference at once), and a uniform
+// written between them would reach every one with the last value.
+struct ReferenceVarying {
+  @builtin(position) position: vec4f,
+  @location(0) uv: vec2f,
+  @location(1) @interpolate(flat) batch: u32,
+}
+
+@vertex fn reference_vs(@builtin(vertex_index) index: u32, @builtin(instance_index) batch: u32) -> ReferenceVarying {
+  let corner = vec2f(f32((index << 1u) & 2u), f32(index & 2u));
+  var out: ReferenceVarying;
+  out.position = vec4f(corner * 2.0 - 1.0, 0.0, 1.0);
+  out.uv = vec2f(corner.x, 1.0 - corner.y);
+  out.batch = batch;
+  return out;
+}
+
+@fragment fn reference(in: ReferenceVarying) -> @location(0) vec4f {
   let pixel = vec2i(in.position.xy);
   // A different rotation of the low-discrepancy sequence for every pixel, so the noise of a
   // frame is spread out rather than repeated.
   let rotation = ihash_2to2(pixel + vec2i(91, 37));
-  var a = Aperture(view.blades, view.rotation, view.curvature, 1.0, 0.0, 0.0, 1.0, 0.0, vec2f(0.0));
+  // The reference draws blades only: no hole, no table.
+  var a = Aperture(
+    view.blades, view.rotation, view.curvature, 1.0, 0.0, 0.0, 1.0, 0.0, vec2f(0.0),
+    0.0, 1.0, 0.0, array<vec4f, 16>());
   var sum = vec3f(0.0);
   var weights = 0.0;
   let count = u32(view.samples);
   for (var i = 0u; i < count; i++) {
-    let n = f32(u32(view.batch) * count + i);
+    let n = f32(in.batch * count + i);
     // R2 sequence (Roberts): two irrational steps, well spread in the square.
     let u = fract(rotation + vec2f(0.7548776662, 0.5698402910) * n);
     let jitter = fract(vec2f(0.38196601, 0.61803399) * n + rotation.yx);
@@ -211,7 +232,7 @@ struct Sharp {
     weights += w;
   }
   let batch = sum / max(weights, 1e-6);
-  let k = view.batch;
+  let k = f32(in.batch);
   let before = textureLoad(previous, pixel, 0).rgb;
   return vec4f((before * k + batch) / (k + 1.0), 1.0);
 }

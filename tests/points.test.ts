@@ -89,6 +89,11 @@ describe('energy-conserving points', () => {
     ['soap bubble', { ...ROUND, rim: 0.8 }],
     ['soft edge', { ...ROUND, rim: -0.5 }],
     ['onion rings', { ...ROUND, rings: 0.2, ringCount: 5 }],
+    ['mirror lens ring', { ...ROUND, obstruction: 0.5 }],
+    ['ring with a rim', { ...ROUND, obstruction: 0.4, rim: 0.6 }],
+    ['heart', { ...ROUND, shape: 'heart' }],
+    ['star', { ...ROUND, shape: 'star' }],
+    ['baked hexagon', { ...ROUND, blades: 6, rotation: 15, baked: true }],
   ] as const)('keeps a point’s light at every size and offset: %s', async (_name, aperture) => {
     const device = await getTestDevice();
     const totals = await totalLight(device, sweep(RADII), aperture);
@@ -97,6 +102,44 @@ describe('energy-conserving points', () => {
       expect(total, `radius ${radius}`).toBeGreaterThan(0.98);
       expect(total, `radius ${radius}`).toBeLessThan(1.02);
     }
+  });
+
+  it('keeps each channel’s light with chromatic aberration, and spreads red and blue apart', async () => {
+    const device = await getTestDevice();
+    const layer = createPointLayer(device, { label: 'test', format: 'rgba16float' });
+    const texture = device.createTexture({
+      size: [SIZE, SIZE],
+      format: 'rgba16float',
+      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
+    });
+    // Off centre, out of focus, white: each channel's disc is its own size and place.
+    layer.setPoints(new Float32Array([110.3, 70.6, 14, 0, 1, 1, 1, 0]), 1);
+    const encoder = device.createCommandEncoder();
+    layer.encode(encoder, texture.createView(), {
+      width: SIZE,
+      height: SIZE,
+      aperture: ROUND,
+      clear: [0, 0, 0, 0],
+      chroma: { axial: 0.15, lateral: 0.03, blurAtInfinity: 30 },
+    });
+    device.queue.submit([encoder.finish()]);
+    const rgba = new Uint16Array((await readTexture(device, texture, 8)).buffer);
+    const totals = [0, 0, 0];
+    const spread = [0, 0, 0];
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        for (let c = 0; c < 3; c++) {
+          const v = half(rgba[(y * SIZE + x) * 4 + c]!);
+          totals[c] = totals[c]! + v;
+          spread[c] = spread[c]! + v * ((x + 0.5 - 110.3) ** 2 + (y + 0.5 - 70.6) ** 2);
+        }
+      }
+    }
+    texture.destroy();
+    layer.destroy();
+    for (let c = 0; c < 3; c++) expect(totals[c]!, `channel ${c}`).toBeCloseTo(1, 1);
+    // Behind focus (radius 14 of 30 at infinity), red focuses farther, so its disc is the smaller.
+    expect(spread[0]! / totals[0]!).toBeLessThan(spread[2]! / totals[2]!);
   });
 
   it("loses light to the cat's eye only away from the centre", async () => {

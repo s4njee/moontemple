@@ -5,7 +5,7 @@
  */
 import { createFullscreenPipeline, renderFullscreen } from '../fullscreen.ts';
 import type { PassProfiler } from '../profiler.ts';
-import { withChunks } from '../shader.ts';
+import { createShader, withChunks } from '../shader.ts';
 import { createPingPongTarget, createRenderTarget, type RenderTarget } from '../targets.ts';
 import { createUniformBuffer, defineUniformStruct } from '../uniforms.ts';
 import { apertureUniforms, type ApertureSettings } from '../optics/aperture.ts';
@@ -21,7 +21,6 @@ const DofView = defineUniformStruct('DofView', {
   rotation: 'f32',
   curvature: 'f32',
   samples: 'f32',
-  batch: 'f32',
   point_depth: 'f32',
   scene: 'u32',
 });
@@ -64,10 +63,17 @@ export function createDofScene(device: GPUDevice): DofScene {
     entryPoint: 'pinhole',
     format: ['rgba16float', 'r32float'],
   });
-  const referencePipeline = createFullscreenPipeline(device, {
-    fragment: source,
-    entryPoint: 'reference',
-    format: 'rgba32float',
+  // Its own vertex stage, which hands the fragment the batch number from the draw's first instance.
+  const referenceModule = createShader(device, source);
+  const referencePipeline = device.createRenderPipeline({
+    label: 'dof reference',
+    layout: 'auto',
+    vertex: { module: referenceModule, entryPoint: 'reference_vs' },
+    fragment: {
+      module: referenceModule,
+      entryPoint: 'reference',
+      targets: [{ format: 'rgba32float' }],
+    },
   });
   const usage =
     GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_SRC;
@@ -117,7 +123,6 @@ export function createDofScene(device: GPUDevice): DofScene {
       rotation: shape.rotation,
       curvature: shape.curvature,
       samples,
-      batch: batches,
       point_depth: current.pointDepth ?? 10,
       scene: current.shot === 'point' ? 1 : 0,
     });
@@ -166,9 +171,22 @@ export function createDofScene(device: GPUDevice): DofScene {
           { binding: 1, resource: accumulated.read.view },
         ],
       });
-      renderFullscreen(encoder, accumulated.write.view, referencePipeline, [group], {
+      const pass = encoder.beginRenderPass({
+        label: 'dof reference',
+        colorAttachments: [
+          {
+            view: accumulated.write.view,
+            loadOp: 'clear',
+            clearValue: [0, 0, 0, 0],
+            storeOp: 'store',
+          },
+        ],
         timestampWrites: profiler?.pass('reference'),
       });
+      pass.setPipeline(referencePipeline);
+      pass.setBindGroup(0, group);
+      pass.draw(3, 1, 0, batches);
+      pass.end();
       accumulated.swap();
       batches++;
     },

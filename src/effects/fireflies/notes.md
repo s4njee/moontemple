@@ -8,7 +8,7 @@ The plan's story 4.4 asked for GPU particles. A few hundred fireflies built on t
 
 ## Cost
 
-On an Apple M1 Max: 0.44 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), the tail alone; 0.13 ms of CPU a frame. No Chrome reading. Tier A on this machine, provisional.
+On an Apple M1 Max: 0.44 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), the tail alone; 0.13 ms of CPU a frame. In Chrome, 0.78 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)). Tier A on this machine, provisional.
 
 ## Pitfalls
 

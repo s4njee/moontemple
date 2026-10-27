@@ -21,6 +21,29 @@ fn airlight_integral(u: f32, a: f32) -> f32 {
   return sum * half;
 }
 
+/// Henyey–Greenstein phase, per steradian: `g` > 0 scatters forwards.
+fn henyey_greenstein(cos_angle: f32, g: f32) -> f32 {
+  return (1.0 - g * g) / (4.0 * _SCATTER_PI * pow(1.0 + g * g - 2.0 * g * cos_angle, 1.5));
+}
+
+/// The glow with forward scattering (story 2.8): the phase sits inside the same integral, at the
+/// angle cos(2 xi) the light turns through at each point. g = 0 is `airlight`.
+fn airlight_forward(gamma: f32, tau: f32, g: f32) -> f32 {
+  let x = array(0.1252334085, 0.3678314990, 0.5873179543, 0.7699026742, 0.9041172564, 0.9815606342);
+  let w = array(0.2491470458, 0.2334925365, 0.2031674267, 0.1600783285, 0.1069393260, 0.0471753364);
+  let s = max(sin(gamma), 1e-4);
+  let u = tau * s;
+  let half = 0.5 * (0.5 * _SCATTER_PI - 0.5 * gamma);
+  let mid = 0.5 * gamma + half;
+  var sum = 0.0;
+  for (var i = 0; i < 6; i++) {
+    let lo = mid - half * x[i];
+    let hi = mid + half * x[i];
+    sum += w[i] * (henyey_greenstein(cos(2.0 * lo), g) * exp(-u * tan(lo)) + henyey_greenstein(cos(2.0 * hi), g) * exp(-u * tan(hi)));
+  }
+  return 2.0 * tau * exp(-tau * cos(gamma)) / s * sum * half;
+}
+
 fn airlight(gamma: f32, tau: f32) -> f32 {
   let s = max(sin(gamma), 1e-4);
   return tau * exp(-tau * cos(gamma)) * airlight_integral(tau * s, 0.5 * gamma) / (2.0 * _SCATTER_PI * s);

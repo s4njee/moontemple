@@ -27,6 +27,9 @@ const APERTURES: readonly { name: string; aperture: ApertureSettings }[] = [
   { name: 'soft edge (under-corrected)', aperture: { ...PLAIN, rim: -0.5 } },
   { name: 'onion rings (aspherical)', aperture: { ...PLAIN, rings: 0.25, ringCount: 5 } },
   { name: "cat's eye (vignetting)", aperture: { ...PLAIN, vignette: 0.9 } },
+  { name: 'mirror lens (ring)', aperture: { ...PLAIN, obstruction: 0.55 } },
+  { name: 'heart', aperture: { ...PLAIN, shape: 'heart' } },
+  { name: 'star', aperture: { ...PLAIN, shape: 'star' } },
 ];
 
 /** How long the demo shows each aperture with no pointer, seconds. */
@@ -51,6 +54,8 @@ export const effect = defineEffect({
     'five blades': { aperture: 'five straight blades' },
     'soap bubble': { aperture: 'soap bubble (over-corrected)' },
     "cat's eye": { aperture: "cat's eye (vignetting)" },
+    'mirror lens': { aperture: 'mirror lens (ring)' },
+    heart: { aperture: 'heart' },
   },
 
   async create({ device, format, hdr, canvas, params, profiler }) {

@@ -6,7 +6,7 @@ The glinting facets go to the shared point layer as points of light: sharp where
 
 ## Cost
 
-On an Apple M1 Max: 0.50 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), about the tail alone: only a few hundred facets glint at once. The cost is on the CPU: testing 24 000 facets a frame takes about 2.7 ms of main-thread time (`experiments/cpu.test.ts`), more than the GPU spends. Doing the test on the GPU (a vertex stage that discards facets that do not glint) is the fix if this is shipped. No Chrome reading. Tier A for the GPU on this machine; the CPU time is the concern.
+On an Apple M1 Max: 0.50 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), about the tail alone: only a few hundred facets glint at once. The cost is on the CPU: testing 24 000 facets a frame takes about 2.7 ms of main-thread time (`experiments/cpu.test.ts`), more than the GPU spends. Doing the test on the GPU (a vertex stage that discards facets that do not glint) is the fix if this is shipped. In Chrome, 0.93 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)). Tier A for the GPU on this machine; the CPU time is the concern.
 
 ## Pitfalls
 

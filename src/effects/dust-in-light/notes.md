@@ -8,7 +8,7 @@ The motes are 2 500 points placed round the beam's axis, a little wider than the
 
 ## Cost
 
-On an Apple M1 Max: 0.48 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), the tail alone; 0.54 ms of CPU a frame for the motes. No Chrome reading. Tier A on this machine, provisional.
+On an Apple M1 Max: 0.48 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), the tail alone; 0.54 ms of CPU a frame for the motes. In Chrome, 0.82 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)). Tier A on this machine, provisional.
 
 ## Pitfalls
 

@@ -20,6 +20,7 @@ const Params = defineUniformStruct('Params', {
   light_pos: 'vec2f',
   light: 'f32',
   view_scale: 'f32',
+  forward: 'f32',
 });
 
 /** Each palette runs between two colours; an orb takes a random point between them. */
@@ -112,6 +113,14 @@ export const effect = defineEffect({
       step: 0.05,
       label: 'haze (optical depth)',
     },
+    forward: {
+      type: 'number',
+      default: 0,
+      min: 0,
+      max: 0.9,
+      step: 0.01,
+      label: 'haze scatters forwards',
+    },
     palette: { type: 'select', default: 'violet', options: [...Object.keys(PALETTES), 'rgb'] },
     cycle: {
       type: 'number',
@@ -136,6 +145,7 @@ export const effect = defineEffect({
     'swirly lens': { vignette: 0.9, count: 200, blur: 0.03 },
     'pulled focus': { focus: 6, count: 160 },
     'rgb sweep': { palette: 'rgb' },
+    'forward haze': { forward: 0.75, haze: 0.8 },
   },
 
   async create({ device, format, hdr, canvas, params, profiler }) {
@@ -257,6 +267,7 @@ export const effect = defineEffect({
           light_pos: LIGHT_POS,
           light: GLOW * params.light,
           view_scale: VIEW_SCALE,
+          forward: params.forward,
         });
         uniforms.upload();
         renderFullscreen(encoder, tail.scene.view, pipeline, [group], {

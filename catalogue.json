@@ -6,13 +6,13 @@
       "title": "Hello",
       "summary": "The smallest effect: three layers of soft violet orbs drifting in the dark under one haloed light, in one fragment pass through the HDR tail. Every later effect starts from this shape.",
       "epic": "1",
-      "tier": "A",
+      "tier": "B",
       "tags": [
         "scaffold",
         "bokeh"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/hello/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -24,6 +24,36 @@
         "fallback": "A still of the orbs.",
         "useCases": [
           "The template for new effects; a dark ambient hero at a pinch"
+        ]
+      }
+    },
+    {
+      "id": "lens-light",
+      "title": "Lens light",
+      "summary": "What a lens does to bright light, each piece on its own control: colour fringes on out-of-focus discs, film halation, diffraction spikes from the blades, ghosts strung through the centre of the frame, and an anamorphic streak. One bright light moves with the pointer among a few others.",
+      "epic": "2",
+      "tier": "A",
+      "tags": [
+        "building block",
+        "flare",
+        "glare",
+        "chromatic aberration",
+        "halation",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": "src/effects/lens-light/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the lights with every effect on.",
+        "useCases": [
+          "Choosing which lens artefacts another effect should have; a building block"
         ]
       }
     },
@@ -40,7 +70,7 @@
         "aperture"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/lens-model/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -68,7 +98,7 @@
         "reference"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/dof-lab/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "no",
@@ -96,7 +126,7 @@
         "pointer"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/aperture-lab/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -124,7 +154,7 @@
         "pointer"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/bokeh-drift/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -153,7 +183,7 @@
         "hero"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/dust-in-light/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -181,7 +211,7 @@
         "twinkle"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/fairy-lights/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -210,7 +240,7 @@
         "nature"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/fireflies/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -238,7 +268,7 @@
         "hero"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/glitter/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -267,7 +297,7 @@
         "pointer"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/night-street/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -312,6 +342,35 @@
       }
     },
     {
+      "id": "flare-cursor",
+      "title": "Flare cursor",
+      "summary": "The pointer as a bright light shining into a lens: a hot point with diffraction spikes, and the ghosts a real lens makes, aperture-shaped and tinted by its coatings, strung along the line from the light through the centre of the frame, swinging round as the pointer moves. An anamorphic streak and film halation are a control away. See-through over the page.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "flare",
+        "pointer",
+        "cursor",
+        "hero"
+      ],
+      "status": "demo",
+      "poster": "src/effects/flare-cursor/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "Nothing: the page works without it.",
+        "useCases": [
+          "A cinematic hero for film, games and music sites",
+          "A product launch page"
+        ]
+      }
+    },
+    {
       "id": "focus-cursor",
       "title": "Focus cursor",
       "summary": "A field of floating lanterns from two metres to sixty, and a lens whose focus follows the pointer: whatever lantern you point at comes sharp, the rest melt into discs, and the focus racks between them the way a camera’s does. Without a pointer it wanders on its own.",
@@ -324,7 +383,7 @@
         "hero"
       ],
       "status": "demo",
-      "poster": null,
+      "poster": "src/effects/focus-cursor/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
@@ -337,6 +396,35 @@
         "useCases": [
           "A hero that answers the pointer without asking for a click",
           "Photography, film and camera sites"
+        ]
+      }
+    },
+    {
+      "id": "glint-hover",
+      "title": "Glint hover",
+      "summary": "A star glint on the corner of each button and card the pointer comes near, as light catches a polished edge: a sharp point with four diffraction spikes, brightest on the corner closest to the pointer, twinkling on a signal capped below the flash threshold. Reads the page's own elements; see-through over it.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "glint",
+        "pointer",
+        "dom",
+        "interaction"
+      ],
+      "status": "demo",
+      "poster": "src/effects/glint-hover/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "Nothing: the page works without it. A CSS pseudo-element sparkle on :hover is close.",
+        "useCases": [
+          "Jewellery, luxury and premium product pages",
+          "A hover state with some sparkle"
         ]
       }
     }

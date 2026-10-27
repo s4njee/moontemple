@@ -6,7 +6,7 @@ A wet road mirrors every light below its surface at 30% (`wet road`), which is w
 
 ## Cost
 
-On an Apple M1 Max: 0.81 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), against 0.42 ms for the tail alone in the same run; with a dry road, 0.48 ms. The reflections double the lights and their discs overlap, so the extra cost is fill. Building the lights takes about 0.15 ms of CPU a frame. No Chrome reading. Tier A on this machine, provisional.
+On an Apple M1 Max: 0.81 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), against 0.42 ms for the tail alone in the same run; with a dry road, 0.48 ms. The reflections double the lights and their discs overlap, so the extra cost is fill. Building the lights takes about 0.15 ms of CPU a frame. In Chrome, 1.16 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)). Tier A on this machine, provisional.
 
 ## Pitfalls
 

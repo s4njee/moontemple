@@ -1,6 +1,6 @@
 import type { PassProfiler } from './profiler.ts';
 import { createShader, withChunks } from './shader.ts';
-import { createUniformBuffer, defineUniformStruct } from './uniforms.ts';
+import { createUniformBuffer, defineUniformStruct, uniformArray } from './uniforms.ts';
 import { apertureUniforms, type ApertureSettings } from './optics/aperture.ts';
 import pointsShader from './points/points.wgsl';
 
@@ -26,6 +26,9 @@ const INITIAL_POINTS = 1024;
 const PointsParams = defineUniformStruct('PointsParams', {
   out_size: 'vec2f',
   gain: 'f32',
+  axial: 'f32',
+  lateral: 'f32',
+  blur_at_infinity: 'f32',
   blades: 'f32',
   rotation: 'f32',
   curvature: 'f32',
@@ -34,6 +37,10 @@ const PointsParams = defineUniformStruct('PointsParams', {
   rings: 'f32',
   ring_count: 'f32',
   vignette: 'f32',
+  obstruction: 'f32',
+  profile_mean: 'f32',
+  use_table: 'f32',
+  table: uniformArray('vec4f', 16),
 });
 
 export interface PointLayerOptions {
@@ -51,6 +58,12 @@ export interface PointFrame {
   gain?: number;
   /** Clear the target to this colour first; default draw onto it as it is. */
   clear?: GPUColor;
+  /**
+   * Chromatic aberration (story 2.4): `axial` shifts each colour's focus by that share (red farther,
+   * blue nearer), `lateral` magnifies each colour by that share about the image centre (red out,
+   * blue in). Axial needs the lens's blur at infinity, device pixels. Default none.
+   */
+  chroma?: { axial: number; lateral: number; blurAtInfinity: number };
 }
 
 export interface PointLayer {
@@ -132,7 +145,14 @@ export function createPointLayer(device: GPUDevice, options: PointLayerOptions):
         apertureKey = key;
         shape = apertureUniforms(frame.aperture);
       }
-      uniforms.set({ out_size: [frame.width, frame.height], gain: frame.gain ?? 1, ...shape });
+      uniforms.set({
+        out_size: [frame.width, frame.height],
+        gain: frame.gain ?? 1,
+        axial: frame.chroma?.axial ?? 0,
+        lateral: frame.chroma?.lateral ?? 0,
+        blur_at_infinity: frame.chroma?.blurAtInfinity ?? 0,
+        ...shape,
+      });
       uniforms.upload();
       const pass = encoder.beginRenderPass({
         label: `${label} points`,

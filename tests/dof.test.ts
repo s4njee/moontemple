@@ -108,6 +108,36 @@ describe('depth-of-field reference', () => {
     },
   );
 
+  it('gives the same reference whether its batches are submitted together or apart', async () => {
+    // A held frame encodes every batch before one submit; uniforms written between them would all
+    // arrive with the last value, so each batch takes its number from the draw instead.
+    const device = await getTestDevice();
+    const size = 64;
+    const lens = lensFromCamera({
+      focalLength: 85,
+      fNumber: 1,
+      focusDistance: 1,
+      imageHeight: size,
+    });
+    const settings: DofShotSettings = { lens, aperture: ROUND, shot: 'night' };
+    const apart = await reference(device, size, size, settings, 256);
+    const together = createDofScene(device);
+    together.resize(size, size);
+    together.set(settings);
+    const encoder = device.createCommandEncoder();
+    for (let i = 0; i < 8; i++) together.addReference(encoder, 32);
+    device.queue.submit([encoder.finish()]);
+    const pixels = new Float32Array(
+      (await readTexture(device, together.referenceTexture, 16)).buffer,
+    );
+    let worst = 0;
+    for (let i = 0; i < pixels.length; i++)
+      worst = Math.max(worst, Math.abs(pixels[i]! - apart.pixels[i]!));
+    expect(worst).toBeLessThan(1e-3);
+    apart.scene.destroy();
+    together.destroy();
+  });
+
   it('scores the hexagon closer to the reference than the sharp image', async () => {
     const device = await getTestDevice();
     const width = 240;

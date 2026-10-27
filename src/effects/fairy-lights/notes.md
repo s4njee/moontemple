@@ -8,7 +8,7 @@ The bulbs are drawn by the shared point layer, so each disc carries exactly its 
 
 ## Cost
 
-On an Apple M1 Max: 0.44 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), against 0.48 ms for the HDR tail alone in the same run: the bulbs cost nothing measurable. Six strings are about 300 bulbs, each a quad covering its disc; every preset reads 0.42 to 0.50 ms. The download is 19.9 kB gzipped beyond the first load. No Chrome reading yet: the browser pane was hidden when these were built, which throttles the page. Tier A on this machine, provisional.
+On an Apple M1 Max: 0.44 ms per frame at 1080p on Dawn ([docs/studies/epic-4.md](../../../docs/studies/epic-4.md)), against 0.48 ms for the HDR tail alone in the same run: the bulbs cost nothing measurable. Six strings are about 300 bulbs, each a quad covering its disc; every preset reads 0.42 to 0.50 ms. The download is 19.9 kB gzipped beyond the first load. In Chrome, 1.16 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)). Tier A on this machine, provisional.
 
 ## Pitfalls
 

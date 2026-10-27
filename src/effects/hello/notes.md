@@ -8,7 +8,7 @@ This is the scaffold's smallest example, not the bokeh research. Story 4.1 (`bok
 
 ## Cost
 
-On an Apple M1 Max: 1.44 ms per frame at 1080p on Dawn ([docs/studies/epic-1.md](../../../docs/studies/epic-1.md)), against 0.44 ms for the HDR tail alone, and 1.84 ms for one frame in Chrome at 962 × 884, where the orbs pass alone reads 0.93 ms. That is more than twice `bokeh-drift`, which draws more orbs as instanced discs: 27 hash lookups a pixel cost more than a quad per orb. Tier A on this machine, provisional.
+On an Apple M1 Max: 1.44 ms per frame at 1080p on Dawn ([docs/studies/epic-1.md](../../../docs/studies/epic-1.md)), against 0.44 ms for the HDR tail alone, and 1.84 ms for one frame in Chrome at 962 × 884, where the orbs pass alone reads 0.93 ms. That is more than twice `bokeh-drift`, which draws more orbs as instanced discs: 27 hash lookups a pixel cost more than a quad per orb. In Chrome, 2.11 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`), over Tier A's 2 ms: Tier B, by the rule that an effect takes the lowest tier both readings fit.
 
 ## Pitfalls
 

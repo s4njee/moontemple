@@ -10,7 +10,7 @@ The plan's story 6.3 first asked for "a background that sharpens around the curs
 
 ## Cost
 
-On an Apple M1 Max: 0.46 ms per frame at 1080p on Dawn ([docs/studies/epic-6.md](../../../docs/studies/epic-6.md)), against 0.42 ms for the HDR tail alone in the same run. The picking is a loop over the lanterns on the CPU each frame; at 260 lanterns it does not show. The download is 20.2 kB gzipped. No Chrome reading yet: the browser pane was hidden when these were built, which throttles the page. Tier A on this machine, provisional.
+On an Apple M1 Max: 0.46 ms per frame at 1080p on Dawn ([docs/studies/epic-6.md](../../../docs/studies/epic-6.md)), against 0.42 ms for the HDR tail alone in the same run. The picking is a loop over the lanterns on the CPU each frame; at 260 lanterns it does not show. The download is 20.2 kB gzipped. In Chrome, 0.95 ms for one frame on a 1920 × 1080 canvas (`npm run browser-check`, median of three loads; [docs/studies/browser-check.md](../../../docs/studies/browser-check.md)). Tier A on this machine, provisional.
 
 ## Pitfalls
 

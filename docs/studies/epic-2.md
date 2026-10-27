@@ -16,28 +16,49 @@ Two limits on reading these numbers. Repeated runs of a light effect differ by u
 
 | Effect | Configuration | Passes | Span (ms) | Per frame (ms) | Range (ms) |
 | --- | --- | ---: | ---: | ---: | --- |
-| (floor) | one constant-colour pass | 1 | 0.07 | 0.09 | -0.28 to 0.24 |
-| (tail) | constant scene + bloom + output | 11 | 0.72 | 0.37 | 0.09 to 0.70 |
-| lens-model | default | 11 | 0.46 | 0.50 | 0.13 to 1.70 |
-| lens-model | preset f/1.4 | 11 | 0.52 | 0.42 | 0.28 to 0.63 |
-| lens-model | preset stopped down | 11 | 0.52 | 0.46 | 0.33 to 0.59 |
-| lens-model | preset hexagon f/4 | 11 | 0.52 | 0.44 | 0.15 to 0.68 |
-| lens-model | preset soap bubble | 11 | 0.52 | 0.44 | 0.20 to 0.79 |
-| lens-model | preset swirly 85 | 11 | 0.46 | 0.44 | 0.09 to 0.87 |
-| lens-model | preset old zoom | 11 | 0.46 | 0.44 | 0.35 to 0.61 |
-| lens-model | preset light not conserved | 11 | 0.46 | 0.35 | 0.22 to 0.57 |
+| (floor) | one constant-colour pass | 1 | 0.07 | 0.07 | -0.50 to 0.35 |
+| (tail) | constant scene + bloom + output | 11 | 0.59 | 0.46 | 0.20 to 0.68 |
+| lens-light | default | 14 | 0.92 | 0.52 | 0.35 to 1.07 |
+| lens-light | preset every artefact | 14 | 0.72 | 0.87 | 0.70 to 1.03 |
+| lens-light | preset clean lens | 12 | 0.59 | 0.44 | 0.35 to 0.81 |
+| lens-light | preset anamorphic | 14 | 0.72 | 0.72 | 0.50 to 1.03 |
+| lens-light | preset vintage | 14 | 0.72 | 0.70 | 0.50 to 1.64 |
+| lens-light | preset star filter | 14 | 0.66 | 0.66 | 0.26 to 0.96 |
+| lens-model | default | 11 | 0.46 | 0.46 | -0.13 to 0.83 |
+| lens-model | preset f/1.4 | 11 | 0.46 | 0.44 | 0.33 to 0.66 |
+| lens-model | preset stopped down | 11 | 0.46 | 0.42 | 0.13 to 0.98 |
+| lens-model | preset hexagon f/4 | 11 | 0.79 | 0.46 | 0.20 to 0.81 |
+| lens-model | preset soap bubble | 11 | 0.66 | 0.72 | 0.50 to 1.20 |
+| lens-model | preset swirly 85 | 11 | 0.66 | 0.74 | 0.37 to 1.18 |
+| lens-model | preset old zoom | 11 | 0.59 | 0.42 | 0.15 to 0.79 |
+| lens-model | preset light not conserved | 11 | 0.46 | 0.46 | 0.39 to 0.70 |
 
 ## 960 × 540
 
 | Effect | Configuration | Passes | Span (ms) | Per frame (ms) | Range (ms) |
 | --- | --- | ---: | ---: | ---: | --- |
-| (floor) | one constant-colour pass | 1 | 0.07 | 0.04 | 0.02 to 0.22 |
-| (tail) | constant scene + bloom + output | 9 | 0.39 | 0.33 | 0.28 to 0.55 |
-| lens-model | default | 9 | 0.39 | 0.28 | -0.02 to 0.74 |
-| lens-model | preset f/1.4 | 9 | 0.39 | 0.35 | 0.20 to 0.66 |
-| lens-model | preset stopped down | 9 | 0.39 | 0.46 | -0.02 to 0.81 |
-| lens-model | preset hexagon f/4 | 9 | 0.46 | 0.35 | -0.13 to 0.74 |
-| lens-model | preset soap bubble | 9 | 0.46 | 0.28 | -0.04 to 0.81 |
-| lens-model | preset swirly 85 | 9 | 0.59 | 0.35 | 0.07 to 0.55 |
-| lens-model | preset old zoom | 9 | 0.52 | 0.33 | 0.15 to 0.61 |
-| lens-model | preset light not conserved | 9 | 0.59 | 0.42 | 0.11 to 0.76 |
+| (floor) | one constant-colour pass | 1 | 0.00 | 0.04 | -0.07 to 0.09 |
+| (tail) | constant scene + bloom + output | 9 | 0.52 | 0.28 | 0.11 to 0.42 |
+| lens-light | default | 12 | 0.52 | 0.52 | 0.42 to 0.92 |
+| lens-light | preset every artefact | 12 | 0.66 | 0.50 | 0.39 to 0.76 |
+| lens-light | preset clean lens | 10 | 0.39 | 0.37 | 0.15 to 0.61 |
+| lens-light | preset anamorphic | 12 | 0.59 | 0.52 | 0.37 to 0.85 |
+| lens-light | preset vintage | 12 | 0.59 | 0.55 | 0.42 to 0.85 |
+| lens-light | preset star filter | 12 | 0.72 | 0.48 | 0.24 to 0.79 |
+| lens-model | default | 9 | 0.39 | 0.35 | 0.22 to 0.66 |
+| lens-model | preset f/1.4 | 9 | 0.33 | 0.39 | 0.20 to 0.57 |
+| lens-model | preset stopped down | 9 | 0.59 | 0.42 | 0.07 to 1.31 |
+| lens-model | preset hexagon f/4 | 9 | 0.46 | 0.31 | 0.20 to 0.42 |
+| lens-model | preset soap bubble | 9 | 0.46 | 0.39 | 0.22 to 0.61 |
+| lens-model | preset swirly 85 | 9 | 0.39 | 0.33 | 0.28 to 0.63 |
+| lens-model | preset old zoom | 9 | 0.39 | 0.33 | 0.28 to 0.61 |
+| lens-model | preset light not conserved | 9 | 0.46 | 0.35 | 0.20 to 0.52 |
+
+## Download size
+
+What the page fetches to show the effect, beyond the first-load bundle (20.8 kB gzipped, no shaders).
+
+| Effect | Chunks | Own chunk (kB gzip) | Total (kB gzip) |
+| --- | ---: | ---: | ---: |
+| lens-light | 12 | 1.7 | 28.1 |
+| lens-model | 8 | 1.2 | 21.7 |
