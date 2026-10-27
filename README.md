@@ -10,7 +10,8 @@ It is built on Fire Temple's page structure and the shared temple core (`@mk7s/h
 npm install
 npm run dev        # http://localhost:5450
 npm test           # lens and point-light tests, the WCAG 2.3.1 flash analyser and the held-frame audit
-npm run build      # registry, typecheck and static build to dist/
+npm run build      # registry, typecheck, static build to dist/ and the bundle check
+npm run study -- --epic 4   # cost study on Dawn: docs/studies/epic-4.md and the Scorecard numbers
 ```
 
 `?effect=<id>` opens an effect, `&hud=1` the performance HUD, and `&p.<param>=<value>` sets a parameter.
@@ -25,7 +26,7 @@ npm run build      # registry, typecheck and static build to dist/
 | `lens-model`  | A night street through a lens: the circle of confusion and every aperture shape, focus walking | A    |
 | `bokeh-drift` | The reference picture: orbs at many depths behind a close focus, keeping their light           | A    |
 
-Nothing has been measured yet; the tiers are guesses until the cost harness (plan story 1.7) runs.
+Tiers come from `npm run study` on Dawn and HUD readings in Chrome on an Apple M1 Max (`src/effects/measured.json`, `docs/studies/`). No integrated GPU or phone has been measured, so they are provisional.
 
 ## Shared pieces
 

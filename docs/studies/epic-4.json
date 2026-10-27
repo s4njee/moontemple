@@ -1,0 +1,412 @@
+{
+  "epic": "4",
+  "measuredAt": "2026-10-27T08:57:15.385Z",
+  "device": "Apple M1 Max",
+  "deviceClass": "apple-silicon",
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "device": "apple-m1-max",
+    "description": "Metal driver on macOS Version 26.6.2 (Build 25G83)"
+  },
+  "runtime": "Dawn (node webgpu bindings)",
+  "method": {
+    "metric": "GPU timestamps: frame span (first pass start to last pass end) and marginal cost per extra frame",
+    "warmupFrames": 12,
+    "rounds": 11,
+    "repeats": 4
+  },
+  "note": "Only this adapter was measured. spanMs includes the timing floor (see the \"(floor)\" rows); slopeMs is the cost of one more frame of the same work and is the number to compare by. A slope at or below zero means the work is below what this method can resolve.",
+  "rows": [
+    {
+      "effect": "(floor)",
+      "config": "one constant-colour pass",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.065536,
+      "slopeMs": 0.043690666666666676,
+      "slopeMinMs": 0,
+      "slopeMaxMs": 0.15291733333333335,
+      "passes": 1,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(tail)",
+      "config": "constant scene + bloom + output",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.589824,
+      "slopeMs": 0.45875200000000005,
+      "slopeMinMs": 0.15291733333333327,
+      "slopeMaxMs": 0.7427413333333334,
+      "passes": 11,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "default",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.720896,
+      "slopeMs": 0.589824,
+      "slopeMinMs": 0.19660800000000003,
+      "slopeMaxMs": 1.0267306666666667,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset violet night",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.589824,
+      "slopeMs": 0.4369066666666666,
+      "slopeMinMs": 0.17476266666666662,
+      "slopeMaxMs": 0.8738133333333334,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset city lights",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.65536,
+      "slopeMs": 0.458752,
+      "slopeMinMs": 0.262144,
+      "slopeMaxMs": 0.8082773333333334,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset gold hexagons",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.589824,
+      "slopeMs": 0.4805973333333333,
+      "slopeMinMs": 0.28398933333333337,
+      "slopeMaxMs": 0.7427413333333334,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset soap bubbles",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.720896,
+      "slopeMs": 0.5024426666666667,
+      "slopeMinMs": 0.26214399999999993,
+      "slopeMaxMs": 0.9175040000000001,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset swirly lens",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.589824,
+      "slopeMs": 0.4805973333333333,
+      "slopeMinMs": 0.30583466666666664,
+      "slopeMaxMs": 0.6772053333333333,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset pulled focus",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.589824,
+      "slopeMs": 0.4805973333333333,
+      "slopeMinMs": 0.24029866666666666,
+      "slopeMaxMs": 0.7645866666666666,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset rgb sweep",
+      "width": 1920,
+      "height": 1080,
+      "spanMs": 0.524288,
+      "slopeMs": 0.5024426666666667,
+      "slopeMinMs": 0.32768,
+      "slopeMaxMs": 0.65536,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "count=50",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "count": 50
+      },
+      "spanMs": 0.65536,
+      "slopeMs": 0.4369066666666667,
+      "slopeMinMs": 0.1747626666666667,
+      "slopeMaxMs": 0.8738133333333334,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "count=220",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "count": 220
+      },
+      "spanMs": 0.65536,
+      "slopeMs": 0.45875200000000005,
+      "slopeMinMs": 0.28398933333333326,
+      "slopeMaxMs": 0.6772053333333333,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "count=440",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "count": 440
+      },
+      "spanMs": 0.589824,
+      "slopeMs": 0.65536,
+      "slopeMinMs": 0.4369066666666666,
+      "slopeMaxMs": 0.8301226666666667,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "blur=0.02",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "blur": 0.02
+      },
+      "spanMs": 0.589824,
+      "slopeMs": 0.5024426666666667,
+      "slopeMinMs": 0.30583466666666664,
+      "slopeMaxMs": 0.8082773333333333,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "blur=0.09",
+      "width": 1920,
+      "height": 1080,
+      "params": {
+        "blur": 0.09
+      },
+      "spanMs": 0.65536,
+      "slopeMs": 0.5461333333333335,
+      "slopeMinMs": 0.3495253333333334,
+      "slopeMaxMs": 0.8301226666666667,
+      "passes": 12,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(floor)",
+      "config": "one constant-colour pass",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.065536,
+      "slopeMs": 0.04369066666666666,
+      "slopeMinMs": 0,
+      "slopeMaxMs": 0.08738133333333332,
+      "passes": 1,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "(tail)",
+      "config": "constant scene + bloom + output",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.393216,
+      "slopeMs": 0.3713706666666667,
+      "slopeMinMs": 0.196608,
+      "slopeMaxMs": 0.5461333333333334,
+      "passes": 9,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "default",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.393216,
+      "slopeMinMs": 0.30583466666666664,
+      "slopeMaxMs": 0.6553599999999999,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset violet night",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.32768,
+      "slopeMinMs": 0.19660800000000003,
+      "slopeMaxMs": 0.5679786666666666,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset city lights",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.393216,
+      "slopeMinMs": 0.28398933333333337,
+      "slopeMaxMs": 0.5679786666666667,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset gold hexagons",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.41506133333333334,
+      "slopeMinMs": 0.30583466666666664,
+      "slopeMaxMs": 0.589824,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset soap bubbles",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.393216,
+      "slopeMinMs": 0.2839893333333333,
+      "slopeMaxMs": 0.65536,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset swirly lens",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.3713706666666667,
+      "slopeMinMs": 0.1092266666666667,
+      "slopeMaxMs": 0.5461333333333332,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset pulled focus",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.3713706666666667,
+      "slopeMinMs": 0.262144,
+      "slopeMaxMs": 0.5679786666666667,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "preset rgb sweep",
+      "width": 960,
+      "height": 540,
+      "spanMs": 0.458752,
+      "slopeMs": 0.458752,
+      "slopeMinMs": -0.04369066666666669,
+      "slopeMaxMs": 0.5461333333333332,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "count=50",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "count": 50
+      },
+      "spanMs": 0.720896,
+      "slopeMs": 0.32768,
+      "slopeMinMs": 0.131072,
+      "slopeMaxMs": 0.589824,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "count=220",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "count": 220
+      },
+      "spanMs": 0.458752,
+      "slopeMs": 0.3713706666666667,
+      "slopeMinMs": 0.24029866666666666,
+      "slopeMaxMs": 0.6772053333333333,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "count=440",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "count": 440
+      },
+      "spanMs": 0.589824,
+      "slopeMs": 0.3713706666666667,
+      "slopeMinMs": 0.196608,
+      "slopeMaxMs": 0.6335146666666667,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "blur=0.02",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "blur": 0.02
+      },
+      "spanMs": 0.524288,
+      "slopeMs": 0.39321599999999995,
+      "slopeMinMs": 0,
+      "slopeMaxMs": 0.5461333333333334,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    },
+    {
+      "effect": "bokeh-drift",
+      "config": "blur=0.09",
+      "width": 960,
+      "height": 540,
+      "params": {
+        "blur": 0.09
+      },
+      "spanMs": 0.589824,
+      "slopeMs": 0.3495253333333334,
+      "slopeMinMs": 0.24029866666666666,
+      "slopeMaxMs": 0.6116693333333333,
+      "passes": 10,
+      "metric": "gpu-timestamp"
+    }
+  ]
+}

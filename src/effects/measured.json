@@ -1,1 +1,56 @@
-{}
+{
+  "bokeh-drift": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.59
+      },
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "browser-span",
+        "ms": 1.24,
+        "resolution": "962 × 884"
+      }
+    ],
+    "bundleKb": 21.9
+  },
+  "hello": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 1.44
+      },
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "browser-span",
+        "ms": 1.84,
+        "resolution": "962 × 884"
+      }
+    ],
+    "bundleKb": 17.4
+  },
+  "lens-model": {
+    "gpuMs": [
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "marginal",
+        "ms": 0.5
+      },
+      {
+        "device": "Apple M1 Max",
+        "deviceClass": "apple-silicon",
+        "method": "browser-span",
+        "ms": 1.17,
+        "resolution": "962 × 884"
+      }
+    ],
+    "bundleKb": 18.8
+  }
+}

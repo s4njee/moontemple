@@ -1,0 +1,55 @@
+{
+  "eager": {
+    "chunks": 13,
+    "raw": 30578,
+    "gzip": 14439
+  },
+  "effects": {
+    "bokeh-drift": {
+      "chunks": 8,
+      "ownGzip": 2483,
+      "gzip": 22449,
+      "raw": 54267,
+      "files": [
+        "assets/aperture-BbWIOjMq.js",
+        "assets/bokeh-drift-BHWr9j4j.js",
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/haze-YxKuTtpu.js",
+        "assets/random-0Ooaj3eB.js",
+        "assets/scatter-DIKBO_Te.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-DAqVOInN.js"
+      ],
+      "gzipKb": 21.9
+    },
+    "hello": {
+      "chunks": 6,
+      "ownGzip": 826,
+      "gzip": 17853,
+      "raw": 45759,
+      "files": [
+        "assets/fullscreen-BDXEFvdz.js",
+        "assets/hash-bWx0F85T.js",
+        "assets/hello-C8Tru_hA.js",
+        "assets/orbs-ERvYl8kj.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-DAqVOInN.js"
+      ],
+      "gzipKb": 17.4
+    },
+    "lens-model": {
+      "chunks": 5,
+      "ownGzip": 1207,
+      "gzip": 19280,
+      "raw": 48168,
+      "files": [
+        "assets/aperture-BbWIOjMq.js",
+        "assets/lens-model-Db022yUv.js",
+        "assets/random-0Ooaj3eB.js",
+        "assets/shader-xzRCRHTt.js",
+        "assets/tail-DAqVOInN.js"
+      ],
+      "gzipKb": 18.8
+    }
+  }
+}

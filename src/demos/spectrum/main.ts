@@ -4,7 +4,7 @@
 
 import { createGpuSession } from '../../gpu/device.ts';
 import { mountEffect } from '../../shell/host.ts';
-import { hueColour } from '../../effects/bokeh-drift/index.ts';
+import { hueColour } from '../../effects/bokeh-drift/hue.ts';
 import './page.css';
 
 const EFFECT = 'bokeh-drift';

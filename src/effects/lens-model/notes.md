@@ -14,7 +14,7 @@ The aperture controls are the shared ones every bokeh effect has: blades (0 for 
 
 ## Cost
 
-Not measured yet.
+On an Apple M1 Max: 0.50 ms per frame at 1080p on Dawn ([docs/studies/epic-2.md](../../../docs/studies/epic-2.md)), against 0.37 ms for the HDR tail alone, and 1.17 ms for one frame in Chrome at 962 × 884. The three hundred points are too few and mostly too small to cost anything measurable; the tail is the frame. Tier A on this machine, provisional until an integrated GPU is measured.
 
 ## Pitfalls
 

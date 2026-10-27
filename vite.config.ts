@@ -6,6 +6,8 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   server: { port: 5450, strictPort: true },
   build: {
+    // scripts/check-bundle.mjs reads the manifest to see what the first page load pulls in.
+    manifest: true,
     target: 'es2022',
     // Never inline an asset as a data URL: the only assets are fallback posters, which the
     // registry lists eagerly, and a small one would otherwise be pasted into the first load.

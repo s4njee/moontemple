@@ -9,6 +9,7 @@ import { withChunks } from '../../gpu/shader.ts';
 import { createUniformBuffer, defineUniformStruct } from '../../gpu/uniforms.ts';
 import { defineEffect } from '../types.ts';
 import shader from './haze.wgsl';
+import { hueColour, type Rgb } from './hue.ts';
 import { meta } from './meta.ts';
 
 const Params = defineUniformStruct('Params', {
@@ -18,9 +19,8 @@ const Params = defineUniformStruct('Params', {
   haze: 'f32',
   light_pos: 'vec2f',
   light: 'f32',
+  view_scale: 'f32',
 });
-
-type Rgb = [number, number, number];
 
 /** Each palette runs between two colours; an orb takes a random point between them. */
 const PALETTES: Record<string, { from: Rgb; to: Rgb; light: Rgb; ground: Rgb }> = {
@@ -44,30 +44,16 @@ const PALETTES: Record<string, { from: Rgb; to: Rgb; light: Rgb; ground: Rgb }> 
   },
 };
 
-/**
- * A colour round the hue wheel, `turn` in 0..1 from red through green and blue: a cosine wheel,
- * divided by part of its luminance so the green third is not several times brighter than the blue
- * one. What is left of the swing is slow and smooth, a breathing rather than a flash.
- */
-export function hueColour(turn: number): Rgb {
-  const a = 2 * Math.PI * turn;
-  const c: Rgb = [
-    0.5 + 0.5 * Math.cos(a),
-    0.5 + 0.5 * Math.cos(a - (2 * Math.PI) / 3),
-    0.5 + 0.5 * Math.cos(a + (2 * Math.PI) / 3),
-  ];
-  // Pushed towards the primaries, so the sweep reads as red, green and blue rather than pastel.
-  const saturated = c.map((v) => v * v) as Rgb;
-  const luminance = 0.2126 * saturated[0] + 0.7152 * saturated[1] + 0.0722 * saturated[2];
-  const k = Math.pow(0.15 / Math.max(luminance, 0.02), 0.6);
-  return [saturated[0] * k, saturated[1] * k, saturated[2] * k];
-}
-
 /** The disc size every orb's light is scaled to, as a share of the image height. */
 const REFERENCE_BLUR = 0.045;
 /** Where the light sits, in uv, and how far away it is. */
 const LIGHT_POS: [number, number] = [0.5, 0.17];
 const LIGHT_DEPTH = 200;
+/** The view the glow is worked out for: 2 tan(fov / 2) for a 50° vertical field of view. */
+const VIEW_SCALE = 2 * Math.tan((25 * Math.PI) / 180);
+/** How bright the glow is for a light of 1, and how much light the light's own disc carries. */
+const GLOW = 0.1;
+const LIGHT_DISC = 60;
 
 interface Orb {
   /** Screen position in uv at depth `z`, before drift. */
@@ -118,7 +104,14 @@ export const effect = defineEffect({
     parallax: { type: 'number', default: 0.3, min: 0, max: 1, step: 0.01 },
     brightness: { type: 'number', default: 1, min: 0, max: 4, step: 0.05, label: 'orbs' },
     light: { type: 'number', default: 1, min: 0, max: 3, step: 0.05, label: 'light above' },
-    haze: { type: 'number', default: 1, min: 0, max: 3, step: 0.05 },
+    haze: {
+      type: 'number',
+      default: 1.2,
+      min: 0,
+      max: 4,
+      step: 0.05,
+      label: 'haze (optical depth)',
+    },
     palette: { type: 'select', default: 'violet', options: [...Object.keys(PALETTES), 'rgb'] },
     cycle: {
       type: 'number',
@@ -250,7 +243,8 @@ export const effect = defineEffect({
             LIGHT_POS[1] * height,
             cocRadius(lens, LIGHT_DEPTH),
             palette.light,
-            25 * params.light * reference,
+            // What reaches the lens directly: the fog takes e^-tau of it on the way.
+            LIGHT_DISC * params.light * reference * Math.exp(-params.haze),
           );
         }
         points.setPoints(data, n);
@@ -261,7 +255,8 @@ export const effect = defineEffect({
           glow_colour: palette.from,
           haze: params.haze,
           light_pos: LIGHT_POS,
-          light: params.light,
+          light: GLOW * params.light,
+          view_scale: VIEW_SCALE,
         });
         uniforms.upload();
         renderFullscreen(encoder, tail.scene.view, pipeline, [group], {
