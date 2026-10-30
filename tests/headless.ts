@@ -1,4 +1,4 @@
-import { deflateSync } from 'node:zlib';
+import { deflateSync, inflateSync } from 'node:zlib';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { loadEffect } from '../src/effects/registry.ts';
@@ -243,4 +243,48 @@ export function writePng(path: string, width: number, height: number, rgb: Uint8
   }
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, all);
+}
+
+/** Reads an 8-bit RGB PNG as `writePng` writes it (every row filter allowed). Returns tight RGB. */
+export function readPng(bytes: Uint8Array): { width: number; height: number; rgb: Uint8Array } {
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  let offset = 8;
+  let width = 0;
+  let height = 0;
+  const data: Uint8Array[] = [];
+  while (offset < bytes.length) {
+    const length = view.getUint32(offset);
+    const type = String.fromCharCode(...bytes.subarray(offset + 4, offset + 8));
+    const body = bytes.subarray(offset + 8, offset + 8 + length);
+    if (type === 'IHDR') {
+      width = view.getUint32(offset + 8);
+      height = view.getUint32(offset + 12);
+      if (body[8] !== 8 || body[9] !== 2) throw new Error('readPng reads 8-bit RGB only');
+    } else if (type === 'IDAT') data.push(body);
+    offset += 12 + length;
+  }
+  const raw = inflateSync(Buffer.concat(data));
+  const stride = width * 3;
+  const rgb = new Uint8Array(stride * height);
+  for (let y = 0; y < height; y++) {
+    const filter = raw[y * (stride + 1)];
+    for (let x = 0; x < stride; x++) {
+      const left = x >= 3 ? rgb[y * stride + x - 3]! : 0;
+      const up = y > 0 ? rgb[(y - 1) * stride + x]! : 0;
+      const upLeft = y > 0 && x >= 3 ? rgb[(y - 1) * stride + x - 3]! : 0;
+      let predictor = 0;
+      if (filter === 1) predictor = left;
+      else if (filter === 2) predictor = up;
+      else if (filter === 3) predictor = (left + up) >> 1;
+      else if (filter === 4) {
+        const p = left + up - upLeft;
+        const pa = Math.abs(p - left);
+        const pb = Math.abs(p - up);
+        const pc = Math.abs(p - upLeft);
+        predictor = pa <= pb && pa <= pc ? left : pb <= pc ? up : upLeft;
+      }
+      rgb[y * stride + x] = (raw[y * (stride + 1) + 1 + x]! + predictor) & 0xff;
+    }
+  }
+  return { width, height, rgb };
 }

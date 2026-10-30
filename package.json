@@ -48,7 +48,9 @@
     "lint": "eslint .",
     "format": "prettier --write --ignore-unknown \"src/**\" \"tests/**\" \"scripts/**\" \"*.{ts,js,json,html}\"",
     "format:check": "prettier --check --ignore-unknown \"src/**\" \"tests/**\" \"scripts/**\" \"*.{ts,js,json,html}\"",
-    "test": "vitest run"
+    "test": "vitest run",
+    "results": "node scripts/results.mjs",
+    "deploy": "npm run build && npx --yes wrangler@4 pages deploy dist --project-name moontemple --branch main"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

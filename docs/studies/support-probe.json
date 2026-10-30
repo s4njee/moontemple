@@ -1,0 +1,60 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "adapter": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "description": ""
+  },
+  "features": {
+    "float32-filterable": true,
+    "float32-blendable": true,
+    "timestamp-query": true,
+    "shader-f16": true,
+    "subgroups": true,
+    "rg11b10ufloat-renderable": true
+  },
+  "limits": {
+    "maxBufferSize": 4294967292,
+    "maxStorageBufferBindingSize": 4294967292,
+    "maxComputeWorkgroupStorageSize": 32768,
+    "maxComputeInvocationsPerWorkgroup": 1024,
+    "maxColorAttachmentBytesPerSample": 128,
+    "maxTextureDimension2D": 16384
+  },
+  "additive": {
+    "rgba16float": {
+      "value": 670.5,
+      "expected": 750
+    },
+    "rgba16floatIndirect": {
+      "value": 225,
+      "expected": 225
+    },
+    "rgba32floatWithoutFeature": {
+      "error": "Blending is enabled but color format (TextureFormat::RGBA32Float) is not blendable."
+    },
+    "rgba32floatWithFeature": {
+      "value": 3,
+      "expected": 3
+    },
+    "rg11b10ufloat": {
+      "value": 3,
+      "expected": 3
+    },
+    "dimOverBright16": {
+      "value": 4,
+      "expected": 5
+    },
+    "dimOverBright32": {
+      "value": 4.999927520751953,
+      "expected": 5
+    }
+  },
+  "shaderF16": "compiles",
+  "fft": {
+    "note": "largest power-of-two complex f32 row that fits workgroup storage, ping-pong (two copies)",
+    "defaultLimit": 16384,
+    "atDefault": 1024,
+    "atOffered": 2048
+  }
+}

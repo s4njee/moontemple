@@ -15,6 +15,9 @@ npm run study -- --epic 4   # cost study on Dawn: docs/studies/epic-4.md and the
 npm run shot -- glitter --times 2   # render an effect headlessly to PNG (output/shots)
 npm run browser-check -- --report docs/studies/browser-check.md   # every effect in headless Chrome (dev server running)
 npm run posters -- --force   # fallback posters from held frames, as WebP
+npm run results    # docs/studies/README.md: every effect's cost on one table, and every study
+npm run deploy     # build, then upload dist to Cloudflare Pages (moontemple.pages.dev)
+UPDATE_VISUAL=1 npx vitest run tests/visual.test.ts   # record the visual regression baselines for this GPU
 ```
 
 `?effect=<id>` opens an effect, `&hud=1` the performance HUD, and `&p.<param>=<value>` sets a parameter.
@@ -48,7 +51,7 @@ npm run posters -- --force   # fallback posters from held frames, as WebP
 | `moon-through-cloud`    | A long-lens moon behind drifting cloud: the aureole, silver edges, the light falling where cloud thickens         | A    |
 | `lunar-corona`          | The coloured rings of diffraction round the moon, sized by the cloud's droplets                                   | A    |
 | `ice-halo`              | The 22° halo and moon dogs from ice crystals, red inner edge fading outwards                                      | A    |
-| `moonlit-water`         | The moon's glitter path on a moving sea, pulled out of focus into a river of discs                                | B    |
+| `moonlit-water`         | The moon's glitter path on a moving sea, pulled out of focus into a river of discs                                | C    |
 | `lamp-in-fog`           | A street lamp in fog: its halo, the cone under it, drifting density; calm behind text                             | A    |
 | `moonbow`               | A faint, nearly white rainbow from moonlight on a waterfall's spray                                               | A    |
 | `prism`                 | White light through a glass prism fanning into a spectrum on a wall; crown, flint, diamond and lamp lines         | B    |
@@ -63,6 +66,8 @@ npm run posters -- --force   # fallback posters from held frames, as WebP
 
 Tiers come from `npm run study` on Dawn and `npm run browser-check` in Chrome on an Apple M1 Max (`src/effects/measured.json`, `docs/studies/`): the lowest tier both readings fit. No integrated GPU or phone has been measured, so they are provisional.
 
+Which effect for which job, which depth-of-field method at which tier, and when a video or CSS does as well: [docs/decision-guide.md](docs/decision-guide.md). Every number on one table: [docs/studies/README.md](docs/studies/README.md).
+
 ## Shared pieces
 
 - `src/gpu/post/`: the HDR tail every effect ends with (bloom, tonemap, sRGB).
@@ -75,6 +80,8 @@ Tiers come from `npm run study` on Dawn and `npm run browser-check` in Chrome on
 - `src/wgsl/spectral.wgsl`, `src/wgsl/glass.wgsl` (twins in `src/gpu/optics/spectral.ts`, `glass.ts`): wavelengths to colour, hero-wavelength sampling, Sellmeier glasses, and a dispersive tracer for convex solids; `src/gpu/glass/` (the traced glass body), `src/gpu/wire/` (solids, HDR wireframe, corner flares), `src/gpu/post/spectral-bloom.ts`.
 - `src/gpu/dom-rects.ts`: the page's marked elements (`data-mt-obstacle`, `data-mt-target`) as rectangles in canvas uv, read every frame.
 - `tests/flash.ts`: Fire Temple's flash analyser, run on Dawn over every effect and preset by `npm test`.
+- `tests/visual.test.ts`: visual regression. Every effect at a fixed simulated second, compared with the frame recorded for this GPU (`tests/visual/<adapter>/`) by RMSE and SSIM; an adapter with no baselines, such as CI's software Vulkan, is skipped.
+- The lens model, apertures, points and the gather and hexagon methods are also in `hologpu/packages/temple-core/src` (story 7.6), unpublished; Moon Temple keeps its own copies until a core version with them is on npm.
 - Reduced motion: a paused host draws one frame and holds it, and tells the effect so (`FrameTime.still`); `tests/still.test.ts` checks every effect and preset shows its subject, never a frozen flare.
 
 ## Licence

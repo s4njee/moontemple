@@ -64,7 +64,13 @@ if (only !== null) {
   stage.className = 'only-stage';
   document.body.append(stage);
   const config = CSS_FALLBACKS[only];
-  if (config) mountCssFallback(stage, config, { motion });
+  // ?scale=<k> multiplies every layer's disc count, for story 8.4's search for where CSS breaks.
+  const scale = Number(params.get('scale') ?? 1);
+  const scaled = config && {
+    ...config,
+    layers: config.layers.map((layer) => ({ ...layer, count: Math.round(layer.count * scale) })),
+  };
+  if (scaled) mountCssFallback(stage, scaled, { motion });
 } else {
   renderPage();
 }

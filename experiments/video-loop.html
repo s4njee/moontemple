@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Baked loop</title>
+    <!-- Story 8.3: one baked loop filling the window, as a page would use it as a backdrop. -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
+      video {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <video muted loop playsinline autoplay></video>
+    <script type="module">
+      const src = new URLSearchParams(location.search).get('src');
+      const video = document.querySelector('video');
+      if (src) video.src = src;
+      else video.remove();
+    </script>
+  </body>
+</html>

@@ -171,6 +171,36 @@
       }
     },
     {
+      "id": "bokeh-text",
+      "title": "Bokeh text",
+      "summary": "A headline made of lights: a thousand soft out-of-focus orbs, scattered at many depths, pull into focus and settle onto points inside the letters until the word stands sharp. Each orb keeps its light as its disc shrinks, so the type burns brighter as it resolves. It loops, plays once as a reveal, or follows a progress a page drives; the letters come from Fire Temple's MSDF atlas.",
+      "epic": "4",
+      "tier": "B",
+      "tags": [
+        "bokeh",
+        "typography",
+        "msdf",
+        "reveal",
+        "hero"
+      ],
+      "status": "demo",
+      "poster": "src/effects/bokeh-text/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The headline itself, revealed with a CSS `filter: blur()` that falls to zero and a `text-shadow` glow; the orbs and the brightening as they gather need the shader.",
+        "useCases": [
+          "A reveal for a landing hero or a title card on a dark page",
+          "An event, film or launch name that should arrive as photographed light"
+        ]
+      }
+    },
+    {
       "id": "dust-in-light",
       "title": "Dust in light",
       "summary": "A shaft of sunlight slanting through a dark room towards the lens, and the dust drifting in it: motes light up only inside the beam, sharp where it crosses the plane of focus and soft discs where it comes close to the lens. The beam itself glows with the light the air scatters.",
@@ -210,13 +240,13 @@
         "seasonal",
         "twinkle"
       ],
-      "status": "demo",
+      "status": "ready",
       "poster": "src/effects/fairy-lights/poster.webp",
       "scorecard": {
         "compute": false,
         "mobile": "untested",
         "flash": "low",
-        "lightPage": "no",
+        "lightPage": "underlay",
         "features": {
           "required": []
         },
@@ -342,6 +372,222 @@
       }
     },
     {
+      "id": "ice-halo",
+      "title": "Ice halo",
+      "summary": "A ring of light 22° round the moon over a snowy field, and moon dogs either side of it: moonlight bent through the 60° prisms of hexagonal ice crystals in a thin veil of cirrostratus. Nothing is bent less than the minimum deviation, so the sky inside the ring is darker, its inner edge is sharp and red, and it fades white outwards.",
+      "epic": "5",
+      "tier": "A",
+      "tags": [
+        "moon",
+        "cloud",
+        "refraction",
+        "spectral",
+        "night",
+        "winter",
+        "backdrop"
+      ],
+      "status": "demo",
+      "poster": "src/effects/ice-halo/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the halo over the field; the ring is a single image.",
+        "useCases": [
+          "A calm winter or night hero background",
+          "Weather, astronomy and science pages about halos"
+        ]
+      }
+    },
+    {
+      "id": "lamp-in-fog",
+      "title": "Lamp in fog",
+      "summary": "A street lamp on a foggy night: the halo round its head, the cone of light under the shade standing in the fog, and the bright pool where the cone meets the wet road, with the fog drifting slowly through the beam. Both the halo and the cone are single scattering computed in closed form for each pixel, not painted on. Dark and slow enough to sit behind text.",
+      "epic": "5",
+      "tier": "A",
+      "tags": [
+        "fog",
+        "light",
+        "night",
+        "backdrop",
+        "hero",
+        "ambient"
+      ],
+      "status": "ready",
+      "poster": "src/effects/lamp-in-fog/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "untested",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the lamp in the fog; it hardly moves, so the still loses little.",
+        "useCases": [
+          "A dark backdrop behind an article or a quiet landing page",
+          "Night, noir, mystery and travel sites",
+          "A row of lamps receding as a section divider or a long hero"
+        ]
+      }
+    },
+    {
+      "id": "lunar-corona",
+      "title": "Lunar corona",
+      "summary": "The coloured rings round a moon in thin cloud: each water droplet diffracts the moonlight into an Airy pattern, red spreading widest, and the rings are those patterns summed over the spectrum and a spread of droplet sizes. Small droplets give big rings; an even cloud gives clear rings, a mixed one a plain aureole.",
+      "epic": "5",
+      "tier": "A",
+      "tags": [
+        "moon",
+        "cloud",
+        "diffraction",
+        "spectral",
+        "night",
+        "backdrop"
+      ],
+      "status": "demo",
+      "poster": "src/effects/lunar-corona/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the moon and its rings; the colours come from the physics, not a gradient.",
+        "useCases": [
+          "A calm night hero or section background",
+          "Science, weather and astronomy pages that explain the corona"
+        ]
+      }
+    },
+    {
+      "id": "moon-through-cloud",
+      "title": "Moon through cloud",
+      "summary": "A bright moon through a long lens, behind thin cloud drifting across it: the glow of the aureole round it, the silver edges of the thin cloud nearest it, and the light falling away where the cloud thickens. The light source for the rest of the moonlight epic.",
+      "epic": "5",
+      "tier": "A",
+      "tags": [
+        "moon",
+        "cloud",
+        "scattering",
+        "night",
+        "backdrop"
+      ],
+      "status": "demo",
+      "poster": "src/effects/moon-through-cloud/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the moon half veiled; the drift needs the shader.",
+        "useCases": [
+          "A calm night hero or section background",
+          "Anything about night, sleep or tides"
+        ]
+      }
+    },
+    {
+      "id": "moonbow",
+      "title": "Moonbow",
+      "summary": "A rainbow by moonlight in the spray of a waterfall: the moon behind you, the bow 42° round the point opposite it, brighter inside, a faint second bow beyond a dark band. Traced through water drops for every colour, then shown as the eye sees it at night, nearly white; a long exposure brings the colours back.",
+      "epic": "5",
+      "tier": "A",
+      "tags": [
+        "moon",
+        "water",
+        "refraction",
+        "spectral",
+        "night",
+        "backdrop"
+      ],
+      "status": "demo",
+      "poster": "src/effects/moonbow/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the falls and the pale bow.",
+        "useCases": [
+          "A night hero or section background for travel, outdoors and nature",
+          "Science pages about rainbows and night vision"
+        ]
+      }
+    },
+    {
+      "id": "moonlit-water",
+      "title": "Moonlit water",
+      "summary": "The glitter path of a low moon on a moving sea, seen through a fast 85 mm lens focused close: every glint is a point of light at its own distance, so the path becomes a river of soft discs in the shape of the aperture. Move the pointer up to pull the focus out to sea and turn the discs back into sparkle.",
+      "epic": "5",
+      "tier": "C",
+      "tags": [
+        "bokeh",
+        "glint",
+        "moon",
+        "water",
+        "hero",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": "src/effects/moonlit-water/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the moon and its path of discs; a looped video does the plain version.",
+        "useCases": [
+          "A night hero for travel, coastal, music and wellbeing sites",
+          "A calm background behind a headline"
+        ]
+      }
+    },
+    {
+      "id": "bokeh-loader",
+      "title": "Bokeh loader",
+      "summary": "A loader made of lights: soft out-of-focus orbs that come into focus one after another as progress rises, until they stand as a sharp ring or bar of points. Each orb keeps its light as it shrinks, so a gathered one burns brighter rather than vanishing. Progress is a live parameter; with nothing driving it the loader runs a demo, and it has an indeterminate spinner too.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "loader",
+        "progress",
+        "ui"
+      ],
+      "status": "demo",
+      "poster": "src/effects/bokeh-loader/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A CSS ring of blurred dots whose blur drops as a custom property rises; the energy-conserving brightening needs the shader.",
+        "useCases": [
+          "A loading screen or progress bar on a dark page",
+          "An indeterminate spinner that reads as photographed light"
+        ]
+      }
+    },
+    {
       "id": "flare-cursor",
       "title": "Flare cursor",
       "summary": "The pointer as a bright light shining into a lens: a hot point with diffraction spikes, and the ghosts a real lens makes, aperture-shaped and tinted by its coatings, strung along the line from the light through the centre of the frame, swinging round as the pointer moves. An anamorphic streak and film halation are a control away. See-through over the page.",
@@ -400,6 +646,35 @@
       }
     },
     {
+      "id": "focus-pull",
+      "title": "Focus pull",
+      "summary": "Rack focus with the scroll. Each section of a page stands a little farther off than the last, and one lens decides everything: the section crossing the middle of the screen comes sharp, the ones above and below soften with CSS blur, and the lights behind the page swell and shrink in the canvas from the same focus distance. In the gallery the lens racks through the sections on its own.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "scroll",
+        "depth of field",
+        "page"
+      ],
+      "status": "demo",
+      "poster": "src/effects/focus-pull/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The page with every section sharp; the lights are a poster.",
+        "useCases": [
+          "Long-form pages and product stories read one section at a time",
+          "Portfolio pages where the scroll should feel like a camera move"
+        ]
+      }
+    },
+    {
       "id": "glint-hover",
       "title": "Glint hover",
       "summary": "A star glint on the corner of each button and card the pointer comes near, as light catches a polished edge: a sharp point with four diffraction spikes, brightest on the corner closest to the pointer, twinkling on a signal capped below the flash threshold. Reads the page's own elements; see-through over it.",
@@ -425,6 +700,343 @@
         "useCases": [
           "Jewellery, luxury and premium product pages",
           "A hover state with some sparkle"
+        ]
+      }
+    },
+    {
+      "id": "halation-text",
+      "title": "Halation text",
+      "summary": "A headline as film sees a bright sign: the letters lit like a lightbox, a red-orange halo scattered under every stroke as light bounces off the film base, and a faint glow. Drawn over the page's own headline, in its own font and place, while the real text stays in the page; a stand-in sign where there is no page.",
+      "epic": "6",
+      "tier": "B",
+      "tags": [
+        "halation",
+        "typography",
+        "msdf",
+        "dom",
+        "overlay"
+      ],
+      "status": "demo",
+      "poster": "src/effects/halation-text/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The real headline with a warm `text-shadow` (a tight bright one and a wide red one). It is in the markup either way: the canvas only draws light on it.",
+        "useCases": [
+          "A film, theatre or music hero whose title should read as a lit marquee",
+          "A night-themed landing headline or an event title card"
+        ]
+      }
+    },
+    {
+      "id": "light-leak",
+      "title": "Light leak",
+      "summary": "Film light leaks over a hero image: soft red, orange and amber light spilling in from the edges and drifting slowly, added to the picture rather than tinting it, and every few seconds a flare sweeping across the frame, a hot streak with its ghosts swinging through the centre. The image is handed to the effect and uploaded as a texture; drop your own photo on it to try it.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "light leak",
+        "flare",
+        "film",
+        "photo",
+        "hero"
+      ],
+      "status": "demo",
+      "poster": "src/effects/light-leak/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The image as it is, with a warm CSS gradient over one edge.",
+        "useCases": [
+          "A film, music or photography hero with an analogue feel",
+          "A slow, warm transition over a still image"
+        ]
+      }
+    },
+    {
+      "id": "photo-focus",
+      "title": "Photo focus",
+      "summary": "A photograph and its depth map, refocused after the fact: click anywhere and the lens racks to that distance, the rest falling away into real bokeh, with the brightest highlights opened back up into discs. Drop your own photo with a depth map beside it to try it on yours.",
+      "epic": "6",
+      "tier": "B",
+      "tags": [
+        "bokeh",
+        "depth of field",
+        "photo",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": "src/effects/photo-focus/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The photograph as it is, sharp throughout.",
+        "useCases": [
+          "Portfolio and product photos that answer a click",
+          "Showing a depth map from an estimator, or a phone’s portrait mode, at work"
+        ]
+      }
+    },
+    {
+      "id": "rack-focus-transition",
+      "title": "Rack-focus transition",
+      "summary": "A transition between two sections of a page: the outgoing view racks out of focus until its lights are discs, the cut happens inside the blur, and the incoming view focuses out of its own bokeh. Real bokeh in the highlights, which a CSS blur cannot give. Drop two images on it to use your own.",
+      "epic": "6",
+      "tier": "A",
+      "tags": [
+        "bokeh",
+        "depth of field",
+        "transition",
+        "page"
+      ],
+      "status": "ready",
+      "poster": "src/effects/rack-focus-transition/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "untested",
+        "features": {
+          "required": []
+        },
+        "fallback": "A plain cut, or the same transition in CSS: `filter: blur()` and opacity on the two views (experiments/css-rack-focus.html).",
+        "useCases": [
+          "Route changes and slide changes between two hero images or canvases the page already has",
+          "Photography and film sites, where a focus pull is the house style"
+        ]
+      }
+    },
+    {
+      "id": "glass-solid",
+      "title": "Glass solid",
+      "summary": "A glass icosahedron turning slowly in front of a night horizon, traced per pixel and per wavelength: the horizon bends and splits into colours through the body, light reflects round inside until it finds a way out, the glass glows cyan and blue, and light gathered by its faces lies in bright patches towards the corners. Optionally a soap film on the faces, for a bubble.",
+      "epic": "9",
+      "tier": "B",
+      "tags": [
+        "glass",
+        "refraction",
+        "dispersion",
+        "spectral",
+        "caustics",
+        "night",
+        "hero",
+        "3d"
+      ],
+      "status": "demo",
+      "poster": "src/effects/glass-solid/poster.webp",
+      "scorecard": {
+        "compute": true,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the solid at rest; a short looping video for the turn.",
+        "useCases": [
+          "A hero or section background for a product about light, optics or glass",
+          "A logo mark rendered as a glass object",
+          "Science and teaching pages on refraction and dispersion"
+        ]
+      }
+    },
+    {
+      "id": "prism",
+      "title": "Prism",
+      "summary": "Newton's experiment in a dark room: a sheet of white light from a slit crosses a little haze, passes through a glass prism and fans out into a spectrum on the wall behind, red bent least and violet most, with faint reflections off the faces. Every ray is traced through the prism wavelength by wavelength, so the band is as wide as the glass makes it: crown, flint or diamond. The prism turns slowly through minimum deviation and the spectrum swings out and back.",
+      "epic": "9",
+      "tier": "B",
+      "tags": [
+        "glass",
+        "refraction",
+        "spectral",
+        "dispersion",
+        "light",
+        "hero",
+        "science"
+      ],
+      "status": "demo",
+      "poster": "src/effects/prism/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the beam, the prism and the spectrum at minimum deviation.",
+        "useCases": [
+          "A hero for physics, optics and science-education pages",
+          "A section header for anything about light, colour or spectra",
+          "An interactive figure: change the glass or the lamp and watch the band change"
+        ]
+      }
+    },
+    {
+      "id": "spectral-bokeh",
+      "title": "Spectral bokeh",
+      "summary": "White lights at many depths through a fast lens whose focus depends on the wavelength. Every disc is drawn once per wavelength, each at its own focus, so out-of-focus lights fringe the way real lenses make them: magenta rims in front of focus, green behind, swapping sides as the focus slowly racks through the field. Switch to a singlet for red and blue fringes, or over-correct it for the red rim behind focus.",
+      "epic": "9",
+      "tier": "B",
+      "tags": [
+        "bokeh",
+        "spectral",
+        "chromatic aberration",
+        "depth of field",
+        "hero",
+        "ambient"
+      ],
+      "status": "demo",
+      "poster": "src/effects/spectral-bokeh/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "A still of the lights with the focus mid-field.",
+        "useCases": [
+          "A dark hero for photography, lens and camera sites",
+          "An interactive figure about chromatic aberration: change the glass and watch the rims swap"
+        ]
+      }
+    },
+    {
+      "id": "glass-badge",
+      "title": "Glass badge",
+      "summary": "A logo mark or a call to action as a thick piece of bevelled glass, refracting the page's own background image behind it: lines bend and split into colour at its bevels, and it tilts towards the pointer. Drop an image to see it through the glass.",
+      "epic": "10",
+      "tier": "B",
+      "tags": [
+        "glass",
+        "refraction",
+        "page",
+        "image",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": "src/effects/glass-badge/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "yes",
+        "features": {
+          "required": []
+        },
+        "fallback": "The background image with the badge as a frosted CSS panel.",
+        "useCases": [
+          "A logo or badge on a hero image",
+          "A call to action that catches the light"
+        ]
+      }
+    },
+    {
+      "id": "prism-icosahedron",
+      "title": "Prism icosahedron",
+      "summary": "The showpiece: a slowly turning icosahedron, its edges a sharp white wire with starbursts at the corners, over a glass body out of focus behind it that bends and splits the horizon into colour, with light gathered at its corners, the whole wrapped in a halo that turns gold, orange and red towards its rim. Drag to turn it.",
+      "epic": "10",
+      "tier": "C",
+      "tags": [
+        "glass",
+        "spectral",
+        "wireframe",
+        "halo",
+        "showpiece",
+        "pointer"
+      ],
+      "status": "demo",
+      "poster": "src/effects/prism-icosahedron/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "no",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The poster: the solid at rest, a corner up.",
+        "useCases": [
+          "A hero for a launch, a product in glass, anything about light"
+        ]
+      }
+    },
+    {
+      "id": "spectral-halo",
+      "title": "Spectral halo",
+      "summary": "Bright white lines whose halo turns gold, orange and red towards its rim: each wavelength scatters its own share over its own width, red the widest, and the light is moved rather than added, so white in integrates to white out. Switch to a radius per channel, film halation or a plain bloom to see what each one does with the same light.",
+      "epic": "10",
+      "tier": "B",
+      "tags": [
+        "bloom",
+        "halation",
+        "spectral",
+        "halo",
+        "post",
+        "hdr"
+      ],
+      "status": "demo",
+      "poster": "src/effects/spectral-halo/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "none",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "The shapes as SVG or CSS with stacked `drop-shadow` filters: a tight white one, a wider amber and a widest dim red. It reads as the same halo at rest, but adds light rather than moving it.",
+        "useCases": [
+          "The halo round a glowing wireframe or line-art hero (the wire-loader and prism-icosahedron of Epic 10)",
+          "A post pass for any HDR scene that should look photographed through a lens or on film"
+        ]
+      }
+    },
+    {
+      "id": "wire-loader",
+      "title": "Wire loader",
+      "summary": "A small wireframe solid turning slowly, its edges lines of HDR light: the same width everywhere, no brighter where five edges meet, the far side faded rather than gone. A starburst sits on each corner that faces the light and drifts round with the turn, never strobing, and bloom gives it a halo. An icosahedron by default; any Platonic solid. A loader or an icon with no glass body, so it stays cheap.",
+      "epic": "10",
+      "tier": "A",
+      "tags": [
+        "wireframe",
+        "loader",
+        "icon",
+        "glint",
+        "ui"
+      ],
+      "status": "demo",
+      "poster": "src/effects/wire-loader/poster.webp",
+      "scorecard": {
+        "compute": false,
+        "mobile": "untested",
+        "flash": "low",
+        "lightPage": "no",
+        "features": {
+          "required": []
+        },
+        "fallback": "An inline SVG of the solid turned by a CSS animation of a few pre-drawn frames, with a drop-shadow glow; no HDR, no faded far side that moves with the turn, no flares.",
+        "useCases": [
+          "A loading indicator on a dark page or app screen",
+          "An animated logo mark or section icon for a technical product"
         ]
       }
     }

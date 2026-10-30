@@ -1,0 +1,610 @@
+{
+  "measuredAt": "2026-10-29T16:15:55.136Z",
+  "width": 1920,
+  "height": 1080,
+  "seconds": 6,
+  "baked": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "loop": 10,
+    "fade": 2,
+    "results": [
+      {
+        "id": "bokeh-drift",
+        "renderSeconds": 8.674153124999998,
+        "masterBytes": 330819351,
+        "encodes": [
+          {
+            "size": "1080p",
+            "codec": "h264",
+            "path": "output/baked/bokeh-drift-1080p.h264.mp4",
+            "bytes": 1150499,
+            "kbps": 920.3992,
+            "ssim": 0.993666,
+            "encodeSeconds": 4.93132625
+          },
+          {
+            "size": "1080p",
+            "codec": "vp9",
+            "path": "output/baked/bokeh-drift-1080p.vp9.webm",
+            "bytes": 535670,
+            "kbps": 428.536,
+            "ssim": 0.993834,
+            "encodeSeconds": 10.783973207999999
+          },
+          {
+            "size": "1080p",
+            "codec": "av1",
+            "path": "output/baked/bokeh-drift-1080p.av1.webm",
+            "bytes": 309678,
+            "kbps": 247.7424,
+            "ssim": 0.994813,
+            "encodeSeconds": 5.252071334
+          },
+          {
+            "size": "1080p",
+            "codec": "av1-10bit",
+            "path": "output/baked/bokeh-drift-1080p.av1-10bit.webm",
+            "bytes": 293563,
+            "kbps": 234.8504,
+            "ssim": 0.996363,
+            "encodeSeconds": 5.55669975
+          },
+          {
+            "size": "720p",
+            "codec": "h264",
+            "path": "output/baked/bokeh-drift-720p.h264.mp4",
+            "bytes": 626708,
+            "kbps": 501.3664,
+            "ssim": 0.990411,
+            "encodeSeconds": 3.745776917000003
+          },
+          {
+            "size": "720p",
+            "codec": "vp9",
+            "path": "output/baked/bokeh-drift-720p.vp9.webm",
+            "bytes": 315632,
+            "kbps": 252.50560000000002,
+            "ssim": 0.990387,
+            "encodeSeconds": 7.049164166999995
+          },
+          {
+            "size": "720p",
+            "codec": "av1",
+            "path": "output/baked/bokeh-drift-720p.av1.webm",
+            "bytes": 193910,
+            "kbps": 155.128,
+            "ssim": 0.991545,
+            "encodeSeconds": 4.112209667000003
+          },
+          {
+            "size": "720p",
+            "codec": "av1-10bit",
+            "path": "output/baked/bokeh-drift-720p.av1-10bit.webm",
+            "bytes": 186588,
+            "kbps": 149.2704,
+            "ssim": 0.993276,
+            "encodeSeconds": 4.218745708999995
+          }
+        ]
+      },
+      {
+        "id": "night-street",
+        "renderSeconds": 9.154441166000003,
+        "masterBytes": 308910293,
+        "encodes": [
+          {
+            "size": "1080p",
+            "codec": "h264",
+            "path": "output/baked/night-street-1080p.h264.mp4",
+            "bytes": 1283318,
+            "kbps": 1026.6544000000001,
+            "ssim": 0.986904,
+            "encodeSeconds": 4.853465708000003
+          },
+          {
+            "size": "1080p",
+            "codec": "vp9",
+            "path": "output/baked/night-street-1080p.vp9.webm",
+            "bytes": 802645,
+            "kbps": 642.116,
+            "ssim": 0.992252,
+            "encodeSeconds": 10.030309959000006
+          },
+          {
+            "size": "1080p",
+            "codec": "av1",
+            "path": "output/baked/night-street-1080p.av1.webm",
+            "bytes": 552387,
+            "kbps": 441.90959999999995,
+            "ssim": 0.99342,
+            "encodeSeconds": 5.769214582999994
+          },
+          {
+            "size": "1080p",
+            "codec": "av1-10bit",
+            "path": "output/baked/night-street-1080p.av1-10bit.webm",
+            "bytes": 544518,
+            "kbps": 435.61440000000005,
+            "ssim": 0.995233,
+            "encodeSeconds": 6.108668959000003
+          },
+          {
+            "size": "720p",
+            "codec": "h264",
+            "path": "output/baked/night-street-720p.h264.mp4",
+            "bytes": 681221,
+            "kbps": 544.9768,
+            "ssim": 0.985064,
+            "encodeSeconds": 3.652276083000019
+          },
+          {
+            "size": "720p",
+            "codec": "vp9",
+            "path": "output/baked/night-street-720p.vp9.webm",
+            "bytes": 490281,
+            "kbps": 392.2248,
+            "ssim": 0.989572,
+            "encodeSeconds": 6.624871541
+          },
+          {
+            "size": "720p",
+            "codec": "av1",
+            "path": "output/baked/night-street-720p.av1.webm",
+            "bytes": 335734,
+            "kbps": 268.5872,
+            "ssim": 0.990974,
+            "encodeSeconds": 4.332002249999991
+          },
+          {
+            "size": "720p",
+            "codec": "av1-10bit",
+            "path": "output/baked/night-street-720p.av1-10bit.webm",
+            "bytes": 331053,
+            "kbps": 264.8424,
+            "ssim": 0.993033,
+            "encodeSeconds": 4.397184041999979
+          }
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "empty page",
+      "kind": "floor",
+      "url": "http://localhost:5450/experiments/video-loop.html",
+      "fps": 60.666666666666664,
+      "main": 13.025333333333334,
+      "gpu": 9.274333333333333,
+      "media": 0,
+      "video": null,
+      "errors": 1
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "live",
+      "effect": true,
+      "url": "http://localhost:5450/?effect=bokeh-drift",
+      "fps": 60,
+      "main": 55.61683333333334,
+      "gpu": 157.07716666666667,
+      "media": 0,
+      "video": null,
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "1080p h264",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-1080p.h264.mp4",
+      "encode": {
+        "size": "1080p",
+        "codec": "h264",
+        "path": "output/baked/bokeh-drift-1080p.h264.mp4",
+        "bytes": 1150499,
+        "kbps": 920.3992,
+        "ssim": 0.993666,
+        "encodeSeconds": 4.93132625
+      },
+      "fps": 60.166666666666664,
+      "main": 14.518999999999998,
+      "gpu": 55.30433333333334,
+      "media": 10.984,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "1080p vp9",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-1080p.vp9.webm",
+      "encode": {
+        "size": "1080p",
+        "codec": "vp9",
+        "path": "output/baked/bokeh-drift-1080p.vp9.webm",
+        "bytes": 535670,
+        "kbps": 428.536,
+        "ssim": 0.993834,
+        "encodeSeconds": 10.783973207999999
+      },
+      "fps": 60.166666666666664,
+      "main": 13.34366666666667,
+      "gpu": 44.257666666666665,
+      "media": 10.804166666666667,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "1080p av1",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-1080p.av1.webm",
+      "encode": {
+        "size": "1080p",
+        "codec": "av1",
+        "path": "output/baked/bokeh-drift-1080p.av1.webm",
+        "bytes": 309678,
+        "kbps": 247.7424,
+        "ssim": 0.994813,
+        "encodeSeconds": 5.252071334
+      },
+      "fps": 60.333333333333336,
+      "main": 21.675,
+      "gpu": 35.61633333333334,
+      "media": 31.241833333333332,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "1080p av1-10bit",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-1080p.av1-10bit.webm",
+      "encode": {
+        "size": "1080p",
+        "codec": "av1-10bit",
+        "path": "output/baked/bokeh-drift-1080p.av1-10bit.webm",
+        "bytes": 293563,
+        "kbps": 234.8504,
+        "ssim": 0.996363,
+        "encodeSeconds": 5.55669975
+      },
+      "fps": 60.333333333333336,
+      "main": 12.304499999999999,
+      "gpu": 34.1535,
+      "media": 26.956999999999997,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30.166666666666668,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "720p h264",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-720p.h264.mp4",
+      "encode": {
+        "size": "720p",
+        "codec": "h264",
+        "path": "output/baked/bokeh-drift-720p.h264.mp4",
+        "bytes": 626708,
+        "kbps": 501.3664,
+        "ssim": 0.990411,
+        "encodeSeconds": 3.745776917000003
+      },
+      "fps": 60.333333333333336,
+      "main": 12.783333333333331,
+      "gpu": 39.104166666666664,
+      "media": 9.915,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "720p vp9",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-720p.vp9.webm",
+      "encode": {
+        "size": "720p",
+        "codec": "vp9",
+        "path": "output/baked/bokeh-drift-720p.vp9.webm",
+        "bytes": 315632,
+        "kbps": 252.50560000000002,
+        "ssim": 0.990387,
+        "encodeSeconds": 7.049164166999995
+      },
+      "fps": 60.166666666666664,
+      "main": 10.896666666666668,
+      "gpu": 34.524166666666666,
+      "media": 8.2965,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "720p av1",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-720p.av1.webm",
+      "encode": {
+        "size": "720p",
+        "codec": "av1",
+        "path": "output/baked/bokeh-drift-720p.av1.webm",
+        "bytes": 193910,
+        "kbps": 155.128,
+        "ssim": 0.991545,
+        "encodeSeconds": 4.112209667000003
+      },
+      "fps": 60.333333333333336,
+      "main": 15.710666666666667,
+      "gpu": 32.74533333333333,
+      "media": 26.120833333333334,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "bokeh-drift",
+      "kind": "720p av1-10bit",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/bokeh-drift-720p.av1-10bit.webm",
+      "encode": {
+        "size": "720p",
+        "codec": "av1-10bit",
+        "path": "output/baked/bokeh-drift-720p.av1-10bit.webm",
+        "bytes": 186588,
+        "kbps": 149.2704,
+        "ssim": 0.993276,
+        "encodeSeconds": 4.218745708999995
+      },
+      "fps": 60.333333333333336,
+      "main": 19.259833333333333,
+      "gpu": 39.000499999999995,
+      "media": 25.88,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "live",
+      "effect": true,
+      "url": "http://localhost:5450/?effect=night-street",
+      "fps": 60.166666666666664,
+      "main": 61.3115,
+      "gpu": 318.1565,
+      "media": 0.03,
+      "video": null,
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "1080p h264",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-1080p.h264.mp4",
+      "encode": {
+        "size": "1080p",
+        "codec": "h264",
+        "path": "output/baked/night-street-1080p.h264.mp4",
+        "bytes": 1283318,
+        "kbps": 1026.6544000000001,
+        "ssim": 0.986904,
+        "encodeSeconds": 4.853465708000003
+      },
+      "fps": 60.333333333333336,
+      "main": 13.431333333333333,
+      "gpu": 43.218999999999994,
+      "media": 10.739833333333335,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "1080p vp9",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-1080p.vp9.webm",
+      "encode": {
+        "size": "1080p",
+        "codec": "vp9",
+        "path": "output/baked/night-street-1080p.vp9.webm",
+        "bytes": 802645,
+        "kbps": 642.116,
+        "ssim": 0.992252,
+        "encodeSeconds": 10.030309959000006
+      },
+      "fps": 60.333333333333336,
+      "main": 13.031,
+      "gpu": 42.342000000000006,
+      "media": 9.993166666666667,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "1080p av1",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-1080p.av1.webm",
+      "encode": {
+        "size": "1080p",
+        "codec": "av1",
+        "path": "output/baked/night-street-1080p.av1.webm",
+        "bytes": 552387,
+        "kbps": 441.90959999999995,
+        "ssim": 0.99342,
+        "encodeSeconds": 5.769214582999994
+      },
+      "fps": 60.333333333333336,
+      "main": 14.958,
+      "gpu": 32.138,
+      "media": 28.584000000000003,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "1080p av1-10bit",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-1080p.av1-10bit.webm",
+      "encode": {
+        "size": "1080p",
+        "codec": "av1-10bit",
+        "path": "output/baked/night-street-1080p.av1-10bit.webm",
+        "bytes": 544518,
+        "kbps": 435.61440000000005,
+        "ssim": 0.995233,
+        "encodeSeconds": 6.108668959000003
+      },
+      "fps": 60.333333333333336,
+      "main": 13.917333333333334,
+      "gpu": 39.58083333333334,
+      "media": 32.125,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "720p h264",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-720p.h264.mp4",
+      "encode": {
+        "size": "720p",
+        "codec": "h264",
+        "path": "output/baked/night-street-720p.h264.mp4",
+        "bytes": 681221,
+        "kbps": 544.9768,
+        "ssim": 0.985064,
+        "encodeSeconds": 3.652276083000019
+      },
+      "fps": 60.333333333333336,
+      "main": 16.2925,
+      "gpu": 55.342000000000006,
+      "media": 12.486166666666668,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "720p vp9",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-720p.vp9.webm",
+      "encode": {
+        "size": "720p",
+        "codec": "vp9",
+        "path": "output/baked/night-street-720p.vp9.webm",
+        "bytes": 490281,
+        "kbps": 392.2248,
+        "ssim": 0.989572,
+        "encodeSeconds": 6.624871541
+      },
+      "fps": 60.333333333333336,
+      "main": 12.975166666666667,
+      "gpu": 44.77433333333334,
+      "media": 10.556833333333334,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "720p av1",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-720p.av1.webm",
+      "encode": {
+        "size": "720p",
+        "codec": "av1",
+        "path": "output/baked/night-street-720p.av1.webm",
+        "bytes": 335734,
+        "kbps": 268.5872,
+        "ssim": 0.990974,
+        "encodeSeconds": 4.332002249999991
+      },
+      "fps": 60.333333333333336,
+      "main": 17.03983333333333,
+      "gpu": 33.98133333333333,
+      "media": 28.4225,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    },
+    {
+      "id": "night-street",
+      "kind": "720p av1-10bit",
+      "url": "http://localhost:5450/experiments/video-loop.html?src=/output/baked/night-street-720p.av1-10bit.webm",
+      "encode": {
+        "size": "720p",
+        "codec": "av1-10bit",
+        "path": "output/baked/night-street-720p.av1-10bit.webm",
+        "bytes": 331053,
+        "kbps": 264.8424,
+        "ssim": 0.993033,
+        "encodeSeconds": 4.397184041999979
+      },
+      "fps": 60.166666666666664,
+      "main": 15.045166666666667,
+      "gpu": 34.875166666666665,
+      "media": 25.852500000000003,
+      "video": {
+        "playing": true,
+        "error": null,
+        "decoded": 30,
+        "dropped": 0
+      },
+      "errors": 0
+    }
+  ]
+}

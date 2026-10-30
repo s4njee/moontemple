@@ -12,7 +12,9 @@ The cells are laid out so every cell carries about the same expected light. With
 
 ## Cost
 
-Not measured on the reference devices yet (`npm run study` has not been run for it). The CPU part, measured in Node on an Apple M1 Max: 1.8 ms a frame for the default 6 000 cells (about 2 400 glinting at once), most of it the flicker signal's hashes and the swell's sines; 13 ms to lay out the cells again when the moon, the waves, the wind, the budget or the frame's shape changes. The Chrome HUD read 2.3 ms of CPU. Its GPU readings were not usable: other work was sharing the GPU and the passes read tens of milliseconds each. What scales the GPU cost is the points pass: at f/1.8 focused close, every glint is a disc about 12% of the frame's height across, so 2 400 of them overdraw heavily, and more at higher resolutions. Texture memory is the HDR tail's (about 8.7 MB at 0.85 Mpx).
+9.8 ms a frame at 1920 × 1080 on Dawn at the defaults (8.2 to 11.1 over the runs), an Apple M1 Max: over Tier B's 6 ms, so Tier C ([docs/studies/epic-5.md](../../../docs/studies/epic-5.md)). It is the points pass. At f/1.8 focused close every glint is a disc about 12% of the frame's height across, and about 2 400 of them overdraw each other. The presets with sharper glints, or fewer of them, cost a quarter of that: `sharp sparkle` (focused far, f/5.6) 2.2 ms, `half moon` 2.7, `high moon` (a shorter path) 2.6. For a Tier B page, start from those.
+
+The CPU part, measured in Node: 1.8 ms a frame for the default 6 000 cells, most of it the flicker signal's hashes and the swell's sines; 13 ms to lay the cells out again when the moon, the waves, the wind, the budget or the frame's shape changes. Texture memory is the HDR tail's (about 8.7 MB at 0.85 Mpx).
 
 ## Pitfalls
 
